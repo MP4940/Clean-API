@@ -34,7 +34,6 @@ namespace APi.Controllers
         public async Task<IActionResult> GetDogById(Guid dogID)
         {
             return Ok(await _mediatR.Send(new GetDogByIDQuery(dogID)));
-            Console.WriteLine("nemo");
         }
     }
 }
