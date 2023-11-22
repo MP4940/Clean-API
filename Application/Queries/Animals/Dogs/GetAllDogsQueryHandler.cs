@@ -1,8 +1,8 @@
 ﻿using MediatR;
-using Domain.Models;
 using Infrastructure.Database;
+using Domain.Models.Animals.Dogs;
 
-namespace Application.Queries.Dogs
+namespace Application.Queries.Animals.Dogs
 {
     internal class GetAllDogsQueryHandler : IRequestHandler<GetAllDogsQuery, List<Dog>>
     {

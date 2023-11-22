@@ -1,9 +1,9 @@
-﻿using Domain.Models;
+﻿using Domain.Models.Animals.Dogs;
 using Infrastructure.Database;
 using MediatR;
 
 
-namespace Application.Queries.Dogs.GetDogByID
+namespace Application.Queries.Animals.Dogs.GetDogByID
 {
     internal class GetDogByIDQueryHandler : IRequestHandler<GetDogByIDQuery, Dog>
     {

@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using Domain.Models;
+using Domain.Models.Animals.Dogs;
 
-namespace Application.Queries.Dogs.GetDogByID
+namespace Application.Queries.Animals.Dogs.GetDogByID
 {
     public class GetDogByIDQuery : IRequest<Dog>
     {
