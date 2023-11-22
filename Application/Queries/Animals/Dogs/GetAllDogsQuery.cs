@@ -1,7 +1,7 @@
-﻿using Domain.Models;
+﻿using Domain.Models.Animals.Dogs;
 using MediatR;
 
-namespace Application.Queries.Dogs
+namespace Application.Queries.Animals.Dogs
 {
     public class GetAllDogsQuery : IRequest<List<Dog>>
     {
