@@ -2,7 +2,7 @@
 using Infrastructure.Database;
 using Domain.Models.Animals.Dogs;
 
-namespace Application.Queries.Animals.Dogs
+namespace Application.Queries.Animals.Dogs.GetAllDogs
 {
     internal class GetAllDogsQueryHandler : IRequestHandler<GetAllDogsQuery, List<Dog>>
     {
