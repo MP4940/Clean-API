@@ -1,7 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MediatR;
-using Application.Queries.Animals.Dogs;
+using Application.Queries.Animals.Dogs.GetAllDogs;
 using Application.Queries.Animals.Dogs.GetDogByID;
+using Application.Commands.Dogs.AddDog;
+using Application.Commands.Dogs.UpdateDog;
+using Application.Dtos;
+using Application.Commands.Dogs.DeleteDog;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -34,6 +38,30 @@ namespace APi.Controllers
         public async Task<IActionResult> GetDogById(Guid dogID)
         {
             return Ok(await _mediatR.Send(new GetDogByIDQuery(dogID)));
+        }
+
+        // Create a new dog 
+        [HttpPost]
+        [Route("addNewDog")]
+        public async Task<IActionResult> AddDog([FromBody] DogDto newDog)
+        {
+            return Ok(await _mediatR.Send(new AddDogCommand(newDog)));
+        }
+
+        // Update a specific dog
+        [HttpPut]
+        [Route("updateDog/{updatedDogId}")]
+        public async Task<IActionResult> UpdateDog([FromBody] DogDto updatedDog, Guid updatedDogId)
+        {
+            return Ok(await _mediatR.Send(new UpdateDogByIDCommand(updatedDog, updatedDogId)));
+        }    
+
+        // Delete a specific dog
+        [HttpDelete]
+        [Route("deleteDog/{deletedDogId}")]
+        public async Task<IActionResult> DeleteDog(Guid deletedDogId)
+        {
+            return Ok(await _mediatR.Send(new DeleteDogByIDCommand(deletedDogId)));
         }
     }
 }

@@ -27,6 +27,10 @@ namespace Infrastructure.Database
             new Dog
             {
                 AnimalID = Guid.NewGuid(), Name = "Fido"
+            },
+            new Dog 
+            { 
+                AnimalID = new Guid("12345678-1234-5678-1234-567812345678"), Name = "TestDogForUnitTests"
             }
         };
     }
