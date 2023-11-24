@@ -1,7 +1,7 @@
 ﻿using Domain.Models.Animals.Dogs;
 using MediatR;
 
-namespace Application.Commands.Animals.Dog.DeleteDog
+namespace Application.Commands.Animals.Dogs.DeleteDog
 {
     public class DeleteDogByIDCommand : IRequest<Dog>
     {

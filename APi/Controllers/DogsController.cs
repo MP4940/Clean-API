@@ -2,10 +2,10 @@
 using MediatR;
 using Application.Queries.Animals.Dogs.GetAllDogs;
 using Application.Queries.Animals.Dogs.GetDogByID;
-using Application.Commands.Dogs.AddDog;
-using Application.Commands.Dogs.UpdateDog;
+using Application.Commands.Animals.Dogs.AddDog;
+using Application.Commands.Animals.Dogs.UpdateDog;
 using Application.Dtos;
-using Application.Commands.Dogs.DeleteDog;
+using Application.Commands.Animals.Dogs.DeleteDog;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 

@@ -1,4 +1,5 @@
-﻿using Domain.Models.Animals.Dogs;
+﻿using Application.Commands.Animals.Dogs.UpdateDog;
+using Domain.Models.Animals.Dogs;
 using Infrastructure.Database;
 using MediatR;
 
@@ -14,7 +15,7 @@ namespace Application.Commands.Dogs.UpdateDog
         }
         public Task<Dog> Handle(UpdateDogByIDCommand request, CancellationToken cancellationToken)
         {
-            Dog dogToUpdate = _mockDatabase.allDogs.FirstOrDefault(dog => dog.AnimalID == request.Id)!;
+            Dog dogToUpdate = _mockDatabase.allDogs.FirstOrDefault(dog => dog.AnimalID == request.ID)!;
 
             dogToUpdate.Name = request.UpdatedDog.Name;
 

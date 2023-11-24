@@ -2,7 +2,7 @@
 using Domain.Models.Animals.Dogs;
 using MediatR;
 
-namespace Application.Commands.Animals.Dog.AddDog
+namespace Application.Commands.Animals.Dogs.AddDog
 {
     public class AddDogCommand : IRequest<Dog>
     {
