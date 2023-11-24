@@ -2,7 +2,7 @@
 using Application.Queries.Animals.Dogs.GetDogByID;
 
 
-namespace Test.DogTest
+namespace Test.AnimalTests.DogTest
 {
     [TestFixture]
     public class DogTest

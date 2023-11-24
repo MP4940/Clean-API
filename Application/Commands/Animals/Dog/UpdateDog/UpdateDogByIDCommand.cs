@@ -2,7 +2,7 @@
 using Domain.Models.Animals.Dogs;
 using MediatR;
 
-namespace Application.Commands.Dogs.UpdateDog
+namespace Application.Commands.Animals.Dog.UpdateDog
 {
     public class UpdateDogByIDCommand : IRequest<Dog>
     {

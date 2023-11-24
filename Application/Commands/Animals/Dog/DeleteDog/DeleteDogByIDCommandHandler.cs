@@ -1,9 +1,8 @@
-﻿using Application.Commands.Dogs.DeleteDog;
-using Domain.Models.Animals.Dogs;
+﻿using Domain.Models.Animals.Dogs;
 using Infrastructure.Database;
 using MediatR;
 
-namespace Application.Commands.Dogs.DeleteDog
+namespace Application.Commands.Animals.Dog.DeleteDog
 {
     internal class DeleteDogByIdCommandHandler : IRequestHandler<DeleteDogByIDCommand, Dog>
     {
@@ -15,10 +14,10 @@ namespace Application.Commands.Dogs.DeleteDog
         }
         public Task<Dog> Handle(DeleteDogByIDCommand request, CancellationToken cancellationToken)
         {
-            Dog dogToDelete = _mockDatabase.allDogs.FirstOrDefault(dog => dog.AnimalID == request.ID)!;            
+            Dog dogToDelete = _mockDatabase.allDogs.FirstOrDefault(dog => dog.AnimalID == request.ID)!;
             _mockDatabase.allDogs.Remove(dogToDelete);
 
-            // Kanske fel return
+            // Lite orelevant information som returneras
             return Task.FromResult(dogToDelete);
         }
     }

@@ -2,7 +2,7 @@
 using Infrastructure.Database;
 using MediatR;
 
-namespace Application.Commands.Dogs.AddDog
+namespace Application.Commands.Animals.Dog.AddDog
 {
     internal sealed class AddDogCommandHandler : IRequestHandler<AddDogCommand, Dog>
     {
