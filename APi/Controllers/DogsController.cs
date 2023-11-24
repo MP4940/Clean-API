@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MediatR;
-using Application.Queries.Animals.Dogs;
+using Application.Queries.Animals.Dogs.GetAllDogs;
 using Application.Queries.Animals.Dogs.GetDogByID;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
