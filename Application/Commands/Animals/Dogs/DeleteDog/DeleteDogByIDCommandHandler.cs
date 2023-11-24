@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.Commands.Animals.Dogs.DeleteDog
 {
-    internal class DeleteDogByIdCommandHandler : IRequestHandler<DeleteDogByIDCommand, Dog>
+    public class DeleteDogByIdCommandHandler : IRequestHandler<DeleteDogByIDCommand, Dog>
     {
         private readonly MockDatabase _mockDatabase;
 
@@ -14,7 +14,7 @@ namespace Application.Commands.Animals.Dogs.DeleteDog
         }
         public Task<Dog> Handle(DeleteDogByIDCommand request, CancellationToken cancellationToken)
         {
-            Dog dogToDelete = _mockDatabase.allDogs.FirstOrDefault(dog => dog.AnimalID == request.ID);
+            Dog dogToDelete = _mockDatabase.allDogs.FirstOrDefault(dog => dog.AnimalID == request.ID)!;
             _mockDatabase.allDogs.Remove(dogToDelete);
 
             // Lite orelevant information som returneras
