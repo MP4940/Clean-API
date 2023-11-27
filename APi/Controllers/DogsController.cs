@@ -2,10 +2,10 @@
 using MediatR;
 using Application.Queries.Animals.Dogs.GetAllDogs;
 using Application.Queries.Animals.Dogs.GetDogByID;
-using Application.Commands.Dogs.AddDog;
-using Application.Commands.Dogs.UpdateDog;
+using Application.Commands.Animals.Dogs.AddDog;
+using Application.Commands.Animals.Dogs.UpdateDog;
 using Application.Dtos;
-using Application.Commands.Dogs.DeleteDog;
+using Application.Commands.Animals.Dogs.DeleteDog;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -50,18 +50,18 @@ namespace APi.Controllers
 
         // Update a specific dog
         [HttpPut]
-        [Route("updateDog/{updatedDogId}")]
-        public async Task<IActionResult> UpdateDog([FromBody] DogDto updatedDog, Guid updatedDogId)
+        [Route("updateDog/{updatedDogID}")]
+        public async Task<IActionResult> UpdateDog([FromBody] DogDto updatedDog, Guid updatedDogID)
         {
-            return Ok(await _mediatR.Send(new UpdateDogByIDCommand(updatedDog, updatedDogId)));
-        }    
+            return Ok(await _mediatR.Send(new UpdateDogByIDCommand(updatedDog, updatedDogID)));
+        }
 
         // Delete a specific dog
         [HttpDelete]
-        [Route("deleteDog/{deletedDogId}")]
-        public async Task<IActionResult> DeleteDog(Guid deletedDogId)
+        [Route("deleteDog/{deletedDogID}")]
+        public async Task<IActionResult> DeleteDog(Guid deletedDogID)
         {
-            return Ok(await _mediatR.Send(new DeleteDogByIDCommand(deletedDogId)));
+            return Ok(await _mediatR.Send(new DeleteDogByIDCommand(deletedDogID)));
         }
     }
 }

@@ -1,13 +1,12 @@
 ﻿using Infrastructure.Database;
 using Application.Queries.Animals.Dogs.GetDogByID;
 
-
-namespace Test.DogTest
+namespace Test.AnimalTests.DogTest.QueryTest
 {
     [TestFixture]
-    public class DogTest
+    public class GetDogByIDTests
     {
-        private GetDogByIDQueryHandler _handler;
+        private GetDogByIDQueryHandler _GetDogByIDQueryHandler;
         private MockDatabase _mockDatabase;
 
         [SetUp]
@@ -15,7 +14,7 @@ namespace Test.DogTest
         {
             // Initialize the handler and mock database before each test
             _mockDatabase = new MockDatabase();
-            _handler = new GetDogByIDQueryHandler(_mockDatabase);
+            _GetDogByIDQueryHandler = new GetDogByIDQueryHandler(_mockDatabase);
         }
 
         [Test]
@@ -27,7 +26,7 @@ namespace Test.DogTest
             var query = new GetDogByIDQuery(dogID);
 
             // Act
-            var result = await _handler.Handle(query, CancellationToken.None);
+            var result = await _GetDogByIDQueryHandler.Handle(query, CancellationToken.None);
 
             // Assert
             Assert.NotNull(result);
@@ -43,7 +42,7 @@ namespace Test.DogTest
             var query = new GetDogByIDQuery(invalidDogId);
 
             // Act
-            var result = await _handler.Handle(query, CancellationToken.None);
+            var result = await _GetDogByIDQueryHandler.Handle(query, CancellationToken.None);
 
             // Assert
             Assert.IsNull(result);

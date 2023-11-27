@@ -2,17 +2,17 @@
 using Domain.Models.Animals.Dogs;
 using MediatR;
 
-namespace Application.Commands.Dogs.UpdateDog
+namespace Application.Commands.Animals.Dogs.UpdateDog
 {
     public class UpdateDogByIDCommand : IRequest<Dog>
     {
         public UpdateDogByIDCommand(DogDto updatedDog, Guid id)
         {
             UpdatedDog = updatedDog;
-            Id = id;
+            ID = id;
         }
 
         public DogDto UpdatedDog { get; }
-        public Guid Id { get; }
+        public Guid ID { get; }
     }
 }
