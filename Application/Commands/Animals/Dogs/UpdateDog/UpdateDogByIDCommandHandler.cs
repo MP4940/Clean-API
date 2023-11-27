@@ -1,11 +1,10 @@
-﻿using Application.Commands.Animals.Dogs.UpdateDog;
-using Domain.Models.Animals.Dogs;
+﻿using Domain.Models.Animals.Dogs;
 using Infrastructure.Database;
 using MediatR;
 
-namespace Application.Commands.Dogs.UpdateDog
+namespace Application.Commands.Animals.Dogs.UpdateDog
 {
-    internal class UpdateDogByIdCommandHandler : IRequestHandler<UpdateDogByIDCommand, Dog>
+    public class UpdateDogByIdCommandHandler : IRequestHandler<UpdateDogByIDCommand, Dog>
     {
         private readonly MockDatabase _mockDatabase;
 

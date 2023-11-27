@@ -24,7 +24,7 @@ namespace Test.AnimalTests.DogTest.CommandTest
         {
             // Arrange
             var dogID = new Guid("12345678-1234-5678-1234-567812345678");
-            DogDto dogDto = new DogDto {Name = "UpdatedDogName"};
+            DogDto dogDto = new DogDto { Name = "UpdatedDogName" };
 
             var queryUpdateDogByID = new UpdateDogByIDCommand(dogDto, dogID);
 

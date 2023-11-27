@@ -50,18 +50,18 @@ namespace APi.Controllers
 
         // Update a specific dog
         [HttpPut]
-        [Route("updateDog/{updatedDogId}")]
-        public async Task<IActionResult> UpdateDog([FromBody] DogDto updatedDog, Guid updatedDogId)
+        [Route("updateDog/{updatedDogID}")]
+        public async Task<IActionResult> UpdateDog([FromBody] DogDto updatedDog, Guid updatedDogID)
         {
-            return Ok(await _mediatR.Send(new UpdateDogByIDCommand(updatedDog, updatedDogId)));
-        }    
+            return Ok(await _mediatR.Send(new UpdateDogByIDCommand(updatedDog, updatedDogID)));
+        }
 
         // Delete a specific dog
         [HttpDelete]
-        [Route("deleteDog/{deletedDogId}")]
-        public async Task<IActionResult> DeleteDog(Guid deletedDogId)
+        [Route("deleteDog/{deletedDogID}")]
+        public async Task<IActionResult> DeleteDog(Guid deletedDogID)
         {
-            return Ok(await _mediatR.Send(new DeleteDogByIDCommand(deletedDogId)));
+            return Ok(await _mediatR.Send(new DeleteDogByIDCommand(deletedDogID)));
         }
     }
 }
