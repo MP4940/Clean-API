@@ -8,8 +8,8 @@ namespace Application.Queries.Animals.Cats.GetAllCats
     {
         private readonly MockDatabase _mockDatabase;
 
-        public GetAllCatsQueryHandler(MockDatabase mockDatabase) 
-        { 
+        public GetAllCatsQueryHandler(MockDatabase mockDatabase)
+        {
             _mockDatabase = mockDatabase;
         }
         public Task<List<Cat>> Handle(GetAllCatsQuery request, CancellationToken cancellationToken)

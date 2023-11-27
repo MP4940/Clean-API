@@ -37,8 +37,8 @@ namespace Infrastructure.Database
             {
                 AnimalID = new Guid("02345678-1234-5678-1234-567812345678"), Name = "TestDogForUnitTests2"
             }
-        }; 
-        
+        };
+
         public List<Cat> allCats
         {
             get { return AllCatsFromMockedDatabase; }
@@ -65,12 +65,12 @@ namespace Infrastructure.Database
             },
             new Cat
             {
-                AnimalID = new Guid("12345678-1234-5678-1234-567812345678"), 
+                AnimalID = new Guid("12345678-1234-5678-1234-567812345678"),
                 Name = "TestCatForUnitTests", LikesToPlay = false
             },
             new Cat
             {
-                AnimalID = new Guid("02345678-1234-5678-1234-567812345678"), 
+                AnimalID = new Guid("02345678-1234-5678-1234-567812345678"),
                 Name = "TestCatForUnitTests2", LikesToPlay = false
             }
         };
