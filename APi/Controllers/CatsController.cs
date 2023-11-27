@@ -2,12 +2,10 @@
 using MediatR;
 using Application.Queries.Animals.Cats.GetAllCats;
 using Application.Queries.Animals.Cats.GetCatByID;
-//using Application.Commands.Animals.Cats.AddCat;
+using Application.Commands.Animals.Cats.AddCat;
 //using Application.Commands.Animals.Cats.UpdateCat;
-//using Application.Dtos;
+using Application.Dtos.AnimalsDtos.CatDto;
 //using Application.Commands.Animals.Cats.DeleteCat;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace APi.Controllers
 {
@@ -40,13 +38,13 @@ namespace APi.Controllers
             return Ok(await _mediatR.Send(new GetCatByIDQuery(CatID)));
         }
 
-        //// Create a new Cat 
-        //[HttpPost]
-        //[Route("addNewCat")]
-        //public async Task<IActionResult> AddCat([FromBody] CatDto newCat)
-        //{
-        //    return Ok(await _mediatR.Send(new AddCatCommand(newCat)));
-        //}
+        // Create a new Cat 
+        [HttpPost]
+        [Route("addNewCat")]
+        public async Task<IActionResult> AddCat([FromBody] CatDto newCat)
+        {
+            return Ok(await _mediatR.Send(new AddCatCommand(newCat)));
+        }
 
         //// Update a specific Cat
         //[HttpPut]
