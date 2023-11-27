@@ -1,4 +1,4 @@
-﻿namespace Application.Dtos.AnimalsDtos
+namespace Application.Dtos.AnimalsDtos
 {
     public class AnimalDto
     {

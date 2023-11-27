@@ -1,4 +1,5 @@
-﻿using Domain.Models.Animals.Dogs;
+﻿using Domain.Models.Animals.Cats;
+using Domain.Models.Animals.Dogs;
 
 namespace Infrastructure.Database
 {
@@ -35,6 +36,42 @@ namespace Infrastructure.Database
             new Dog
             {
                 AnimalID = new Guid("02345678-1234-5678-1234-567812345678"), Name = "TestDogForUnitTests2"
+            }
+        };
+
+        public List<Cat> allCats
+        {
+            get { return AllCatsFromMockedDatabase; }
+            set { AllCatsFromMockedDatabase = value; }
+        }
+
+        private static List<Cat> AllCatsFromMockedDatabase = new()
+        {
+            new Cat
+            {
+                AnimalID = Guid.NewGuid(), Name = "Pella", LikesToPlay = true
+            },
+            new Cat
+            {
+                AnimalID = Guid.NewGuid(), Name = "Jack", LikesToPlay = true
+            },
+            new Cat
+            {
+                AnimalID = Guid.NewGuid(), Name = "Nisse", LikesToPlay = true
+            },
+            new Cat
+            {
+                AnimalID = Guid.NewGuid(), Name = "Kattja", LikesToPlay = false
+            },
+            new Cat
+            {
+                AnimalID = new Guid("12345678-1234-5678-1234-567812345678"),
+                Name = "TestCatForUnitTests", LikesToPlay = false
+            },
+            new Cat
+            {
+                AnimalID = new Guid("02345678-1234-5678-1234-567812345678"),
+                Name = "TestCatForUnitTests2", LikesToPlay = false
             }
         };
     }
