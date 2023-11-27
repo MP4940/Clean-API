@@ -1,5 +1,5 @@
 ﻿using Application.Commands.Animals.Dogs.UpdateDog;
-using Application.Dtos;
+using Application.Dtos.AnimalsDtos.DogDto;
 using Application.Queries.Animals.Dogs.GetDogByID;
 using Infrastructure.Database;
 

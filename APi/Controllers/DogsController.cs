@@ -4,8 +4,8 @@ using Application.Queries.Animals.Dogs.GetAllDogs;
 using Application.Queries.Animals.Dogs.GetDogByID;
 using Application.Commands.Animals.Dogs.AddDog;
 using Application.Commands.Animals.Dogs.UpdateDog;
-using Application.Dtos;
 using Application.Commands.Animals.Dogs.DeleteDog;
+using Application.Dtos.AnimalsDtos.DogDto;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
