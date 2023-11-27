@@ -1,4 +1,4 @@
-﻿using Application.Dtos;
+﻿using Application.Dtos.AnimalsDtos.DogDto;
 using Domain.Models.Animals.Dogs;
 using MediatR;
 

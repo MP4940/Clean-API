@@ -2,7 +2,6 @@
 using Infrastructure.Database;
 using MediatR;
 
-
 namespace Application.Queries.Animals.Dogs.GetDogByID
 {
     public class GetDogByIDQueryHandler : IRequestHandler<GetDogByIDQuery, Dog>
