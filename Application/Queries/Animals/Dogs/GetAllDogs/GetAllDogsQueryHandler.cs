@@ -8,15 +8,15 @@ namespace Application.Queries.Animals.Dogs.GetAllDogs
     {
         private readonly MockDatabase _mockDatabase;
 
-        public GetAllDogsQueryHandler(MockDatabase mockDataBase)
+        public GetAllDogsQueryHandler(MockDatabase mockDatabase)
         {
-            _mockDatabase = mockDataBase;
+            _mockDatabase = mockDatabase;
         }
 
         public Task<List<Dog>> Handle(GetAllDogsQuery request, CancellationToken cancellationToken)
         {
-            List<Dog> allDogsFromMockDb = _mockDatabase.allDogs;
-            return Task.FromResult(allDogsFromMockDb);
+            List<Dog> allDogsFromMockDatabase = _mockDatabase.allDogs;
+            return Task.FromResult(allDogsFromMockDatabase);
         }
     }
 }
