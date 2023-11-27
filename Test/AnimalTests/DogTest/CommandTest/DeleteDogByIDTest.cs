@@ -31,13 +31,13 @@ namespace Test.AnimalTests.DogTest.CommandTest
             var queryGetDogByID = new GetDogByIDQuery(dogID);
 
             // Act
-            var resultGetDogByID = await _GetDogByIDQueryHandler.Handle(queryGetDogByID, CancellationToken.None);
+            var resultGetDogByIDBefore = await _GetDogByIDQueryHandler.Handle(queryGetDogByID, CancellationToken.None);
             await _DeleteDogByIDCommandHandler.Handle(queryDeleteDogByID, CancellationToken.None);
-            var resultGetDogByID2 = await _GetDogByIDQueryHandler.Handle(queryGetDogByID, CancellationToken.None);
+            var resultGetDogByIDAfter = await _GetDogByIDQueryHandler.Handle(queryGetDogByID, CancellationToken.None);
 
             // Assert
-            Assert.NotNull(resultGetDogByID);
-            Assert.IsNull(resultGetDogByID2);
+            Assert.NotNull(resultGetDogByIDBefore);
+            Assert.IsNull(resultGetDogByIDAfter);
         }
     }
 }

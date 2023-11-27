@@ -27,7 +27,7 @@ namespace Test.AnimalTests.DogTest.QueryTest
 
             // Act
             var result = await _GetDogByIDQueryHandler.Handle(query, CancellationToken.None);
-
+            
             // Assert
             Assert.NotNull(result);
             Assert.That(result.AnimalID, Is.EqualTo(dogID));

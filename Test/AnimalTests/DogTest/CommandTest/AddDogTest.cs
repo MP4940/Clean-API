@@ -24,20 +24,16 @@ namespace Test.AnimalTests.DogTest.CommandTest
         public async Task Dog_Add_Test()
         {
             // Arrange
-            var dogID = new Guid("22345678-1234-5678-1234-567812345678");
-            DogDto dogDto = new();
+            DogDto dogDto = new DogDto { Name = "AddedDogTestName" };
 
-            var queryGetDogByID = new GetDogByIDQuery(dogID);
-            var queryAddDog = new AddDogCommand(dogDto);
+            var query = new AddDogCommand(dogDto);
 
             // Act
-            var resultGetByID = await _GetDogByIDQueryHandler.Handle(queryGetDogByID, CancellationToken.None);
-            await _AddDogCommandHandler.Handle(queryAddDog, CancellationToken.None);
-            var resultGetByID2 = await _GetDogByIDQueryHandler.Handle(queryGetDogByID, CancellationToken.None);
+            var result = await _AddDogCommandHandler.Handle(query, CancellationToken.None);
 
             // Assert
-            Assert.IsNull(resultGetByID);
-            Assert.NotNull(resultGetByID2);
+            Assert.NotNull(result);
+            Assert.That(result.Name, Is.EqualTo(dogDto.Name));
         }
     }
 }
