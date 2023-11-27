@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using Application.Queries.Animals.Cats.GetAllCats;
-//using Application.Queries.Animals.Cats.GetCatByID;
+using Application.Queries.Animals.Cats.GetCatByID;
 //using Application.Commands.Animals.Cats.AddCat;
 //using Application.Commands.Animals.Cats.UpdateCat;
 //using Application.Dtos;
@@ -33,12 +33,12 @@ namespace APi.Controllers
             return Ok(await _mediatR.Send(new GetAllCatsQuery()));
         }
 
-        //[HttpGet]
-        //[Route("getCatById/{CatID}")]
-        //public async Task<IActionResult> GetCatById(Guid CatID)
-        //{
-        //    return Ok(await _mediatR.Send(new GetCatByIDQuery(CatID)));
-        //}
+        [HttpGet]
+        [Route("getCatById/{CatID}")]
+        public async Task<IActionResult> GetCatById(Guid CatID)
+        {
+            return Ok(await _mediatR.Send(new GetCatByIDQuery(CatID)));
+        }
 
         //// Create a new Cat 
         //[HttpPost]
