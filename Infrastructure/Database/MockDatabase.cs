@@ -1,5 +1,6 @@
 ﻿using Domain.Models.Animals.Cats;
 using Domain.Models.Animals.Dogs;
+using Domain.Models.Animals.Birds;
 
 namespace Infrastructure.Database
 {
@@ -72,6 +73,43 @@ namespace Infrastructure.Database
             {
                 AnimalID = new Guid("02345678-1234-5678-1234-567812345678"),
                 Name = "TestCatForUnitTests2", LikesToPlay = false
+            }
+        }; 
+        
+        
+        public List<Bird> allBirds
+        {
+            get { return AllBirdsFromMockedDatabase; }
+            set { AllBirdsFromMockedDatabase = value; }
+        }
+
+        private static List<Bird> AllBirdsFromMockedDatabase = new()
+        {
+            new Bird
+            {
+                AnimalID = Guid.NewGuid(), Name = "Polly", CanFly = true
+            },
+            new Bird
+            {
+                AnimalID = Guid.NewGuid(), Name = "Peppe", CanFly = true
+            },
+            new Bird
+            {
+                AnimalID = Guid.NewGuid(), Name = "Lars-Åke", CanFly = true
+            },
+            new Bird
+            {
+                AnimalID = Guid.NewGuid(), Name = "Harry", CanFly = false
+            },
+            new Bird
+            {
+                AnimalID = new Guid("12345678-1234-5678-1234-567812345678"),
+                Name = "TestBirdForUnitTests", CanFly = false
+            },
+            new Bird
+            {
+                AnimalID = new Guid("02345678-1234-5678-1234-567812345678"),
+                Name = "TestBirdForUnitTests2", CanFly = false
             }
         };
     }
