@@ -5,7 +5,7 @@ using Application.Queries.Animals.Cats.GetCatByID;
 using Application.Commands.Animals.Cats.AddCat;
 //using Application.Commands.Animals.Cats.UpdateCat;
 using Application.Dtos.AnimalsDtos.CatDto;
-//using Application.Commands.Animals.Cats.DeleteCat;
+using Application.Commands.Animals.Cats.DeleteCat;
 
 namespace APi.Controllers
 {
@@ -54,12 +54,12 @@ namespace APi.Controllers
         //    return Ok(await _mediatR.Send(new UpdateCatByIDCommand(updatedCat, updatedCatID)));
         //}
 
-        //// Delete a specific Cat
-        //[HttpDelete]
-        //[Route("deleteCat/{deletedCatID}")]
-        //public async Task<IActionResult> DeleteCat(Guid deletedCatID)
-        //{
-        //    return Ok(await _mediatR.Send(new DeleteCatByIDCommand(deletedCatID)));
-        //}
+        // Delete a specific Cat
+        [HttpDelete]
+        [Route("deleteCat/{deletedCatID}")]
+        public async Task<IActionResult> DeleteCat(Guid deletedCatID)
+        {
+            return Ok(await _mediatR.Send(new DeleteCatByIDCommand(deletedCatID)));
+        }
     }
 }
