@@ -5,7 +5,7 @@ using Infrastructure.Database;
 
 namespace Test.AnimalTests.CatTest.CommandTest
 {
-    public class AddCatTest
+    public class AddCatTests
     {
         private MockDatabase _mockDatabase;
         private GetCatByIDQueryHandler _GetCatByIDQueryHandler;
