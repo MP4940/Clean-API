@@ -19,8 +19,8 @@ namespace APi.Controllers
             _mediatR = mediatR;
         }
 
-       [HttpGet]
-       [Route("getAllBirds")]
+        [HttpGet]
+        [Route("getAllBirds")]
         public async Task<IActionResult> GetAllBirds()
         {
             // Använda medator
