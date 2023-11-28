@@ -2,9 +2,9 @@
 using MediatR;
 using Application.Queries.Animals.Birds.GetAllBirds;
 using Application.Queries.Animals.Birds.GetBirdByID;
-//using Application.Commands.Animals.Birds.AddBird;
+using Application.Commands.Animals.Birds.AddBird;
+using Application.Dtos.AnimalsDtos.BirdDto;
 //using Application.Commands.Animals.Birds.UpdateBird;
-//using Application.Dtos.AnimalsDtos.BirdDto;
 //using Application.Commands.Animals.Birds.DeleteBird;
 
 namespace APi.Controllers
@@ -37,13 +37,13 @@ namespace APi.Controllers
             return Ok(await _mediatR.Send(new GetBirdByIDQuery(BirdID)));
         }
 
-        //// Create a new Bird 
-        //[HttpPost]
-        //[Route("addNewBird")]
-        //public async Task<IActionResult> AddBird([FromBody] BirdDto newBird)
-        //{
-        //    return Ok(await _mediatR.Send(new AddBirdCommand(newBird)));
-        //}
+        // Create a new Bird 
+        [HttpPost]
+        [Route("addNewBird")]
+        public async Task<IActionResult> AddBird([FromBody] BirdDto newBird)
+        {
+            return Ok(await _mediatR.Send(new AddBirdCommand(newBird)));
+        }
 
         //// Update a specific Bird
         //[HttpPut]
