@@ -5,7 +5,7 @@ using Application.Queries.Animals.Birds.GetBirdByID;
 using Application.Commands.Animals.Birds.AddBird;
 using Application.Dtos.AnimalsDtos.BirdDto;
 using Application.Commands.Animals.Birds.UpdateBird;
-//using Application.Commands.Animals.Birds.DeleteBird;
+using Application.Commands.Animals.Birds.DeleteBird;
 
 namespace APi.Controllers
 {
@@ -53,12 +53,12 @@ namespace APi.Controllers
             return Ok(await _mediatR.Send(new UpdateBirdByIDCommand(updatedBird, updatedBirdID)));
         }
 
-        //// Delete a specific Bird
-        //[HttpDelete]
-        //[Route("deleteBird/{deletedBirdID}")]
-        //public async Task<IActionResult> DeleteBird(Guid deletedBirdID)
-        //{
-        //    return Ok(await _mediatR.Send(new DeleteBirdByIDCommand(deletedBirdID)));
-        //}
+        // Delete a specific Bird
+        [HttpDelete]
+        [Route("deleteBird/{deletedBirdID}")]
+        public async Task<IActionResult> DeleteBird(Guid deletedBirdID)
+        {
+            return Ok(await _mediatR.Send(new DeleteBirdByIDCommand(deletedBirdID)));
+        }
     }
 }

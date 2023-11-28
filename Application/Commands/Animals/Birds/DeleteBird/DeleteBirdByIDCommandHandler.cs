@@ -1,0 +1,24 @@
+﻿using Domain.Models.Animals.Birds;
+using Infrastructure.Database;
+using MediatR;
+
+namespace Application.Commands.Animals.Birds.DeleteBird
+{
+    public class DeleteBirdByIdCommandHandler : IRequestHandler<DeleteBirdByIDCommand, Bird>
+    {
+        private readonly MockDatabase _mockDatabase;
+
+        public DeleteBirdByIdCommandHandler(MockDatabase mockDatabase)
+        {
+            _mockDatabase = mockDatabase;
+        }
+        public Task<Bird> Handle(DeleteBirdByIDCommand request, CancellationToken cancellationToken)
+        {
+            Bird birdToDelete = _mockDatabase.allBirds.FirstOrDefault(Bird => Bird.AnimalID == request.ID)!;
+            _mockDatabase.allBirds.Remove(birdToDelete);
+
+            // Lite orelevant information som returneras
+            return Task.FromResult(birdToDelete);
+        }
+    }
+}
