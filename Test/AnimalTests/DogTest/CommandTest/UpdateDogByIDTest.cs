@@ -5,7 +5,7 @@ using Infrastructure.Database;
 
 namespace Test.AnimalTests.DogTest.CommandTest
 {
-    public class UpdateDogByID
+    public class UpdateDogByIDTest
     {
         private MockDatabase _mockDatabase;
         private GetDogByIDQueryHandler _GetDogByIDQueryHandler;

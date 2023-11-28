@@ -22,7 +22,7 @@ namespace Test.AnimalTests.DogTest.CommandTest
 
         [Test]
         // WIP Namn
-        public async Task Dog_Delete_Test()
+        public async Task Before_After_And_Result_Test()
         {
             // Arrange
             var dogID = new Guid("02345678-1234-5678-1234-567812345678");
@@ -32,12 +32,13 @@ namespace Test.AnimalTests.DogTest.CommandTest
 
             // Act
             var resultGetDogByIDBefore = await _GetDogByIDQueryHandler.Handle(queryGetDogByID, CancellationToken.None);
-            await _DeleteDogByIDCommandHandler.Handle(queryDeleteDogByID, CancellationToken.None);
+            var result = await _DeleteDogByIDCommandHandler.Handle(queryDeleteDogByID, CancellationToken.None);
             var resultGetDogByIDAfter = await _GetDogByIDQueryHandler.Handle(queryGetDogByID, CancellationToken.None);
 
             // Assert
             Assert.NotNull(resultGetDogByIDBefore);
             Assert.IsNull(resultGetDogByIDAfter);
+            Assert.That(result.AnimalID, Is.EqualTo(dogID));
         }
     }
 }

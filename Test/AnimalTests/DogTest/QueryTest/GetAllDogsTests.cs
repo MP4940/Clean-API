@@ -17,7 +17,7 @@ namespace Test.AnimalTests.DogTest.QueryTest
             _GetAllDogsQueryHandler = new GetAllDogsQueryHandler(_mockDatabase);
         }
         [Test]
-        public async Task All_Dogs_Test()
+        public async Task Is_Not_Empty_And_Returns_AllDogs_Correctly()
         {
             // Arrange
             var allDogs = _mockDatabase.allDogs;
@@ -27,6 +27,7 @@ namespace Test.AnimalTests.DogTest.QueryTest
             var result = await _GetAllDogsQueryHandler.Handle(query, CancellationToken.None);
 
             // Assert
+            Assert.That(allDogs.Count > 0);
             Assert.That(result, Is.EqualTo(allDogs));
         }
     }

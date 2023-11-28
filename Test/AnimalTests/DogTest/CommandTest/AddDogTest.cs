@@ -21,7 +21,7 @@ namespace Test.AnimalTests.DogTest.CommandTest
         }
 
         [Test]
-        public async Task Dog_Add_Test()
+        public async Task Added_Dog_Is_Correct()
         {
             // Arrange
             DogDto dogDto = new DogDto { Name = "AddedDogTestName" };
