@@ -3,7 +3,7 @@ using MediatR;
 using Application.Queries.Animals.Cats.GetAllCats;
 using Application.Queries.Animals.Cats.GetCatByID;
 using Application.Commands.Animals.Cats.AddCat;
-//using Application.Commands.Animals.Cats.UpdateCat;
+using Application.Commands.Animals.Cats.UpdateCat;
 using Application.Dtos.AnimalsDtos.CatDto;
 using Application.Commands.Animals.Cats.DeleteCat;
 
@@ -46,13 +46,13 @@ namespace APi.Controllers
             return Ok(await _mediatR.Send(new AddCatCommand(newCat)));
         }
 
-        //// Update a specific Cat
-        //[HttpPut]
-        //[Route("updateCat/{updatedCatID}")]
-        //public async Task<IActionResult> UpdateCat([FromBody] CatDto updatedCat, Guid updatedCatID)
-        //{
-        //    return Ok(await _mediatR.Send(new UpdateCatByIDCommand(updatedCat, updatedCatID)));
-        //}
+        // Update a specific Cat
+        [HttpPut]
+        [Route("updateCat/{updatedCatID}")]
+        public async Task<IActionResult> UpdateCat([FromBody] CatDto updatedCat, Guid updatedCatID)
+        {
+            return Ok(await _mediatR.Send(new UpdateCatByIDCommand(updatedCat, updatedCatID)));
+        }
 
         // Delete a specific Cat
         [HttpDelete]
