@@ -4,7 +4,7 @@ using Infrastructure.Database;
 
 namespace Test.AnimalTests.CatTest.CommandTest
 {
-    public class UpdateCatByID
+    public class UpdateCatByIDTests
     {
         private MockDatabase _mockDatabase;
         private UpdateCatByIdCommandHandler _UpdateCatByIDCatCommandHandler;
@@ -16,6 +16,7 @@ namespace Test.AnimalTests.CatTest.CommandTest
             _mockDatabase = new MockDatabase();
             _UpdateCatByIDCatCommandHandler = new UpdateCatByIdCommandHandler(_mockDatabase);
         }
+
         [Test]
         [TestCase(true)]
         [TestCase(false)]
@@ -23,17 +24,17 @@ namespace Test.AnimalTests.CatTest.CommandTest
         {
             // Arrange
             var catID = new Guid("12345678-1234-5678-1234-567812345678");
-            CatDto CatDto = new CatDto { Name = "UpdatedCatName", LikesToPlay = likeToPlay };
+            CatDto catDto = new CatDto { Name = "UpdatedCatName", LikesToPlay = likeToPlay };
 
-            var queryUpdateCatByID = new UpdateCatByIDCommand(CatDto, catID);
+            var query = new UpdateCatByIDCommand(catDto, catID);
 
             // Act
-            var result = await _UpdateCatByIDCatCommandHandler.Handle(queryUpdateCatByID, CancellationToken.None);
+            var result = await _UpdateCatByIDCatCommandHandler.Handle(query, CancellationToken.None);
 
             // Assert
             Assert.NotNull(result);
-            Assert.That(result.Name, Is.EqualTo(CatDto.Name));
-            Assert.That(result.LikesToPlay, Is.EqualTo(CatDto.LikesToPlay));
+            Assert.That(result.Name, Is.EqualTo(catDto.Name));
+            Assert.That(result.LikesToPlay, Is.EqualTo(catDto.LikesToPlay));
         }
     }
 }

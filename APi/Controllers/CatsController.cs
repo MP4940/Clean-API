@@ -33,10 +33,10 @@ namespace APi.Controllers
         }
 
         [HttpGet]
-        [Route("getCatById/{CatID}")]
-        public async Task<IActionResult> GetCatById(Guid CatID)
+        [Route("getCatById/{catID}")]
+        public async Task<IActionResult> GetCatById(Guid catID)
         {
-            return Ok(await _mediatR.Send(new GetCatByIDQuery(CatID)));
+            return Ok(await _mediatR.Send(new GetCatByIDQuery(catID)));
         }
 
         // Create a new Cat 

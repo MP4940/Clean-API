@@ -1,14 +1,12 @@
 ﻿using Application.Commands.Animals.Dogs.AddDog;
 using Application.Dtos.AnimalsDtos.DogDto;
-using Application.Queries.Animals.Dogs.GetDogByID;
 using Infrastructure.Database;
 
 namespace Test.AnimalTests.DogTest.CommandTest
 {
-    public class AddDogTest
+    public class AddDogTests
     {
         private MockDatabase _mockDatabase;
-        private GetDogByIDQueryHandler _GetDogByIDQueryHandler;
         private AddDogCommandHandler _AddDogCommandHandler;
 
         [SetUp]
@@ -16,12 +14,11 @@ namespace Test.AnimalTests.DogTest.CommandTest
         {
             // Initialize the handler and mock database before each test
             _mockDatabase = new MockDatabase();
-            _GetDogByIDQueryHandler = new GetDogByIDQueryHandler(_mockDatabase);
             _AddDogCommandHandler = new AddDogCommandHandler(_mockDatabase);
         }
 
         [Test]
-        public async Task Added_Dog_Is_Correct()
+        public async Task Added_Dog_Is_Not_Null_And_Correct()
         {
             // Arrange
             DogDto dogDto = new DogDto { Name = "AddedDogTestName" };

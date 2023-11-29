@@ -18,7 +18,7 @@ namespace Test.AnimalTests.BirdTest.QueryTest
         }
 
         [Test]
-        public async Task Handle_ValidId_ReturnsCorrectBird()
+        public async Task Returns_Correct_Bird()
         {
             // Arrange
             var birdID = new Guid("12345678-1234-5678-1234-567812345678");
@@ -34,7 +34,7 @@ namespace Test.AnimalTests.BirdTest.QueryTest
         }
 
         [Test]
-        public async Task Handle_InvalidId_ReturnsNull()
+        public async Task Returns_Null()
         {
             // Arrange
             var invalidBirdId = Guid.NewGuid();

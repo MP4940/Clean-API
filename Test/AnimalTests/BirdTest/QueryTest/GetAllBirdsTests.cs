@@ -27,7 +27,7 @@ namespace Test.AnimalTests.BirdTest.QueryTest
             var result = await _GetAllBirdsQueryHandler.Handle(query, CancellationToken.None);
 
             // Assert
-            Assert.That(allBirds.Count > 0);
+            Assert.That(allBirds.Count, Is.GreaterThan(0));
             Assert.That(result, Is.EqualTo(allBirds));
         }
     }

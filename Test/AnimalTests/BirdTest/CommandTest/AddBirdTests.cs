@@ -1,6 +1,5 @@
 ﻿using Application.Commands.Animals.Birds.AddBird;
 using Application.Dtos.AnimalsDtos.BirdDto;
-using Application.Queries.Animals.Birds.GetBirdByID;
 using Infrastructure.Database;
 
 namespace Test.AnimalTests.BirdTest.CommandTest
@@ -8,7 +7,6 @@ namespace Test.AnimalTests.BirdTest.CommandTest
     public class AddBirdTests
     {
         private MockDatabase _mockDatabase;
-        private GetBirdByIDQueryHandler _GetBirdByIDQueryHandler;
         private AddBirdCommandHandler _AddBirdCommandHandler;
 
         [SetUp]
@@ -16,14 +14,13 @@ namespace Test.AnimalTests.BirdTest.CommandTest
         {
             // Initialize the handler and mock database before each test
             _mockDatabase = new MockDatabase();
-            _GetBirdByIDQueryHandler = new GetBirdByIDQueryHandler(_mockDatabase);
             _AddBirdCommandHandler = new AddBirdCommandHandler(_mockDatabase);
         }
 
         [Test]
         [TestCase(true)]
         [TestCase(false)]
-        public async Task Added_Bird_Is_Correct(bool canFly)
+        public async Task Added_Bird_Is_Not_Null_And_Correct(bool canFly)
         {
             // Arrange
             BirdDto birdDto = new BirdDto { Name = "AddedBirdTestName", CanFly = canFly };

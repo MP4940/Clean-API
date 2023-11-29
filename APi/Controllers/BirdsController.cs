@@ -24,18 +24,14 @@ namespace APi.Controllers
         [Route("getAllBirds")]
         public async Task<IActionResult> GetAllBirds()
         {
-            // Använda medator
-            // MediatR ska ta emot requests och dela de på Commands eller Queries
-            // Detta är en GET då blir det en Query
-
             return Ok(await _mediatR.Send(new GetAllBirdsQuery()));
         }
 
         [HttpGet]
-        [Route("getBirdById/{BirdID}")]
-        public async Task<IActionResult> GetBirdById(Guid BirdID)
+        [Route("getBirdById/{birdID}")]
+        public async Task<IActionResult> GetBirdById(Guid birdID)
         {
-            return Ok(await _mediatR.Send(new GetBirdByIDQuery(BirdID)));
+            return Ok(await _mediatR.Send(new GetBirdByIDQuery(birdID)));
         }
 
         // Create a new Bird 

@@ -14,12 +14,12 @@ namespace Application.Commands.Animals.Birds.UpdateBird
         }
         public Task<Bird> Handle(UpdateBirdByIDCommand request, CancellationToken cancellationToken)
         {
-            Bird BirdToUpdate = _mockDatabase.AllBirds.FirstOrDefault(Bird => Bird.AnimalID == request.ID)!;
+            Bird birdToUpdate = _mockDatabase.AllBirds.FirstOrDefault(bird => bird.AnimalID == request.ID)!;
 
-            BirdToUpdate.Name = request.UpdatedBird.Name;
-            BirdToUpdate.CanFly = request.UpdatedBird.CanFly;
+            birdToUpdate.Name = request.UpdatedBird.Name;
+            birdToUpdate.CanFly = request.UpdatedBird.CanFly;
 
-            return Task.FromResult(BirdToUpdate);
+            return Task.FromResult(birdToUpdate);
         }
     }
 }
