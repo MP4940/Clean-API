@@ -15,21 +15,19 @@ namespace API.Controllers.UsersController
             _mediator = mediator;
         }
 
-        // GET: api/<UsersController>
         [HttpGet]
-        [Route("LogIn")]
+        [Route("Login")]
         public async Task<IActionResult> GetToken(string username, string password)
         {
             var user = await _mediator.Send(new GetTokenQuery(username, password));
 
-            if (user != null)
+            if (user == null)
             {
-                var token = user.token;
-                return Ok(token);
+                return NotFound("Wrong user");
             }
 
-            return NotFound("User not found");
-
+            var token = user.token;
+            return Ok(token);
         }
     }
 }

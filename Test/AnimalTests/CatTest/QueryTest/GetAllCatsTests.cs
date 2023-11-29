@@ -27,7 +27,7 @@ namespace Test.AnimalTests.CatTest.QueryTest
             var result = await _GetAllCatsQueryHandler.Handle(query, CancellationToken.None);
 
             // Assert
-            Assert.That(allCats.Count > 0);
+            Assert.That(allCats.Count, Is.GreaterThan(0));
             Assert.That(result, Is.EqualTo(allCats));
         }
     }

@@ -15,16 +15,16 @@ namespace Application.Commands.Animals.Cats.AddCat
 
         public Task<Cat> Handle(AddCatCommand request, CancellationToken cancellationToken)
         {
-            Cat CatToCreate = new()
+            Cat catToCreate = new()
             {
                 AnimalID = Guid.NewGuid(),
                 Name = request.NewCat.Name,
                 LikesToPlay = request.NewCat.LikesToPlay
             };
 
-            _mockDatabase.AllCats.Add(CatToCreate);
+            _mockDatabase.AllCats.Add(catToCreate);
 
-            return Task.FromResult(CatToCreate);
+            return Task.FromResult(catToCreate);
         }
     }
 }

@@ -16,6 +16,7 @@ namespace Test.AnimalTests.BirdTest.CommandTest
             _mockDatabase = new MockDatabase();
             _UpdateBirdByIDBirdCommandHandler = new UpdateBirdByIdCommandHandler(_mockDatabase);
         }
+
         [Test]
         [TestCase(true)]
         [TestCase(false)]
@@ -25,10 +26,10 @@ namespace Test.AnimalTests.BirdTest.CommandTest
             var birdID = new Guid("12345678-1234-5678-1234-567812345678");
             BirdDto birdDto = new BirdDto { Name = "UpdatedBirdName", CanFly = likeToPlay };
 
-            var queryUpdateBirdByID = new UpdateBirdByIDCommand(birdDto, birdID);
+            var query = new UpdateBirdByIDCommand(birdDto, birdID);
 
             // Act
-            var result = await _UpdateBirdByIDBirdCommandHandler.Handle(queryUpdateBirdByID, CancellationToken.None);
+            var result = await _UpdateBirdByIDBirdCommandHandler.Handle(query, CancellationToken.None);
 
             // Assert
             Assert.NotNull(result);

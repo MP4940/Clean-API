@@ -5,7 +5,7 @@ using Infrastructure.Database;
 namespace Test.AnimalTests.DogTest.CommandTest
 {
     [TestFixture]
-    public class DeleteDogByIDTest
+    public class DeleteDogByIDTests
     {
         private MockDatabase _mockDatabase;
         private GetDogByIDQueryHandler _GetDogByIDQueryHandler;
@@ -21,8 +21,7 @@ namespace Test.AnimalTests.DogTest.CommandTest
         }
 
         [Test]
-        // WIP Namn
-        public async Task Before_After_And_Result_Test()
+        public async Task Before_Is_Not_Null_After_Is_Null_And_Result_Test()
         {
             // Arrange
             var dogID = new Guid("02345678-1234-5678-1234-567812345678");
