@@ -22,7 +22,7 @@ namespace Application.Commands.Animals.Cats.AddCat
                 LikesToPlay = request.NewCat.LikesToPlay
             };
 
-            _mockDatabase.allCats.Add(CatToCreate);
+            _mockDatabase.AllCats.Add(CatToCreate);
 
             return Task.FromResult(CatToCreate);
         }

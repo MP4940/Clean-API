@@ -6,6 +6,7 @@ using Application.Commands.Animals.Cats.AddCat;
 using Application.Commands.Animals.Cats.UpdateCat;
 using Application.Dtos.AnimalsDtos.CatDto;
 using Application.Commands.Animals.Cats.DeleteCat;
+using Microsoft.AspNetCore.Authorization;
 
 namespace APi.Controllers
 {
@@ -40,6 +41,7 @@ namespace APi.Controllers
 
         // Create a new Cat 
         [HttpPost]
+        [Authorize]
         [Route("addNewCat")]
         public async Task<IActionResult> AddCat([FromBody] CatDto newCat)
         {
@@ -48,6 +50,7 @@ namespace APi.Controllers
 
         // Update a specific Cat
         [HttpPut]
+        [Authorize]
         [Route("updateCat/{updatedCatID}")]
         public async Task<IActionResult> UpdateCat([FromBody] CatDto updatedCat, Guid updatedCatID)
         {
@@ -56,6 +59,7 @@ namespace APi.Controllers
 
         // Delete a specific Cat
         [HttpDelete]
+        [Authorize]
         [Route("deleteCat/{deletedCatID}")]
         public async Task<IActionResult> DeleteCat(Guid deletedCatID)
         {

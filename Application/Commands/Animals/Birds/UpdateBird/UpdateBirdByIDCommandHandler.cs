@@ -14,7 +14,7 @@ namespace Application.Commands.Animals.Birds.UpdateBird
         }
         public Task<Bird> Handle(UpdateBirdByIDCommand request, CancellationToken cancellationToken)
         {
-            Bird BirdToUpdate = _mockDatabase.allBirds.FirstOrDefault(Bird => Bird.AnimalID == request.ID)!;
+            Bird BirdToUpdate = _mockDatabase.AllBirds.FirstOrDefault(Bird => Bird.AnimalID == request.ID)!;
 
             BirdToUpdate.Name = request.UpdatedBird.Name;
             BirdToUpdate.CanFly = request.UpdatedBird.CanFly;

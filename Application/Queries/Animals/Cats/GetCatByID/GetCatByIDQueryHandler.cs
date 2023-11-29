@@ -14,7 +14,7 @@ namespace Application.Queries.Animals.Cats.GetCatByID
         }
         public Task<Cat> Handle(GetCatByIDQuery request, CancellationToken cancellationToken)
         {
-            Cat wantedCat = _mockDatabase.allCats.Where(Cat => Cat.AnimalID == request.ID).FirstOrDefault()!;
+            Cat wantedCat = _mockDatabase.AllCats.Where(Cat => Cat.AnimalID == request.ID).FirstOrDefault()!;
             return Task.FromResult(wantedCat);
         }
     }

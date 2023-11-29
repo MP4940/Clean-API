@@ -21,7 +21,7 @@ namespace Application.Commands.Animals.Dogs.AddDog
                 Name = request.NewDog.Name
             };
 
-            _mockDatabase.allDogs.Add(dogToCreate);
+            _mockDatabase.AllDogs.Add(dogToCreate);
 
             return Task.FromResult(dogToCreate);
         }

@@ -20,7 +20,7 @@ namespace Test.AnimalTests.CatTest.QueryTest
         public async Task Is_Not_Empty_And_Returns_AllCats_Correctly()
         {
             // Arrange
-            var allCats = _mockDatabase.allCats;
+            var allCats = _mockDatabase.AllCats;
             var query = new GetAllCatsQuery();
 
             // Act

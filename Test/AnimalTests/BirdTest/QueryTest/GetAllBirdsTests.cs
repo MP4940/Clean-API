@@ -20,7 +20,7 @@ namespace Test.AnimalTests.BirdTest.QueryTest
         public async Task Is_Not_Empty_And_Returns_AllBirds_Correctly()
         {
             // Arrange
-            var allBirds = _mockDatabase.allBirds;
+            var allBirds = _mockDatabase.AllBirds;
             var query = new GetAllBirdsQuery();
 
             // Act

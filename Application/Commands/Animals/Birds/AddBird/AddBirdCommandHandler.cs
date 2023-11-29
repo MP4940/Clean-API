@@ -22,7 +22,7 @@ namespace Application.Commands.Animals.Birds.AddBird
                 CanFly = request.NewBird.CanFly
             };
 
-            _mockDatabase.allBirds.Add(birdToCreate);
+            _mockDatabase.AllBirds.Add(birdToCreate);
 
             return Task.FromResult(birdToCreate);
         }
