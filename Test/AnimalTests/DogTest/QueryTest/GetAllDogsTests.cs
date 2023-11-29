@@ -20,7 +20,7 @@ namespace Test.AnimalTests.DogTest.QueryTest
         public async Task Is_Not_Empty_And_Returns_AllDogs_Correctly()
         {
             // Arrange
-            var allDogs = _mockDatabase.allDogs;
+            var allDogs = _mockDatabase.AllDogs;
             var query = new GetAllDogsQuery();
 
             // Act

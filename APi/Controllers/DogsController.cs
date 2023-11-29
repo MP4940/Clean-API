@@ -6,6 +6,7 @@ using Application.Commands.Animals.Dogs.AddDog;
 using Application.Commands.Animals.Dogs.UpdateDog;
 using Application.Commands.Animals.Dogs.DeleteDog;
 using Application.Dtos.AnimalsDtos.DogDto;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -42,6 +43,7 @@ namespace APi.Controllers
 
         // Create a new dog 
         [HttpPost]
+        [Authorize]
         [Route("addNewDog")]
         public async Task<IActionResult> AddDog([FromBody] DogDto newDog)
         {
@@ -50,6 +52,7 @@ namespace APi.Controllers
 
         // Update a specific dog
         [HttpPut]
+        [Authorize]
         [Route("updateDog/{updatedDogID}")]
         public async Task<IActionResult> UpdateDog([FromBody] DogDto updatedDog, Guid updatedDogID)
         {
@@ -58,6 +61,7 @@ namespace APi.Controllers
 
         // Delete a specific dog
         [HttpDelete]
+        [Authorize]
         [Route("deleteDog/{deletedDogID}")]
         public async Task<IActionResult> DeleteDog(Guid deletedDogID)
         {

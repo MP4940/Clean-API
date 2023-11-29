@@ -6,6 +6,7 @@ using Application.Commands.Animals.Birds.AddBird;
 using Application.Dtos.AnimalsDtos.BirdDto;
 using Application.Commands.Animals.Birds.UpdateBird;
 using Application.Commands.Animals.Birds.DeleteBird;
+using Microsoft.AspNetCore.Authorization;
 
 namespace APi.Controllers
 {
@@ -39,6 +40,7 @@ namespace APi.Controllers
 
         // Create a new Bird 
         [HttpPost]
+        [Authorize]
         [Route("addNewBird")]
         public async Task<IActionResult> AddBird([FromBody] BirdDto newBird)
         {
@@ -47,6 +49,7 @@ namespace APi.Controllers
 
         // Update a specific Bird
         [HttpPut]
+        [Authorize]
         [Route("updateBird/{updatedBirdID}")]
         public async Task<IActionResult> UpdateBird([FromBody] BirdDto updatedBird, Guid updatedBirdID)
         {
@@ -55,6 +58,7 @@ namespace APi.Controllers
 
         // Delete a specific Bird
         [HttpDelete]
+        [Authorize]
         [Route("deleteBird/{deletedBirdID}")]
         public async Task<IActionResult> DeleteBird(Guid deletedBirdID)
         {

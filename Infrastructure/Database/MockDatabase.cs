@@ -1,12 +1,24 @@
 ﻿using Domain.Models.Animals.Cats;
 using Domain.Models.Animals.Dogs;
 using Domain.Models.Animals.Birds;
+using Domain.Models.Users;
 
 namespace Infrastructure.Database
 {
     public class MockDatabase
     {
-        public List<Dog> allDogs
+        public List<User> Users
+        {
+            get { return allUsers; }
+            set { allUsers = value; }
+        }
+
+        private static List<User> allUsers = new()
+        {
+            new User { Id = new Guid("42345678-1234-5678-1234-567812345678"), Username = "admin", Password = "password", Authorized = true, Role = "Admin" },
+        };
+
+        public List<Dog> AllDogs
         {
             get { return AllDogsFromMockedDatabase; }
             set { AllDogsFromMockedDatabase = value; }
@@ -23,7 +35,7 @@ namespace Infrastructure.Database
         };
 
 
-        public List<Cat> allCats
+        public List<Cat> AllCats
         {
             get { return AllCatsFromMockedDatabase; }
             set { AllCatsFromMockedDatabase = value; }
@@ -41,7 +53,7 @@ namespace Infrastructure.Database
         };
 
 
-        public List<Bird> allBirds
+        public List<Bird> AllBirds
         {
             get { return AllBirdsFromMockedDatabase; }
             set { AllBirdsFromMockedDatabase = value; }

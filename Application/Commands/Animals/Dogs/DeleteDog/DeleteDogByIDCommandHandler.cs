@@ -14,8 +14,8 @@ namespace Application.Commands.Animals.Dogs.DeleteDog
         }
         public Task<Dog> Handle(DeleteDogByIDCommand request, CancellationToken cancellationToken)
         {
-            Dog dogToDelete = _mockDatabase.allDogs.FirstOrDefault(dog => dog.AnimalID == request.ID)!;
-            _mockDatabase.allDogs.Remove(dogToDelete);
+            Dog dogToDelete = _mockDatabase.AllDogs.FirstOrDefault(dog => dog.AnimalID == request.ID)!;
+            _mockDatabase.AllDogs.Remove(dogToDelete);
 
             // Lite orelevant information som returneras
             return Task.FromResult(dogToDelete);

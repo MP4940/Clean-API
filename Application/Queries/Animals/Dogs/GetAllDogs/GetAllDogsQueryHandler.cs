@@ -15,7 +15,7 @@ namespace Application.Queries.Animals.Dogs.GetAllDogs
 
         public Task<List<Dog>> Handle(GetAllDogsQuery request, CancellationToken cancellationToken)
         {
-            List<Dog> allDogsFromMockDatabase = _mockDatabase.allDogs;
+            List<Dog> allDogsFromMockDatabase = _mockDatabase.AllDogs;
             return Task.FromResult(allDogsFromMockDatabase);
         }
     }
