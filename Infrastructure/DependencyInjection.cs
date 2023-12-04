@@ -1,5 +1,4 @@
-﻿using FluentValidation;
-using Infrastructure.Authentication;
+﻿using Infrastructure.Authentication;
 using Infrastructure.Database;
 using Microsoft.Extensions.DependencyInjection;
 

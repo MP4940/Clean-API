@@ -1,5 +1,5 @@
-﻿using MediatR;
-using Domain.Models.Animals.Dogs;
+﻿using Domain.Models.Animals.Dogs;
+using MediatR;
 
 namespace Application.Queries.Animals.Dogs.GetDogByID
 {

@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MediatR;
+﻿using Application.Commands.Animals.Birds.AddBird;
+using Application.Commands.Animals.Birds.DeleteBird;
+using Application.Commands.Animals.Birds.UpdateBird;
+using Application.Dtos.AnimalsDtos.BirdDto;
 using Application.Queries.Animals.Birds.GetAllBirds;
 using Application.Queries.Animals.Birds.GetBirdByID;
-using Application.Commands.Animals.Birds.AddBird;
-using Application.Dtos.AnimalsDtos.BirdDto;
-using Application.Commands.Animals.Birds.UpdateBird;
-using Application.Commands.Animals.Birds.DeleteBird;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace APi.Controllers
 {
