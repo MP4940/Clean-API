@@ -1,5 +1,5 @@
-﻿using Infrastructure.Database;
-using Application.Queries.Animals.Dogs.GetDogByID;
+﻿using Application.Queries.Animals.Dogs.GetDogByID;
+using Infrastructure.Database;
 
 namespace Test.AnimalTests.DogTest.QueryTest
 {

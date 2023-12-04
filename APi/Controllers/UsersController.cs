@@ -26,7 +26,7 @@ namespace API.Controllers.UsersController
                 return NotFound("Wrong user");
             }
 
-            var token = user.token;
+            var token = user.Token;
             return Ok(token);
         }
     }

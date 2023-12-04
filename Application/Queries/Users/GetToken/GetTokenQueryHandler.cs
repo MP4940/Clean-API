@@ -1,7 +1,7 @@
-﻿using Infrastructure.Authentication;
+﻿using Domain.Models.Users;
+using Infrastructure.Authentication;
 using Infrastructure.Database;
 using MediatR;
-using Domain.Models.Users;
 
 namespace Application.Queries.Users.GetToken
 {
@@ -22,7 +22,7 @@ namespace Application.Queries.Users.GetToken
 
             if (wantedUser.Authorized == true)
             {
-                wantedUser.token = _jwtTokenGenerator.GenerateJwtToken(wantedUser);
+                wantedUser.Token = _jwtTokenGenerator.GenerateJwtToken(wantedUser);
 
                 return Task.FromResult(wantedUser);
             }

@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MediatR;
+﻿using Application.Commands.Animals.Dogs.AddDog;
+using Application.Commands.Animals.Dogs.DeleteDog;
+using Application.Commands.Animals.Dogs.UpdateDog;
+using Application.Dtos.AnimalsDtos.DogDto;
 using Application.Queries.Animals.Dogs.GetAllDogs;
 using Application.Queries.Animals.Dogs.GetDogByID;
-using Application.Commands.Animals.Dogs.AddDog;
-using Application.Commands.Animals.Dogs.UpdateDog;
-using Application.Commands.Animals.Dogs.DeleteDog;
-using Application.Dtos.AnimalsDtos.DogDto;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 

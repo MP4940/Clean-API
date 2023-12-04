@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MediatR;
-using Application.Queries.Animals.Cats.GetAllCats;
-using Application.Queries.Animals.Cats.GetCatByID;
-using Application.Commands.Animals.Cats.AddCat;
+﻿using Application.Commands.Animals.Cats.AddCat;
+using Application.Commands.Animals.Cats.DeleteCat;
 using Application.Commands.Animals.Cats.UpdateCat;
 using Application.Dtos.AnimalsDtos.CatDto;
-using Application.Commands.Animals.Cats.DeleteCat;
+using Application.Queries.Animals.Cats.GetAllCats;
+using Application.Queries.Animals.Cats.GetCatByID;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace APi.Controllers
 {
