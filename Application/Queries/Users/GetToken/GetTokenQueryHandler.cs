@@ -22,7 +22,7 @@ namespace Application.Queries.Users.GetToken
 
             if (wantedUser.Authorized == true)
             {
-                wantedUser.token = _jwtTokenGenerator.GenerateJwtToken(wantedUser);
+                wantedUser.Token = _jwtTokenGenerator.GenerateJwtToken(wantedUser);
 
                 return Task.FromResult(wantedUser);
             }
