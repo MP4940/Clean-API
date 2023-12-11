@@ -4,11 +4,11 @@ using Application.Commands.Animals.Dogs.UpdateDog;
 using Application.Dtos.AnimalsDtos.DogDto;
 using Application.Queries.Animals.Dogs.GetAllDogs;
 using Application.Queries.Animals.Dogs.GetDogByID;
+using Application.Validators;
+using Application.Validators.Dog;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace APi.Controllers
 {
@@ -17,9 +17,13 @@ namespace APi.Controllers
     public class DogsController : ControllerBase
     {
         internal readonly IMediator _mediatR;
-        public DogsController(IMediator mediatR)
+        internal readonly GuidValidator _guidValidator;
+        internal readonly DogValidator _dogValidator;
+        public DogsController(IMediator mediatR, GuidValidator guidValidator, DogValidator dogValidator)
         {
             _mediatR = mediatR;
+            _guidValidator = guidValidator;
+            _dogValidator = dogValidator;
         }
 
         // Detta är APi endpoint där vi hämtar alla hundar från MockDatabase
@@ -27,18 +31,36 @@ namespace APi.Controllers
         [Route("getAllDogs")]
         public async Task<IActionResult> GetAllDogs()
         {
-            // Använda medator
-            // MediatR ska ta emot requests och dela de på Commands eller Queries
-            // Detta är en GET då blir det en Query
-
-            return Ok(await _mediatR.Send(new GetAllDogsQuery()));
+            try
+            {
+                return Ok(await _mediatR.Send(new GetAllDogsQuery()));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         [HttpGet]
         [Route("getDogById/{dogID}")]
         public async Task<IActionResult> GetDogById(Guid dogID)
         {
-            return Ok(await _mediatR.Send(new GetDogByIDQuery(dogID)));
+            var guidToValidate = _guidValidator.Validate(dogID);
+
+            // Error handling
+            if (!guidToValidate.IsValid)
+            {
+                return BadRequest(guidToValidate.Errors.ConvertAll(errors => errors.ErrorMessage));
+            }
+
+            try
+            {
+                return Ok(await _mediatR.Send(new GetDogByIDQuery(dogID)));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         // Create a new dog 
@@ -47,7 +69,24 @@ namespace APi.Controllers
         [Route("addNewDog")]
         public async Task<IActionResult> AddDog([FromBody] DogDto newDog)
         {
-            return Ok(await _mediatR.Send(new AddDogCommand(newDog)));
+            // Validate dog
+            var dogToValidate = _dogValidator.Validate(newDog);
+
+            // Error handling
+            if (!dogToValidate.IsValid)
+            {
+                return BadRequest(dogToValidate.Errors.ConvertAll(errors => errors.ErrorMessage));
+            }
+
+            // Try catch
+            try
+            {
+                return Ok(await _mediatR.Send(new AddDogCommand(newDog)));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         // Update a specific dog
@@ -56,7 +95,24 @@ namespace APi.Controllers
         [Route("updateDog/{updatedDogID}")]
         public async Task<IActionResult> UpdateDog([FromBody] DogDto updatedDog, Guid updatedDogID)
         {
-            return Ok(await _mediatR.Send(new UpdateDogByIDCommand(updatedDog, updatedDogID)));
+            // Validate dog
+            var dogToValidate = _dogValidator.Validate(updatedDog);
+
+            // Error handling
+            if (!dogToValidate.IsValid)
+            {
+                return BadRequest(dogToValidate.Errors.ConvertAll(errors => errors.ErrorMessage));
+            }
+
+            // Try catch
+            try
+            {
+                return Ok(await _mediatR.Send(new UpdateDogByIDCommand(updatedDog, updatedDogID)));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         // Delete a specific dog
@@ -65,7 +121,22 @@ namespace APi.Controllers
         [Route("deleteDog/{deletedDogID}")]
         public async Task<IActionResult> DeleteDog(Guid deletedDogID)
         {
-            return Ok(await _mediatR.Send(new DeleteDogByIDCommand(deletedDogID)));
+            var guidToValidate = _guidValidator.Validate(deletedDogID);
+
+            // Error handling
+            if (!guidToValidate.IsValid)
+            {
+                return BadRequest(guidToValidate.Errors.ConvertAll(errors => errors.ErrorMessage));
+            }
+
+            try
+            {
+                return Ok(await _mediatR.Send(new DeleteDogByIDCommand(deletedDogID)));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

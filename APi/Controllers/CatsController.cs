@@ -4,6 +4,8 @@ using Application.Commands.Animals.Cats.UpdateCat;
 using Application.Dtos.AnimalsDtos.CatDto;
 using Application.Queries.Animals.Cats.GetAllCats;
 using Application.Queries.Animals.Cats.GetCatByID;
+using Application.Validators;
+using Application.Validators.Cat;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -15,9 +17,13 @@ namespace APi.Controllers
     public class CatsController : ControllerBase
     {
         internal readonly IMediator _mediatR;
-        public CatsController(IMediator mediatR)
+        internal readonly GuidValidator _guidValidator;
+        internal readonly CatValidator _catValidator;
+        public CatsController(IMediator mediatR, GuidValidator guidValidator, CatValidator catValidator)
         {
             _mediatR = mediatR;
+            _guidValidator = guidValidator;
+            _catValidator = catValidator;
         }
 
         // Detta är APi endpoint där vi hämtar alla hundar från MockDatabase
@@ -25,18 +31,36 @@ namespace APi.Controllers
         [Route("getAllCats")]
         public async Task<IActionResult> GetAllCats()
         {
-            // Använda medator
-            // MediatR ska ta emot requests och dela de på Commands eller Queries
-            // Detta är en GET då blir det en Query
-
-            return Ok(await _mediatR.Send(new GetAllCatsQuery()));
+            try
+            {
+                return Ok(await _mediatR.Send(new GetAllCatsQuery()));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         [HttpGet]
         [Route("getCatById/{catID}")]
         public async Task<IActionResult> GetCatById(Guid catID)
         {
-            return Ok(await _mediatR.Send(new GetCatByIDQuery(catID)));
+            var guidToValidate = _guidValidator.Validate(catID);
+
+            // Error handling
+            if (!guidToValidate.IsValid)
+            {
+                return BadRequest(guidToValidate.Errors.ConvertAll(errors => errors.ErrorMessage));
+            }
+
+            try
+            {
+                return Ok(await _mediatR.Send(new GetCatByIDQuery(catID)));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         // Create a new Cat 
@@ -45,16 +69,50 @@ namespace APi.Controllers
         [Route("addNewCat")]
         public async Task<IActionResult> AddCat([FromBody] CatDto newCat)
         {
-            return Ok(await _mediatR.Send(new AddCatCommand(newCat)));
+            // Validate Cat
+            var catToValidate = _catValidator.Validate(newCat);
+
+            // Error handling
+            if (!catToValidate.IsValid)
+            {
+                return BadRequest(catToValidate.Errors.ConvertAll(errors => errors.ErrorMessage));
+            }
+
+            // Try catch
+            try
+            {
+                return Ok(await _mediatR.Send(new AddCatCommand(newCat)));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         // Update a specific Cat
         [HttpPut]
         [Authorize]
-        [Route("updateCat/{updatedCatID}")]
-        public async Task<IActionResult> UpdateCat([FromBody] CatDto updatedCat, Guid updatedCatID)
+        [Route("updateCat/{updatedcatID}")]
+        public async Task<IActionResult> UpdateCat([FromBody] CatDto updatedCat, Guid updatedcatID)
         {
-            return Ok(await _mediatR.Send(new UpdateCatByIDCommand(updatedCat, updatedCatID)));
+            // Validate Cat
+            var catToValidate = _catValidator.Validate(updatedCat);
+
+            // Error handling
+            if (!catToValidate.IsValid)
+            {
+                return BadRequest(catToValidate.Errors.ConvertAll(errors => errors.ErrorMessage));
+            }
+
+            // Try catch
+            try
+            {
+                return Ok(await _mediatR.Send(new UpdateCatByIDCommand(updatedCat, updatedcatID)));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         // Delete a specific Cat
@@ -63,7 +121,22 @@ namespace APi.Controllers
         [Route("deleteCat/{deletedCatID}")]
         public async Task<IActionResult> DeleteCat(Guid deletedCatID)
         {
-            return Ok(await _mediatR.Send(new DeleteCatByIDCommand(deletedCatID)));
+            var guidToValidate = _guidValidator.Validate(deletedCatID);
+
+            // Error handling
+            if (!guidToValidate.IsValid)
+            {
+                return BadRequest(guidToValidate.Errors.ConvertAll(errors => errors.ErrorMessage));
+            }
+
+            try
+            {
+                return Ok(await _mediatR.Send(new DeleteCatByIDCommand(deletedCatID)));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
