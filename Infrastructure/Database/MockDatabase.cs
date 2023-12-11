@@ -15,7 +15,7 @@ namespace Infrastructure.Database
 
         private static List<User> allUsers = new()
         {
-            new User { Id = new Guid("42345678-1234-5678-1234-567812345678"), Username = "admin", Password = "password", Authorized = true, Role = "Admin" },
+            new User { ID = new Guid("42345678-1234-5678-1234-567812345678"), Username = "admin", Password = "password", Authorized = true, Role = "Admin" },
         };
 
         public List<Dog> AllDogs

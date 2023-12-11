@@ -2,7 +2,7 @@
 {
     public class User
     {
-        public Guid Id { get; set; }
+        public Guid ID { get; set; }
         public required string Username { get; set; }
         public required string Password { get; set; }
         public required bool Authorized { get; set; }
