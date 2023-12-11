@@ -30,7 +30,7 @@ namespace Test.AnimalTests.BirdTest.QueryTest
 
             // Assert
             Assert.NotNull(result);
-            Assert.That(result.AnimalID, Is.EqualTo(birdID));
+            Assert.That(result.ID, Is.EqualTo(birdID));
         }
 
         [Test]

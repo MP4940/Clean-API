@@ -1,5 +1,6 @@
 ﻿using Infrastructure.Authentication;
 using Infrastructure.Database;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure
@@ -10,6 +11,10 @@ namespace Infrastructure
         {
             services.AddSingleton<MockDatabase>();
             services.AddSingleton<JwtTokenGenerator>();
+            services.AddDbContext<RealDatabase>(options =>
+            {
+                options.UseSqlServer("Server=SMARTFRIDGE; Database=AnimalModels; Trusted_Connection=true; TrustServerCertificate=true;");
+            });
             return services;
         }
     }
