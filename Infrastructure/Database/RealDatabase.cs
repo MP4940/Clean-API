@@ -1,6 +1,5 @@
 ﻿using Domain.Models.Animals.Dogs;
 using Domain.Models.Users;
-using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Database
@@ -9,7 +8,8 @@ namespace Infrastructure.Database
     {
         public RealDatabase() { }
         public RealDatabase(DbContextOptions<RealDatabase> options) : base(options) { }
-        public DbSet<Dog> Dogs { get; set; }
+        public virtual DbSet<Dog> Dogs { get; set; }
+        public virtual DbSet<User> Users { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=SMARTFRIDGE; Database=RealDB; Trusted_Connection=true; TrustServerCertificate=true;");
