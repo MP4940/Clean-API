@@ -30,7 +30,7 @@ namespace Infrastructure.Database.DatabaseHelpers
         private static void SeedUsers(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasData(
-                new User { ID = Guid.NewGuid(), Username = "admin", Password = "admin", Authorized = true, Role = "admin"}
+                new User { ID = Guid.NewGuid(), Username = "admin", Password = "admin", Authorized = true, Role = "admin" }
             );
         }
     }
