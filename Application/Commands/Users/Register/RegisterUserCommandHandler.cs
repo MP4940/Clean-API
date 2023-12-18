@@ -31,6 +31,7 @@ namespace Application.Commands.Users.Register
                 ID = Guid.NewGuid(),
                 Username = request.NewUser.Username,
                 Password = request.NewUser.Password,
+                Role = request.NewUser.Role,
                 Authorized = true
             };
 
