@@ -22,6 +22,9 @@ namespace Application.Validators.User
                 .Matches("[^a-zA-Z0-9]").WithMessage("Password must contain at least one special character.")
                 .NotEqual("password", StringComparer.OrdinalIgnoreCase)
                     .WithMessage("Password cannot be 'password'.");
+
+            RuleFor(user => user.Role)
+                .NotEmpty().WithMessage("Role is required.");
         }
     }
 }

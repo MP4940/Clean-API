@@ -7,18 +7,20 @@ namespace Application.Queries.Users.GetToken
 {
     public class GetTokenQueryHandler : IRequestHandler<GetTokenQuery, User>
     {
-        private readonly MockDatabase _mockDatabase;
+        //private readonly MockDatabase _mockDatabase;
+        private readonly RealDatabase _realDatabase;
         private readonly JwtTokenGenerator _jwtTokenGenerator;
 
-        public GetTokenQueryHandler(MockDatabase mockDatabase, JwtTokenGenerator jwtTokenGenerator)
+        public GetTokenQueryHandler(RealDatabase realDatabase, JwtTokenGenerator jwtTokenGenerator)
         {
-            _mockDatabase = mockDatabase;
+            //_mockDatabase = mockDatabase;
+            _realDatabase = realDatabase;
             _jwtTokenGenerator = jwtTokenGenerator;
         }
 
         public Task<User> Handle(GetTokenQuery request, CancellationToken cancellationToken)
         {
-            User wantedUser = _mockDatabase.Users.FirstOrDefault(user => user.Username == request.Username)!;
+            User wantedUser = _realDatabase.Users.FirstOrDefault(user => user.Username == request.Username)!;
 
             if (wantedUser.Authorized == true)
             {
