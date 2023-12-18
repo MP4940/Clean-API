@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -46,21 +46,21 @@ namespace Infrastructure.Migrations
                 columns: new[] { "ID", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("0052b0bd-3130-410f-a65b-a19a8936115a"), "OldG" },
                     { new Guid("12345678-1234-5678-1234-567812345671"), "TestDogForUnitTests1" },
                     { new Guid("12345678-1234-5678-1234-567812345672"), "TestDogForUnitTests2" },
                     { new Guid("12345678-1234-5678-1234-567812345673"), "TestDogForUnitTests3" },
                     { new Guid("12345678-1234-5678-1234-567812345674"), "TestDogForUnitTests4" },
-                    { new Guid("3a065c75-6ec7-4b41-b722-5ce51b2d4bdf"), "Björn" },
-                    { new Guid("622ead5c-afd4-428c-a74d-2b9f8773e4eb"), "Alfred" },
-                    { new Guid("b2e06bbc-fec8-4a0c-921f-a401e8c578b0"), "NewG" },
-                    { new Guid("bb2d8b27-4655-4181-9213-b0f9356d894e"), "Patrik" }
+                    { new Guid("4e3a262b-603a-4043-bf75-e1b6e5faca0c"), "OldG" },
+                    { new Guid("52fc3102-6d7c-47a4-bb57-7b18ffb9903f"), "Alfred" },
+                    { new Guid("56fb02b7-ec44-4761-b851-2e19c28ef26f"), "NewG" },
+                    { new Guid("60b39ded-7c36-4ee7-bcbc-35d1f78c6367"), "Björn" },
+                    { new Guid("899be454-ec04-44a6-834e-4bb41e19bed6"), "Patrik" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "ID", "Authorized", "Password", "Role", "Token", "Username" },
-                values: new object[] { new Guid("64d0a33d-4796-4e0b-bac7-4a5c8839dd2b"), true, "admin", null, null, "admin" });
+                values: new object[] { new Guid("e53f346c-c0e7-4308-bb5a-6043d8188f5f"), true, "admin", "admin", null, "admin" });
         }
 
         /// <inheritdoc />
