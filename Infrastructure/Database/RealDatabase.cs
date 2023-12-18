@@ -1,5 +1,6 @@
 ﻿using Domain.Models.Animals.Dogs;
 using Domain.Models.Users;
+using Infrastructure.Database.DatabaseHelpers;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Database
@@ -18,6 +19,9 @@ namespace Infrastructure.Database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            // Call the SeedData method from the external class
+            DatabaseSeedHelper.SeedData(modelBuilder);
         }
     }
 }
