@@ -1,8 +1,10 @@
 ﻿using Application.Commands.Users.Register;
 using Application.Dtos.UserDtos;
+using Application.Queries.Users.GetAllUsers;
 using Application.Queries.Users.GetToken;
 using Application.Validators.User;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers.UsersController
@@ -54,6 +56,21 @@ namespace API.Controllers.UsersController
 
             var token = user.Token;
             return Ok(token);
+        }
+
+        [HttpGet("getAllUsers")]
+        [Authorize]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            try
+            {
+                var users = await _mediator.Send(new GetAllUsersQuery());
+                return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
