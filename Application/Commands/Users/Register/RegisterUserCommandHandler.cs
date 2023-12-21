@@ -1,6 +1,7 @@
 ﻿using Domain.Models.Users;
 using Infrastructure.Repositories.Users;
 using MediatR;
+
 namespace Application.Commands.Users.Register
 {
     public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, User>

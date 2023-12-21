@@ -22,7 +22,7 @@ namespace Test.Repository.UserTests.GetAllUsers
     //    public async Task GetAllUsers_returns_correct()
     //    {
     //        // Arrange
-    //        _userRepositoryMock.Object.GetAllUsers();
+    //        var test = _userRepositoryMock.Object.GetAllUsers();
 
     //        var query = new GetAllUsersQuery();
 

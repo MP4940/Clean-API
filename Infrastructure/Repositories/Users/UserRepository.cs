@@ -40,5 +40,21 @@ namespace Infrastructure.Repositories.Users
                 throw new ArgumentException(e.Message);
             }
         }
+
+        public async Task<User> UpdateUser(User userToUpdate)
+        {
+            try
+            {
+                _realDatabase.Users.Update(userToUpdate);
+                _realDatabase.SaveChanges();
+                return await Task.FromResult(userToUpdate);
+            }
+            catch (ArgumentException e)
+            {
+                //// Log the error and return an error response
+                //_logger.LogError(e, "Error registering user");
+                throw new ArgumentException(e.Message);
+            }
+        }
     }
 }

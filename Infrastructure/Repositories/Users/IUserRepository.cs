@@ -6,5 +6,6 @@ namespace Infrastructure.Repositories.Users
     {
         Task<List<User>> GetAllUsers();
         Task<User> RegisterUser(User userToRegister);
+        Task<User> UpdateUser(User userToUpdate);
     }
 }
