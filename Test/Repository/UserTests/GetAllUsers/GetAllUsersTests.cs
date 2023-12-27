@@ -7,7 +7,7 @@ namespace Test.Repository.UserTests.GetAllUsers
 {
     [TestFixture]
     internal class GetAllUsersTests
-    { 
+    {
         private Mock<IUserRepository> _userRepositoryMock;
         private GetAllUsersQueryHandler _getAllUsersQueryHandler;
 
@@ -19,7 +19,7 @@ namespace Test.Repository.UserTests.GetAllUsers
         }
 
         [Test]
-        public async Task GetAlLDogs_Returns_Correct()
+        public async Task GetAllUsers_Returns_Correct()
         {
             // Arrange
             List<User> users =

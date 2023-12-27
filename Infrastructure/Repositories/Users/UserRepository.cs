@@ -1,4 +1,5 @@
-﻿using Domain.Models.Users;
+﻿using Azure.Core;
+using Domain.Models.Users;
 using Infrastructure.Database;
 
 namespace Infrastructure.Repositories.Users
@@ -41,6 +42,20 @@ namespace Infrastructure.Repositories.Users
             }
         }
 
+        public async Task<User> GetUserByID(Guid id)
+        {
+            try
+            {
+                var wantedUser = _realDatabase.Users.Where(user => user.ID == id).FirstOrDefault()!;
+                return await Task.FromResult(wantedUser);
+            }
+            catch (ArgumentException e)
+            {
+                //// Log the error and return an error response
+                //_logger.LogError(e, "Error registering user");
+                throw new ArgumentException(e.Message);
+            }
+        }
         public async Task<User> UpdateUser(User userToUpdate)
         {
             try

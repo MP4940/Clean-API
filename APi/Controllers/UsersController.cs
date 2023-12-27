@@ -3,8 +3,10 @@ using Application.Commands.Users.Register;
 using Application.Commands.Users.Update;
 using Application.Dtos.AnimalsDtos.DogDto;
 using Application.Dtos.UserDtos;
+using Application.Queries.Animals.Dogs.GetDogByID;
 using Application.Queries.Users.GetAllUsers;
 using Application.Queries.Users.GetToken;
+using Application.Queries.Users.GetUserByID;
 using Application.Validators;
 using Application.Validators.Dog;
 using Application.Validators.User;
@@ -73,6 +75,28 @@ namespace API.Controllers.UsersController
             {
                 var users = await _mediatR.Send(new GetAllUsersQuery());
                 return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        [HttpGet("getUserByID/{userID}")]
+        //[Authorize]
+        public async Task<IActionResult> GetUserByID(Guid userID)
+        {
+            var guidToValidate = _guidValidator.Validate(userID);
+
+            // Error handling
+            if (!guidToValidate.IsValid)
+            {
+                return BadRequest(guidToValidate.Errors.ConvertAll(errors => errors.ErrorMessage));
+            }
+
+            try
+            {
+                return Ok(await _mediatR.Send(new GetUserByIDQuery(userID)));
             }
             catch (Exception ex)
             {

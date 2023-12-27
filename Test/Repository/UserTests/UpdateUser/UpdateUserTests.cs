@@ -6,5 +6,5 @@ using Moq;
 
 namespace Test.Repository.UserTests.UpdateUser
 {
-    
+
 }
