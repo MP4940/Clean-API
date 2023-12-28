@@ -24,7 +24,7 @@ namespace Application.Commands.Users.Update
                 throw new ArgumentException("Update error: " + string.Join("; ", allErrors));
             }
 
-            User userToUpdate = _userRepository.GetAllUsers().Result.FirstOrDefault(user => user.ID == request.ID)!;
+            User userToUpdate = _userRepository.GetUserByID(request.ID).Result;
 
             userToUpdate.Username = request.UserToUpdate.Username;
             userToUpdate.Password = request.UserToUpdate.Password;

@@ -1,7 +1,5 @@
-﻿using Application.Queries.Animals.Dogs.GetDogByID;
-using Application.Queries.Users.GetUserByID;
+﻿using Application.Queries.Users.GetUserByID;
 using Domain.Models.Users;
-using Infrastructure.Database;
 using Infrastructure.Repositories.Users;
 using Moq;
 
@@ -16,6 +14,7 @@ namespace Test.Repository.UserTests.GetUserByID
         [SetUp]
         public void SetUp()
         {
+            //Ändra till UserRepos?
             _userRepositoryMock = new Mock<IUserRepository>();
             _getUserByIDQueryHandler = new GetUserByIDQueryHandler(_userRepositoryMock.Object);
         }

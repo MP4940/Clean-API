@@ -105,7 +105,7 @@ namespace API.Controllers.UsersController
         }
 
         [HttpPut("uppdateUser/{updatedUserID}")]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> UpdateUser([FromBody] UserCredentialsDto updatedUser, Guid updatedUserID)
         {
             // Validate dog
@@ -127,7 +127,7 @@ namespace API.Controllers.UsersController
         }
 
         //[HttpDelete("deleteUser/{deletedUserID}")]
-        //[Authorize]
+        ////[Authorize]
         //public async Task<IActionResult> DeleteUser()
         //{
         //    try
