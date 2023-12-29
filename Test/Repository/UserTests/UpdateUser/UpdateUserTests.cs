@@ -19,7 +19,7 @@ namespace Test.Repository.UserTests.UpdateUser
             _mockRealDatabase.Setup(db => db.SaveChanges());
         }
         [Test]
-        public async Task Values_Updated_CorrectlyAsync()
+        public async Task Values_Updated_Correctly()
         {
             // Arrange
             List<User> users =
@@ -30,20 +30,20 @@ namespace Test.Repository.UserTests.UpdateUser
 
             var ID = new Guid("12345678-1234-5678-1234-567812345674");
 
-            var wantedUser = users.Where(user => user.ID == ID).FirstOrDefault()!;
+            var userToUpdate = users.Where(user => user.ID == ID).FirstOrDefault()!;
 
-            wantedUser.Username = "updatedUsername";
-            wantedUser.Password = "updatedPassword123!";
-            wantedUser.Role = "updatedRole";
+            userToUpdate.Username = "updatedUsername";
+            userToUpdate.Password = "updatedPassword123!";
+            userToUpdate.Role = "updatedRole";
 
             // Act
 
-            var result = await _userRepository.UpdateUser(wantedUser);
+            var result = await _userRepository.UpdateUser(userToUpdate);
 
             Assert.NotNull(result);
-            Assert.That(result.Username, Is.EqualTo(wantedUser.Username));
-            Assert.That(result.Password, Is.EqualTo(wantedUser.Password));
-            Assert.That(result.Role, Is.EqualTo(wantedUser.Role));
+            Assert.That(result.Username, Is.EqualTo(userToUpdate.Username));
+            Assert.That(result.Password, Is.EqualTo(userToUpdate.Password));
+            Assert.That(result.Role, Is.EqualTo(userToUpdate.Role));
             _mockRealDatabase.Verify(db => db.Users.Update(It.IsAny<User>()), Times.Once);
             _mockRealDatabase.Verify(db => db.SaveChanges(), Times.Once);
         }

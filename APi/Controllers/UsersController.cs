@@ -1,14 +1,11 @@
-﻿using Application.Commands.Animals.Dogs.UpdateDog;
-using Application.Commands.Users.Register;
+﻿using Application.Commands.Users.Register;
 using Application.Commands.Users.Update;
-using Application.Dtos.AnimalsDtos.DogDto;
+using Application.Commands.Users.Delete;
 using Application.Dtos.UserDtos;
-using Application.Queries.Animals.Dogs.GetDogByID;
 using Application.Queries.Users.GetAllUsers;
 using Application.Queries.Users.GetToken;
 using Application.Queries.Users.GetUserByID;
 using Application.Validators;
-using Application.Validators.Dog;
 using Application.Validators.User;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -108,7 +105,7 @@ namespace API.Controllers.UsersController
         //[Authorize]
         public async Task<IActionResult> UpdateUser([FromBody] UserCredentialsDto updatedUser, Guid updatedUserID)
         {
-            // Validate dog
+            // Validate user
             var userToValidate = _userValidator.Validate(updatedUser);
 
             if (!userToValidate.IsValid)
@@ -126,18 +123,26 @@ namespace API.Controllers.UsersController
             }
         }
 
-        //[HttpDelete("deleteUser/{deletedUserID}")]
-        ////[Authorize]
-        //public async Task<IActionResult> DeleteUser()
-        //{
-        //    try
-        //    {
+        [HttpDelete("deleteUser/{deletedUserID}")]
+        //[Authorize]
+        public async Task<IActionResult> DeleteUser(Guid deletedUserID)
+        {
+            var guidToValidate = _guidValidator.Validate(deletedUserID);
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception(ex.Message);
-        //    }
-        //}
+            // Error handling
+            if (!guidToValidate.IsValid)
+            {
+                return BadRequest(guidToValidate.Errors.ConvertAll(errors => errors.ErrorMessage));
+            }
+
+            try
+            {
+                return Ok(await _mediatR.Send(new DeleteUserByIDCommand(deletedUserID)));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

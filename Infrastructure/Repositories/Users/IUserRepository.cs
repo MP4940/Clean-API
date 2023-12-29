@@ -8,6 +8,6 @@ namespace Infrastructure.Repositories.Users
         Task<User> GetUserByID(Guid id);
         Task<User> RegisterUser(User userToRegister);
         Task<User> UpdateUser(User userToUpdate);
-        //Task<User> DeleteUser(User userToDelete);
+        Task<User> DeleteUser(User userToDelete);
     }
 }
