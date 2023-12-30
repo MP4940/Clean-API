@@ -1,4 +1,6 @@
-﻿using Domain.Models.Animals.Dogs;
+﻿using Domain.Models.Animals.Birds;
+using Domain.Models.Animals.Cats;
+using Domain.Models.Animals.Dogs;
 using Domain.Models.Users;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,7 +12,8 @@ namespace Infrastructure.Database.DatabaseHelpers
         {
             SeedDogs(modelBuilder);
             SeedUsers(modelBuilder);
-            // Add more methods for other entities as needed
+            SeedCats(modelBuilder);
+            SeedBirds(modelBuilder);
         }
 
         private static void SeedDogs(ModelBuilder modelBuilder)
@@ -21,12 +24,45 @@ namespace Infrastructure.Database.DatabaseHelpers
                 new Dog { ID = Guid.NewGuid(), Name = "Björn" },
                 new Dog { ID = Guid.NewGuid(), Name = "Patrik" },
                 new Dog { ID = Guid.NewGuid(), Name = "Alfred" },
-                new Dog { ID = new Guid("12345678-1234-5678-1234-567812345671"), Name = "TestDogForUnitTests1" },
-                new Dog { ID = new Guid("12345678-1234-5678-1234-567812345672"), Name = "TestDogForUnitTests2" },
-                new Dog { ID = new Guid("12345678-1234-5678-1234-567812345673"), Name = "TestDogForUnitTests3" },
-                new Dog { ID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "TestDogForUnitTests4" }
+                new Dog { ID = Guid.NewGuid(), Name = "Stanley" },
+                new Dog { ID = Guid.NewGuid(), Name = "Rufus" },
+                new Dog { ID = Guid.NewGuid(), Name = "Ludde" },
+                new Dog { ID = Guid.NewGuid(), Name = "Felix" },
+                new Dog { ID = Guid.NewGuid(), Name = "Peppe" }
             );
         }
+        private static void SeedCats(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Cat>().HasData(
+                new Cat { ID = Guid.NewGuid(), Name = "Jack" },
+                new Cat { ID = Guid.NewGuid(), Name = "Signe" },
+                new Cat { ID = Guid.NewGuid(), Name = "Rose" },
+                new Cat { ID = Guid.NewGuid(), Name = "Mittens" },
+                new Cat { ID = Guid.NewGuid(), Name = "Fred" },
+                new Cat { ID = Guid.NewGuid(), Name = "Molly" },
+                new Cat { ID = Guid.NewGuid(), Name = "Charlie" },
+                new Cat { ID = Guid.NewGuid(), Name = "Oscar" },
+                new Cat { ID = Guid.NewGuid(), Name = "Tiger" },
+                new Cat { ID = Guid.NewGuid(), Name = "Simba" }
+                );
+        }
+
+        private static void SeedBirds(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Bird>().HasData(
+                new Bird { ID = Guid.NewGuid(), Name = "Chip" },
+                new Bird { ID = Guid.NewGuid(), Name = "Paulie" },
+                new Bird { ID = Guid.NewGuid(), Name = "Polly" },
+                new Bird { ID = Guid.NewGuid(), Name = "Ace" },
+                new Bird { ID = Guid.NewGuid(), Name = "Apollo" },
+                new Bird { ID = Guid.NewGuid(), Name = "Daffy" },
+                new Bird { ID = Guid.NewGuid(), Name = "Blue" },
+                new Bird { ID = Guid.NewGuid(), Name = "Skye" },
+                new Bird { ID = Guid.NewGuid(), Name = "Jay" },
+                new Bird { ID = Guid.NewGuid(), Name = "Maverick" }
+                );
+        }
+
         private static void SeedUsers(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasData(
