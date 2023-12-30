@@ -1,8 +1,14 @@
 ﻿using Application.Commands.Users.Register;
+using Application.Commands.Users.Update;
+using Application.Commands.Users.Delete;
 using Application.Dtos.UserDtos;
+using Application.Queries.Users.GetAllUsers;
 using Application.Queries.Users.GetToken;
+using Application.Queries.Users.GetUserByID;
+using Application.Validators;
 using Application.Validators.User;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers.UsersController
@@ -11,12 +17,14 @@ namespace API.Controllers.UsersController
     [ApiController]
     public class UsersController : ControllerBase
     {
-        internal readonly IMediator _mediator;
+        internal readonly IMediator _mediatR;
+        internal readonly GuidValidator _guidValidator;
         internal readonly UserValidator _userValidator;
 
-        public UsersController(IMediator mediator, UserValidator userValidator)
+        public UsersController(IMediator mediator, GuidValidator guidValidator, UserValidator userValidator)
         {
-            _mediator = mediator;
+            _mediatR = mediator;
+            _guidValidator = guidValidator;
             _userValidator = userValidator;
         }
 
@@ -32,7 +40,7 @@ namespace API.Controllers.UsersController
 
             try
             {
-                return Ok(await _mediator.Send(new RegisterUserCommand(userToRegister)));
+                return Ok(await _mediatR.Send(new RegisterUserCommand(userToRegister)));
             }
             catch (ArgumentException e)
             {
@@ -45,7 +53,7 @@ namespace API.Controllers.UsersController
         [HttpGet("Login")]
         public async Task<IActionResult> GetToken(string username, string password)
         {
-            var user = await _mediator.Send(new GetTokenQuery(username, password));
+            var user = await _mediatR.Send(new GetTokenQuery(username, password));
 
             if (user == null)
             {
@@ -54,6 +62,87 @@ namespace API.Controllers.UsersController
 
             var token = user.Token;
             return Ok(token);
+        }
+
+        [HttpGet("getAllUsers")]
+        //[Authorize]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            try
+            {
+                var users = await _mediatR.Send(new GetAllUsersQuery());
+                return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        [HttpGet("getUserByID/{userID}")]
+        //[Authorize]
+        public async Task<IActionResult> GetUserByID(Guid userID)
+        {
+            var guidToValidate = _guidValidator.Validate(userID);
+
+            // Error handling
+            if (!guidToValidate.IsValid)
+            {
+                return BadRequest(guidToValidate.Errors.ConvertAll(errors => errors.ErrorMessage));
+            }
+
+            try
+            {
+                return Ok(await _mediatR.Send(new GetUserByIDQuery(userID)));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        [HttpPut("uppdateUser/{updatedUserID}")]
+        //[Authorize]
+        public async Task<IActionResult> UpdateUser([FromBody] UserCredentialsDto updatedUser, Guid updatedUserID)
+        {
+            // Validate user
+            var userToValidate = _userValidator.Validate(updatedUser);
+
+            if (!userToValidate.IsValid)
+            {
+                return BadRequest(userToValidate.Errors.ConvertAll(errors => errors.ErrorMessage));
+            }
+
+            try
+            {
+                return Ok(await _mediatR.Send(new UpdateUserByIDCommand(updatedUser, updatedUserID)));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        [HttpDelete("deleteUser/{deletedUserID}")]
+        //[Authorize]
+        public async Task<IActionResult> DeleteUser(Guid deletedUserID)
+        {
+            var guidToValidate = _guidValidator.Validate(deletedUserID);
+
+            // Error handling
+            if (!guidToValidate.IsValid)
+            {
+                return BadRequest(guidToValidate.Errors.ConvertAll(errors => errors.ErrorMessage));
+            }
+
+            try
+            {
+                return Ok(await _mediatR.Send(new DeleteUserByIDCommand(deletedUserID)));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

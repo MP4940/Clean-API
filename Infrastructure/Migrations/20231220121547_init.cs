@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -50,17 +50,21 @@ namespace Infrastructure.Migrations
                     { new Guid("12345678-1234-5678-1234-567812345672"), "TestDogForUnitTests2" },
                     { new Guid("12345678-1234-5678-1234-567812345673"), "TestDogForUnitTests3" },
                     { new Guid("12345678-1234-5678-1234-567812345674"), "TestDogForUnitTests4" },
-                    { new Guid("4e3a262b-603a-4043-bf75-e1b6e5faca0c"), "OldG" },
-                    { new Guid("52fc3102-6d7c-47a4-bb57-7b18ffb9903f"), "Alfred" },
-                    { new Guid("56fb02b7-ec44-4761-b851-2e19c28ef26f"), "NewG" },
-                    { new Guid("60b39ded-7c36-4ee7-bcbc-35d1f78c6367"), "Björn" },
-                    { new Guid("899be454-ec04-44a6-834e-4bb41e19bed6"), "Patrik" }
+                    { new Guid("5618fe21-b71b-4c2b-a464-77059a1528d2"), "Alfred" },
+                    { new Guid("6024561a-29e9-4999-9982-4c70f149eba7"), "Björn" },
+                    { new Guid("ad64a3c4-78c8-4e7c-ab21-4644c1a1334b"), "NewG" },
+                    { new Guid("c71f9b1d-6602-4722-855e-3e73aa5267d3"), "OldG" },
+                    { new Guid("da627e2e-7ea8-404f-ade5-fcced2e50b0a"), "Patrik" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "ID", "Authorized", "Password", "Role", "Token", "Username" },
-                values: new object[] { new Guid("e53f346c-c0e7-4308-bb5a-6043d8188f5f"), true, "admin", "admin", null, "admin" });
+                values: new object[,]
+                {
+                    { new Guid("12345678-1234-5678-1234-567812345674"), true, "password", "admin", null, "testUser2" },
+                    { new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), true, "admin", "admin", null, "admin" }
+                });
         }
 
         /// <inheritdoc />
