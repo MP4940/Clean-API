@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(RealDatabase))]
-    [Migration("20231230112949_AnimalUserTest1")]
-    partial class AnimalUserTest1
+    [Migration("20240103133256_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,54 @@ namespace Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("AnimalUser", b =>
+                {
+                    b.Property<Guid>("AnimalsAnimalID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UsersID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("AnimalsAnimalID", "UsersID");
+
+                    b.HasIndex("UsersID");
+
+                    b.ToTable("AnimalUser");
+                });
+
+            modelBuilder.Entity("Domain.Models.AnimalUsers.AnimalUser", b =>
+                {
+                    b.Property<Guid>("UserID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AnimalID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("UserID");
+
+                    b.ToTable("AnimalUsers");
+                });
+
+            modelBuilder.Entity("Domain.Models.Animals.Animal", b =>
+                {
+                    b.Property<Guid>("AnimalID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AnimalID");
+
+                    b.ToTable("Animal");
+                });
 
             modelBuilder.Entity("Domain.Models.Animals.Birds.Bird", b =>
                 {
@@ -40,66 +88,66 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Bird");
+                    b.ToTable("Birds");
 
                     b.HasData(
                         new
                         {
-                            ID = new Guid("4cfd5f16-4fc1-4b71-8bab-f6d22a791bad"),
+                            ID = new Guid("af7915b3-1f34-48b9-aed0-edd93965e1c9"),
                             CanFly = false,
                             Name = "Chip"
                         },
                         new
                         {
-                            ID = new Guid("58d02309-9542-458b-8c16-f99070f02462"),
+                            ID = new Guid("a64972a9-f3dd-4913-9eea-2224f30035cf"),
                             CanFly = false,
                             Name = "Paulie"
                         },
                         new
                         {
-                            ID = new Guid("3ebf67c4-2621-406c-bc10-00fda4e76bf7"),
+                            ID = new Guid("52b4eb8e-9aa9-44bb-bf44-882cede8b1c6"),
                             CanFly = false,
                             Name = "Polly"
                         },
                         new
                         {
-                            ID = new Guid("97071c12-8452-48f4-8c13-227dcc6f8c04"),
+                            ID = new Guid("3b6c49dd-0e7d-4f4a-9645-ba4254f19591"),
                             CanFly = false,
                             Name = "Ace"
                         },
                         new
                         {
-                            ID = new Guid("afe8df4a-b612-48a0-91b0-e82d52e6f175"),
+                            ID = new Guid("22415db2-cbc1-4097-a20a-f372a54f9ae3"),
                             CanFly = false,
                             Name = "Apollo"
                         },
                         new
                         {
-                            ID = new Guid("d73aca67-8d27-4a88-a577-768185b08844"),
+                            ID = new Guid("68a249fa-43fe-4034-afbe-350b901d1196"),
                             CanFly = false,
                             Name = "Daffy"
                         },
                         new
                         {
-                            ID = new Guid("4ec7d216-ed10-4920-b54b-79c8098f8efe"),
+                            ID = new Guid("d266b965-8f63-430e-b816-4832a10ab9fc"),
                             CanFly = false,
                             Name = "Blue"
                         },
                         new
                         {
-                            ID = new Guid("9af5cf28-505a-43a4-86be-ea70c014a862"),
+                            ID = new Guid("7fbb291e-b4d0-4c0a-83e2-0e4db60972a2"),
                             CanFly = false,
                             Name = "Skye"
                         },
                         new
                         {
-                            ID = new Guid("e148aebc-98c0-4448-8dc1-757a08b9659e"),
+                            ID = new Guid("d9babcfe-fb4c-4483-97a3-92e8bd7c136f"),
                             CanFly = false,
                             Name = "Jay"
                         },
                         new
                         {
-                            ID = new Guid("94b416fb-7d9d-4c6b-8337-860d87792658"),
+                            ID = new Guid("5eeefd5e-8a34-4239-969b-d4e69342effe"),
                             CanFly = false,
                             Name = "Maverick"
                         });
@@ -120,66 +168,66 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Cat");
+                    b.ToTable("Cats");
 
                     b.HasData(
                         new
                         {
-                            ID = new Guid("e4bdf6f1-e7b1-4e15-a504-a2d57c9cb844"),
+                            ID = new Guid("fd187582-c76b-4d33-863f-95f303185a95"),
                             LikesToPlay = false,
                             Name = "Jack"
                         },
                         new
                         {
-                            ID = new Guid("7e6bd537-bcd8-4d29-a9e9-53eef493206e"),
+                            ID = new Guid("9241866f-459b-4926-9883-793ff1bd8ff1"),
                             LikesToPlay = false,
                             Name = "Signe"
                         },
                         new
                         {
-                            ID = new Guid("3f628163-62b0-436a-922b-800f0f1d9b7c"),
+                            ID = new Guid("496d09b5-c67f-4a88-8696-e6f4d749f8c6"),
                             LikesToPlay = false,
                             Name = "Rose"
                         },
                         new
                         {
-                            ID = new Guid("a446eb46-8c81-4ba3-9aba-a6df905e8bcd"),
+                            ID = new Guid("528fae60-1c86-4825-b315-bdd6db294a4e"),
                             LikesToPlay = false,
                             Name = "Mittens"
                         },
                         new
                         {
-                            ID = new Guid("8bf5e3c4-6945-48ff-87bd-3be1045f5c80"),
+                            ID = new Guid("c23168a4-e238-4c2c-8179-710b4376bc31"),
                             LikesToPlay = false,
                             Name = "Fred"
                         },
                         new
                         {
-                            ID = new Guid("acfb6556-999a-4b66-b515-1d80e8523325"),
+                            ID = new Guid("fc7ce72f-b39f-4f41-9445-b3909ee41a6d"),
                             LikesToPlay = false,
                             Name = "Molly"
                         },
                         new
                         {
-                            ID = new Guid("1e12ff71-ac41-4c64-8dcb-246a10bb7432"),
+                            ID = new Guid("edd464ee-4c70-4420-a86e-0cf5cde842c6"),
                             LikesToPlay = false,
                             Name = "Charlie"
                         },
                         new
                         {
-                            ID = new Guid("9fad63db-971b-4a34-919d-2d29a16aaa69"),
+                            ID = new Guid("d4562dea-1d3c-4f49-900e-f5206d5e3ad6"),
                             LikesToPlay = false,
                             Name = "Oscar"
                         },
                         new
                         {
-                            ID = new Guid("9671240d-0081-4dd9-9f85-de1091c60ff0"),
+                            ID = new Guid("c72ee6d4-66ee-45e2-a9c3-4b477b54bbfa"),
                             LikesToPlay = false,
                             Name = "Tiger"
                         },
                         new
                         {
-                            ID = new Guid("cc67d7cd-84be-46b4-8016-73eecdceea23"),
+                            ID = new Guid("c50a74f3-ca5f-461b-a6c0-9ba773902318"),
                             LikesToPlay = false,
                             Name = "Simba"
                         });
@@ -202,52 +250,52 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            ID = new Guid("359e2e4b-a07e-4db2-9b4f-2284a6a1b894"),
+                            ID = new Guid("d0a9d8e6-b2ca-4205-9e9e-abb60eef9381"),
                             Name = "OldG"
                         },
                         new
                         {
-                            ID = new Guid("c9bbbee9-818f-4989-a80b-af882e5740de"),
+                            ID = new Guid("dde412ec-1f63-4f95-8a8f-8c1c03054ea4"),
                             Name = "NewG"
                         },
                         new
                         {
-                            ID = new Guid("822875f8-ab87-4f30-b863-f3f1b2036319"),
+                            ID = new Guid("49165a33-a67f-489e-8da0-1f058d2d6fae"),
                             Name = "Björn"
                         },
                         new
                         {
-                            ID = new Guid("fdd112c5-569e-4374-b017-60d8afc68129"),
+                            ID = new Guid("efe0d39a-0eb9-46e9-b564-d7e92f4742d8"),
                             Name = "Patrik"
                         },
                         new
                         {
-                            ID = new Guid("1606366f-0da5-48b3-9c19-625e590e00af"),
+                            ID = new Guid("86782122-154c-42b8-a480-42bafca678bd"),
                             Name = "Alfred"
                         },
                         new
                         {
-                            ID = new Guid("32f0f92c-0100-4719-890d-786aff01182f"),
+                            ID = new Guid("95a6f178-ccdb-411d-9ea6-9f102ffe2843"),
                             Name = "Stanley"
                         },
                         new
                         {
-                            ID = new Guid("df6e8c3b-3be6-44f8-8d6b-b42e12b9acfd"),
+                            ID = new Guid("0f67d6f3-a582-4a59-8d9c-64cf29ba27f0"),
                             Name = "Rufus"
                         },
                         new
                         {
-                            ID = new Guid("db21abd9-472f-4b14-bdd9-d144ce7f2eb3"),
+                            ID = new Guid("60805ceb-fa1d-4aa3-b642-2bee3196db49"),
                             Name = "Ludde"
                         },
                         new
                         {
-                            ID = new Guid("f0ac1eeb-5e4e-435d-9a39-a54f12397609"),
+                            ID = new Guid("a415a527-63e7-446f-8c84-d574e725acde"),
                             Name = "Felix"
                         },
                         new
                         {
-                            ID = new Guid("7095cbf9-50c3-4d07-aae8-e936797f7dcf"),
+                            ID = new Guid("c57b02f2-8a42-4955-acc4-1b3b51d2ae6c"),
                             Name = "Peppe"
                         });
                 });
@@ -282,7 +330,7 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            ID = new Guid("6e6ac3fb-ef4a-4d31-9d43-ac90e9a7516a"),
+                            ID = new Guid("08f08c1f-fd93-4a36-be54-3f3efc27e837"),
                             Authorized = true,
                             Password = "admin",
                             Role = "admin",
@@ -296,6 +344,21 @@ namespace Infrastructure.Migrations
                             Role = "admin",
                             Username = "testUser2"
                         });
+                });
+
+            modelBuilder.Entity("AnimalUser", b =>
+                {
+                    b.HasOne("Domain.Models.Animals.Animal", null)
+                        .WithMany()
+                        .HasForeignKey("AnimalsAnimalID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Models.Users.User", null)
+                        .WithMany()
+                        .HasForeignKey("UsersID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

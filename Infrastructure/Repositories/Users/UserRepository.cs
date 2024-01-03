@@ -1,5 +1,4 @@
-﻿using Azure.Core;
-using Domain.Models.Users;
+﻿using Domain.Models.Users;
 using Infrastructure.Database;
 
 namespace Infrastructure.Repositories.Users

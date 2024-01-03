@@ -10,12 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Repository\AnimalUserTests\**" />
-    <EmbeddedResource Remove="Repository\AnimalUserTests\**" />
-    <None Remove="Repository\AnimalUserTests\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.0.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />

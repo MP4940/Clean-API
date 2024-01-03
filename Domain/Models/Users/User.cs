@@ -1,4 +1,4 @@
-﻿using Domain.Models.UserAnimal;
+﻿using Domain.Models.Animals;
 using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Models.Users
@@ -12,6 +12,6 @@ namespace Domain.Models.Users
         public required bool Authorized { get; set; }
         public string? Token { get; set; }
         public string? Role { get; set; }
-        public ICollection<UserAnimalModel>? UserAnimals { get; set; }
+        public List<Animal>? Animals { get; set; }
     }
 }

@@ -1,5 +1,7 @@
 using Application;
 using Infrastructure;
+using Infrastructure.Repositories.AnimalUsers;
+using Infrastructure.Repositories.Users;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -62,7 +64,8 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-builder.Services.AddApplication().AddInfrastructure();
+builder.Services.AddApplication().AddInfrastructure().AddTransient<IUserRepository, UserRepository>().AddTransient<IAnimalUserRepository, AnimalUserRepository>();
+
 
 var app = builder.Build();
 
