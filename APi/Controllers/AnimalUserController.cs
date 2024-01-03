@@ -1,5 +1,7 @@
 ﻿using Application.Commands.AnimalUsers;
 using Application.Dtos.AnimalUserDto;
+using Application.Queries.AnimalUsers;
+using Application.Queries.Users.GetAllUsers;
 using Application.Validators;
 using Application.Validators.User;
 using MediatR;
@@ -32,6 +34,21 @@ namespace APi.Controllers
                 //// Log the error and return an error response
                 //_logger.LogError(e, "Error registering user");
                 return BadRequest(e.Message);
+            }
+        }
+
+        [HttpGet("getAllAnimalUsers")]
+        //[Authorize]
+        public async Task<IActionResult> GetAllAnimalUsers()
+        {
+            try
+            {
+                var animalUsers = await _mediatR.Send(new GetAllAnimalUsersQuery());
+                return Ok(animalUsers);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using Domain.Models.Animals.Birds;
+﻿using Domain.Models.Animals;
+using Domain.Models.Animals.Birds;
 using Domain.Models.Animals.Cats;
 using Domain.Models.Animals.Dogs;
 using Domain.Models.AnimalUsers;
@@ -16,6 +17,7 @@ namespace Infrastructure.Database
         public virtual DbSet<Cat> Cats { get; set; }
         public virtual DbSet<Bird> Birds { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Animal> Animals { get; set; }
         public virtual DbSet<AnimalUser> AnimalUsers { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
