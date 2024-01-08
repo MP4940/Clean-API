@@ -1,9 +1,7 @@
-﻿using Application.Commands.AnimalUsers;
+﻿using Application.Commands.AnimalUsers.Create;
 using Application.Dtos.AnimalUserDto;
 using Application.Queries.AnimalUsers;
-using Application.Queries.Users.GetAllUsers;
 using Application.Validators;
-using Application.Validators.User;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

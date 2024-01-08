@@ -2,7 +2,7 @@
 using Infrastructure.Repositories.AnimalUsers;
 using MediatR;
 
-namespace Application.Queries.AnimalUsers
+namespace Application.Queries.AnimalUsers.GetAllAnimalUsers
 {
     public class GetAllAnimalUsersQueryHandler : IRequestHandler<GetAllAnimalUsersQuery, List<GetAllAnimalUsersDto>>
     {

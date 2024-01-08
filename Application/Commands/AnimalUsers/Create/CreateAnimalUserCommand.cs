@@ -2,7 +2,7 @@
 using Domain.Models.AnimalUsers;
 using MediatR;
 
-namespace Application.Commands.AnimalUsers
+namespace Application.Commands.AnimalUsers.Create
 {
     public class CreateAnimalUserCommand : IRequest<AnimalUser>
     {

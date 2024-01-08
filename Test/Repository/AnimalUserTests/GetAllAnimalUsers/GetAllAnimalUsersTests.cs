@@ -1,5 +1,5 @@
 ﻿using Application.Dtos.AnimalUserDto;
-using Application.Queries.AnimalUsers;
+using Application.Queries.AnimalUsers.GetAllAnimalUsers;
 using Domain.Models.Animals;
 using Domain.Models.AnimalUsers;
 using Domain.Models.Users;
@@ -9,7 +9,7 @@ using Moq;
 namespace Test.Repository.AnimalUserTests.GetAllAnimalUsers
 {
     [TestFixture]
-    internal class GetAllAnimalUsersTests
+    public class GetAllAnimalUsersTests
     {
         private Mock<IAnimalUserRepository> _animalUserRepositoryMock;
         private GetAllAnimalUsersQueryHandler _getAllAnimalUsersQueryHandler;

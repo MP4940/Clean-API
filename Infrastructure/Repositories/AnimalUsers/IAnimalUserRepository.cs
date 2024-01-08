@@ -5,7 +5,8 @@ namespace Infrastructure.Repositories.AnimalUsers
 {
     public interface IAnimalUserRepository
     {
-        Task<AnimalUser> CreateAnimalUser(AnimalUser animalUser);
+        Task<AnimalUser> CreateAnimalUser(AnimalUser animalUserToCreate);
+        Task<AnimalUser> UpdateAnimalUser(AnimalUser animalUserToUpdate);
         Task<List<GetAllAnimalUsersDto>> GetAllAnimalUsers();
     }
 }

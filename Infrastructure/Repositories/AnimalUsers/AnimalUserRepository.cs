@@ -49,5 +49,20 @@ namespace Infrastructure.Repositories.AnimalUsers
                 throw new ArgumentException(e.Message);
             }
         }
+        public async Task<AnimalUser> UpdateAnimalUser(AnimalUser animalUserToUpdate)
+        {
+            try
+            {
+                _realDatabase.AnimalUsers.Update(animalUserToUpdate);
+                _realDatabase.SaveChanges();
+                return await Task.FromResult(animalUserToUpdate);
+            }
+            catch (ArgumentException e)
+            {
+                //// Log the error and return an error response
+                //_logger.LogError(e, "Error registering user");
+                throw new ArgumentException(e.Message);
+            }
+        }
     }
 }
