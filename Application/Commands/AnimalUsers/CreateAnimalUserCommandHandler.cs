@@ -17,6 +17,7 @@ namespace Application.Commands.AnimalUsers
         {
             var animalUserToCreate = new AnimalUser
             {
+                Key = Guid.NewGuid(),
                 AnimalID = request.AnimalUserDto.AnimalID,
                 UserID = request.AnimalUserDto.UserID
             };

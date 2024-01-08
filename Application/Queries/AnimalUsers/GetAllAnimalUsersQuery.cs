@@ -1,7 +1,7 @@
-﻿using Domain.Models.AnimalUsers;
+﻿using Application.Dtos.AnimalUserDto;
 using MediatR;
 
 namespace Application.Queries.AnimalUsers
 {
-    public class GetAllAnimalUsersQuery : IRequest<List<AnimalUser>> { }
+    public class GetAllAnimalUsersQuery : IRequest<List<GetAllAnimalUsersDto>> { }
 }

@@ -1,10 +1,10 @@
-﻿using Domain.Models.AnimalUsers;
+﻿using Application.Dtos.AnimalUserDto;
 using Infrastructure.Repositories.AnimalUsers;
 using MediatR;
 
 namespace Application.Queries.AnimalUsers
 {
-    public class GetAllAnimalUsersQueryHandler : IRequestHandler<GetAllAnimalUsersQuery, List<AnimalUser>>
+    public class GetAllAnimalUsersQueryHandler : IRequestHandler<GetAllAnimalUsersQuery, List<GetAllAnimalUsersDto>>
     {
         private readonly IAnimalUserRepository _animalUserRepository;
 
@@ -13,9 +13,9 @@ namespace Application.Queries.AnimalUsers
             _animalUserRepository = animalUserRepository;
         }
 
-        public async Task<List<AnimalUser>> Handle(GetAllAnimalUsersQuery request, CancellationToken cancellationToken)
+        public async Task<List<GetAllAnimalUsersDto>> Handle(GetAllAnimalUsersQuery request, CancellationToken cancellationToken)
         {
-            List<AnimalUser> allAnimalUsers = await _animalUserRepository.GetAllAnimalUsers();
+            List<GetAllAnimalUsersDto> allAnimalUsers = await _animalUserRepository.GetAllAnimalUsers();
             return allAnimalUsers;
         }
     }

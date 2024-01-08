@@ -1,4 +1,5 @@
-﻿using Application.Queries.AnimalUsers;
+﻿using Application.Dtos.AnimalUserDto;
+using Application.Queries.AnimalUsers;
 using Domain.Models.Animals;
 using Domain.Models.AnimalUsers;
 using Domain.Models.Users;
@@ -24,23 +25,13 @@ namespace Test.Repository.AnimalUserTests.GetAllAnimalUsers
         public async Task GetAllAnimalUsers_Returns_Correct()
         {
             // Arrange
-            List<AnimalUser> animalUsers =
+            List<GetAllAnimalUsersDto> getAllAnimalUsersDtos =
             [
-                new AnimalUser() { AnimalID = new Guid("12345678-1234-5678-1234-567812345674"), UserID = new Guid("12345678-1234-5678-1234-567812345675") },
-                new AnimalUser() { AnimalID = new Guid("12345678-1234-5678-1234-567812345676"), UserID = new Guid("12345678-1234-5678-1234-567812345677") }
-            ];
-            List<User> users =
-            [
-                new User() { ID = new Guid("12345678-1234-5678-1234-567812345675"), Username = "testUser1", Password = "password", Authorized = true, Role = "admin", },
-                new User() { ID = new Guid("12345678-1234-5678-1234-567812345677"), Username = "testUser2", Password = "Password123!", Authorized = true, Role = "admin" }
-            ];
-            List<Animal> animals =
-            [
-                new Animal() { AnimalID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "testDog1", Type = "Dog" },
-                new Animal() { AnimalID = new Guid("12345678-1234-5678-1234-567812345676"), Name = "testCat1", Type = "Cat" }
+                new GetAllAnimalUsersDto() { AnimalName = "testAnimalName1", Username = "testUsername1" }, 
+                new GetAllAnimalUsersDto() { AnimalName = "testAnimalName2", Username = "testUsername2" }
             ];
 
-            _animalUserRepositoryMock.Setup(x => x.GetAllAnimalUsers()).ReturnsAsync(animalUsers);
+            _animalUserRepositoryMock.Setup(x => x.GetAllAnimalUsers()).ReturnsAsync(getAllAnimalUsersDtos);
 
             var query = new GetAllAnimalUsersQuery();
 
@@ -49,7 +40,7 @@ namespace Test.Repository.AnimalUserTests.GetAllAnimalUsers
 
             // Assert
             Assert.That(result, Is.Not.Null);
-            Assert.That(result, Is.InstanceOf<List<AnimalUser>>());
+            Assert.That(result, Is.InstanceOf<List<GetAllAnimalUsersDto>>());
             Assert.That(result, Is.Not.Empty);
         }
     }

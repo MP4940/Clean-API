@@ -1,6 +1,5 @@
-﻿using Domain.Models.Animals;
+﻿using Application.Dtos.AnimalUserDto;
 using Domain.Models.AnimalUsers;
-using Domain.Models.Users;
 using Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,13 +14,19 @@ namespace Infrastructure.Repositories.AnimalUsers
             _realDatabase = realDatabase;
         }
 
-        public async Task<List<AnimalUser>> GetAllAnimalUsers()
+        public async Task<List<GetAllAnimalUsersDto>> GetAllAnimalUsers()
         {
             try
             {
-                //_realDatabase.Users.Include(x => x.ID).Select(entry => entry.Animals);
-                List <AnimalUser> allAnimalUsersFromDatabase = _realDatabase.AnimalUsers.ToList();
-                return await Task.FromResult(allAnimalUsersFromDatabase);
+                var animalUsers = await _realDatabase.AnimalUsers
+                    .Select(au => new GetAllAnimalUsersDto
+                    {
+                        Username = au.User.Username,
+                        AnimalName = au.Animal.Name,
+                        AnimalType = au.Animal.Type
+                    })
+                    .ToListAsync();
+                return animalUsers;
             }
             catch (ArgumentException e)
             {
