@@ -1,8 +1,5 @@
 ﻿using Application.Dtos.AnimalUserDto;
 using Application.Queries.AnimalUsers.GetAllAnimalUsers;
-using Domain.Models.Animals;
-using Domain.Models.AnimalUsers;
-using Domain.Models.Users;
 using Infrastructure.Repositories.AnimalUsers;
 using Moq;
 

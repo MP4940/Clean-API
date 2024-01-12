@@ -5,6 +5,7 @@ using Moq;
 
 namespace Test.Repository.UserTests.DeleteUserByID
 {
+    [TestFixture]
     internal class DeleteUserByIDTests
     {
         private UserRepository _userRepository;
@@ -37,6 +38,7 @@ namespace Test.Repository.UserTests.DeleteUserByID
             _mockRealDatabase.Verify(db => db.Users.Remove(It.IsAny<User>()), Times.Once);
             _mockRealDatabase.Verify(db => db.SaveChanges(), Times.Once);
         }
+        [Test]
         public async Task User_Not_Found()
         {
             // Arrange

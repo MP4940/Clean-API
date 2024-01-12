@@ -34,6 +34,7 @@ namespace Infrastructure.Repositories.AnimalUsers
                 throw new ArgumentException(e.Message);
             }
         }
+
         public async Task<AnimalUser> GetAnimalUserByID(Guid id)
         {
             try
@@ -64,6 +65,7 @@ namespace Infrastructure.Repositories.AnimalUsers
                 throw new ArgumentException(e.Message);
             }
         }
+
         public async Task<AnimalUser> UpdateAnimalUser(AnimalUser animalUserToUpdate)
         {
             try
@@ -71,6 +73,22 @@ namespace Infrastructure.Repositories.AnimalUsers
                 _realDatabase.AnimalUsers.Update(animalUserToUpdate);
                 _realDatabase.SaveChanges();
                 return await Task.FromResult(animalUserToUpdate);
+            }
+            catch (ArgumentException e)
+            {
+                //// Log the error and return an error response
+                //_logger.LogError(e, "Error registering user");
+                throw new ArgumentException(e.Message);
+            }
+        }
+
+        public async Task<AnimalUser> DeleteAnimalUser(AnimalUser animalUserToDelete)
+        {
+            try
+            {
+                _realDatabase.AnimalUsers.Remove(animalUserToDelete);
+                _realDatabase.SaveChanges();
+                return await Task.FromResult(animalUserToDelete);
             }
             catch (ArgumentException e)
             {

@@ -1,5 +1,4 @@
-﻿using Application.Commands.Users.Update;
-using Domain.Models.Users;
+﻿using Domain.Models.Users;
 using Infrastructure.Repositories.Users;
 using MediatR;
 

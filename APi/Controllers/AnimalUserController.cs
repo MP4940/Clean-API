@@ -1,11 +1,10 @@
 ﻿using Application.Commands.AnimalUsers.Create;
+using Application.Commands.AnimalUsers.Delete;
 using Application.Commands.AnimalUsers.Update;
-using Application.Commands.Users.Update;
+using Application.Commands.Users.Delete;
 using Application.Dtos.AnimalUserDto;
-using Application.Dtos.UserDtos;
 using Application.Queries.AnimalUsers.GetAllAnimalUsers;
 using Application.Queries.Users.GetAnimalUserByID;
-using Application.Queries.Users.GetUserByID;
 using Application.Validators;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -92,6 +91,28 @@ namespace APi.Controllers
             try
             {
                 return Ok(await _mediatR.Send(new UpdateAnimalUserByIDCommand(updatedAnimalUser, updatedAnimalUserID)));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        [HttpDelete("deleteAnimalUser/{deletedAnimalUserID}")]
+        //[Authorize]
+        public async Task<IActionResult> DeleteAnimalUser(Guid deletedAnimalUserID)
+        {
+            var guidToValidate = _guidValidator.Validate(deletedAnimalUserID);
+
+            // Error handling
+            if (!guidToValidate.IsValid)
+            {
+                return BadRequest(guidToValidate.Errors.ConvertAll(errors => errors.ErrorMessage));
+            }
+
+            try
+            {
+                return Ok(await _mediatR.Send(new DeleteAnimalUserByIDCommand(deletedAnimalUserID)));
             }
             catch (Exception ex)
             {
