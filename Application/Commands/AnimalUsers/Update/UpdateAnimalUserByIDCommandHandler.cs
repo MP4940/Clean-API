@@ -27,7 +27,7 @@ namespace Application.Commands.AnimalUsers.Update
                 throw new ArgumentException("Update error: " + string.Join("; ", allErrors));
             }
 
-            AnimalUser animalUserToUpdate = _animalUserRepository.GetUserByID(request.ID).Result;
+            AnimalUser animalUserToUpdate = _animalUserRepository.GetAnimalUserByID(request.ID).Result;
 
             animalUserToUpdate.AnimalID = request.AnimalUserToUpdate.AnimalID;
             animalUserToUpdate.UserID = request.AnimalUserToUpdate.UserID;

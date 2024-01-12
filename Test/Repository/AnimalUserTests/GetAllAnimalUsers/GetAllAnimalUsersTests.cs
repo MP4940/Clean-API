@@ -27,7 +27,7 @@ namespace Test.Repository.AnimalUserTests.GetAllAnimalUsers
             // Arrange
             List<GetAllAnimalUsersDto> getAllAnimalUsersDtos =
             [
-                new GetAllAnimalUsersDto() { AnimalName = "testAnimalName1", Username = "testUsername1" }, 
+                new GetAllAnimalUsersDto() { AnimalName = "testAnimalName1", Username = "testUsername1" },
                 new GetAllAnimalUsersDto() { AnimalName = "testAnimalName2", Username = "testUsername2" }
             ];
 

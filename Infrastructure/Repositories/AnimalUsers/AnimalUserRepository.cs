@@ -1,5 +1,6 @@
 ﻿using Application.Dtos.AnimalUserDto;
 using Domain.Models.AnimalUsers;
+using Domain.Models.Users;
 using Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,6 +31,20 @@ namespace Infrastructure.Repositories.AnimalUsers
             }
             catch (ArgumentException e)
             {
+                throw new ArgumentException(e.Message);
+            }
+        }
+        public async Task<AnimalUser> GetAnimalUserByID(Guid id)
+        {
+            try
+            {
+                var wantedAnimalUser = _realDatabase.AnimalUsers.Where(animalUser => animalUser.Key == id).FirstOrDefault()!;
+                return await Task.FromResult(wantedAnimalUser);
+            }
+            catch (ArgumentException e)
+            {
+                //// Log the error and return an error response
+                //_logger.LogError(e, "Error registering user");
                 throw new ArgumentException(e.Message);
             }
         }

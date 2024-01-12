@@ -101,7 +101,7 @@ namespace API.Controllers.UsersController
             }
         }
 
-        [HttpPut("uppdateUser/{updatedUserID}")]
+        [HttpPut("updateUser/{updatedUserID}")]
         //[Authorize]
         public async Task<IActionResult> UpdateUser([FromBody] UserCredentialsDto updatedUser, Guid updatedUserID)
         {

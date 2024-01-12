@@ -8,5 +8,7 @@ namespace Infrastructure.Repositories.AnimalUsers
         Task<AnimalUser> CreateAnimalUser(AnimalUser animalUserToCreate);
         Task<AnimalUser> UpdateAnimalUser(AnimalUser animalUserToUpdate);
         Task<List<GetAllAnimalUsersDto>> GetAllAnimalUsers();
+        Task<AnimalUser> GetAnimalUserByID(Guid id);
+
     }
 }
