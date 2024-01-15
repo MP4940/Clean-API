@@ -25,8 +25,8 @@ namespace Test.Repository.DogTests.GetDogByID
 
             List<Dog> dogs =
             [
-                new Dog() { DogID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "TestDog1", Type = "Dog" },
-                new Dog() { DogID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Name = "TestDog2", Type = "Dog" },
+                new Dog() { DogID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "TestDog1" },
+                new Dog() { DogID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Name = "TestDog2" },
             ];
 
             var ID = new Guid("12345678-1234-5678-1234-567812345674");
