@@ -119,7 +119,7 @@ namespace Infrastructure.Migrations
                         name: "FK_AnimalUsers_Users_UserID",
                         column: x => x.UserID,
                         principalTable: "Users",
-                        principalColumn: "ID",
+                        principalColumn: "AnimalID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -162,7 +162,7 @@ namespace Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Birds",
-                columns: new[] { "ID", "AnimalID", "CanFly", "Name" },
+                columns: new[] { "AnimalID", "AnimalID", "CanFly", "Name" },
                 values: new object[,]
                 {
                     { new Guid("0355ffbe-eee3-49de-a33c-3fa17762e454"), null, false, "Maverick" },
@@ -179,7 +179,7 @@ namespace Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Cats",
-                columns: new[] { "ID", "AnimalID", "LikesToPlay", "Name" },
+                columns: new[] { "AnimalID", "AnimalID", "LikesToPlay", "Name" },
                 values: new object[,]
                 {
                     { new Guid("02504f95-6003-46ee-aac2-3d6d2548d17e"), null, false, "Fred" },
@@ -196,7 +196,7 @@ namespace Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Dogs",
-                columns: new[] { "ID", "AnimalID", "Name" },
+                columns: new[] { "AnimalID", "AnimalID", "Name" },
                 values: new object[,]
                 {
                     { new Guid("07b05f70-b4d3-42f8-a08a-d159f001f69f"), null, "Felix" },
@@ -213,7 +213,7 @@ namespace Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "ID", "Authorized", "Password", "Role", "Token", "Username" },
+                columns: new[] { "AnimalID", "Authorized", "Password", "Role", "Token", "Username" },
                 values: new object[,]
                 {
                     { new Guid("12345678-1234-5678-1234-567812345674"), true, "password", "admin", null, "testUser2" },

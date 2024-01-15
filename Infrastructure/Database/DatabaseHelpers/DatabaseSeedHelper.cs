@@ -10,40 +10,40 @@ namespace Infrastructure.Database.DatabaseHelpers
     public static class DatabaseSeedHelper
     {
         static List<Dog> dogs = [
-            new Dog { ID = Guid.NewGuid(), Name = "OldG" },
-            new Dog { ID = Guid.NewGuid(), Name = "NewG" },
-            new Dog { ID = Guid.NewGuid(), Name = "Björn" },
-            new Dog { ID = Guid.NewGuid(), Name = "Patrik" },
-            new Dog { ID = Guid.NewGuid(), Name = "Alfred" },
-            new Dog { ID = Guid.NewGuid(), Name = "Stanley" },
-            new Dog { ID = Guid.NewGuid(), Name = "Rufus" },
-            new Dog { ID = Guid.NewGuid(), Name = "Ludde" },
-            new Dog { ID = Guid.NewGuid(), Name = "Felix" },
-            new Dog { ID = Guid.NewGuid(), Name = "Peppe" }
+            new Dog { AnimalID = Guid.NewGuid(), Name = "OldG", Type = "Dog" },
+            new Dog { AnimalID = Guid.NewGuid(), Name = "NewG", Type = "Dog" },
+            new Dog { AnimalID = Guid.NewGuid(), Name = "Björn", Type = "Dog" },
+            new Dog { AnimalID = Guid.NewGuid(), Name = "Patrik", Type = "Dog" },
+            new Dog { AnimalID = Guid.NewGuid(), Name = "Alfred", Type = "Dog" },
+            new Dog { AnimalID = Guid.NewGuid(), Name = "Stanley", Type = "Dog" },
+            new Dog { AnimalID = Guid.NewGuid(), Name = "Rufus", Type = "Dog" },
+            new Dog { AnimalID = Guid.NewGuid(), Name = "Ludde", Type = "Dog" },
+            new Dog { AnimalID = Guid.NewGuid(), Name = "Felix", Type = "Dog" },
+            new Dog { AnimalID = Guid.NewGuid(), Name = "Peppe", Type = "Dog" }
             ];
         static List<Cat> cats = [
-                new Cat { ID = Guid.NewGuid(), Name = "Jack" },
-            new Cat { ID = Guid.NewGuid(), Name = "Signe" },
-            new Cat { ID = Guid.NewGuid(), Name = "Rose" },
-            new Cat { ID = Guid.NewGuid(), Name = "Mittens" },
-            new Cat { ID = Guid.NewGuid(), Name = "Fred" },
-            new Cat { ID = Guid.NewGuid(), Name = "Molly" },
-            new Cat { ID = Guid.NewGuid(), Name = "Charlie" },
-            new Cat { ID = Guid.NewGuid(), Name = "Oscar" },
-            new Cat { ID = Guid.NewGuid(), Name = "Tiger" },
-            new Cat { ID = Guid.NewGuid(), Name = "Simba" }
+                new Cat { AnimalID = Guid.NewGuid(), Name = "Jack", Type = "Cat" },
+            new Cat { AnimalID = Guid.NewGuid(), Name = "Signe", Type = "Cat" },
+            new Cat { AnimalID = Guid.NewGuid(), Name = "Rose", Type = "Cat" },
+            new Cat { AnimalID = Guid.NewGuid(), Name = "Mittens", Type = "Cat" },
+            new Cat { AnimalID = Guid.NewGuid(), Name = "Fred", Type = "Cat" },
+            new Cat { AnimalID = Guid.NewGuid(), Name = "Molly", Type = "Cat" },
+            new Cat { AnimalID = Guid.NewGuid(), Name = "Charlie", Type = "Cat" },
+            new Cat { AnimalID = Guid.NewGuid(), Name = "Oscar", Type = "Cat" },
+            new Cat { AnimalID = Guid.NewGuid(), Name = "Tiger", Type = "Cat" },
+            new Cat { AnimalID = Guid.NewGuid(), Name = "Simba", Type = "Cat" }
             ];
         static List<Bird> birds = [
-                new Bird { ID = Guid.NewGuid(), Name = "Chip" },
-            new Bird { ID = Guid.NewGuid(), Name = "Paulie" },
-            new Bird { ID = Guid.NewGuid(), Name = "Polly" },
-            new Bird { ID = Guid.NewGuid(), Name = "Ace" },
-            new Bird { ID = Guid.NewGuid(), Name = "Apollo" },
-            new Bird { ID = Guid.NewGuid(), Name = "Daffy" },
-            new Bird { ID = Guid.NewGuid(), Name = "Blue" },
-            new Bird { ID = Guid.NewGuid(), Name = "Skye" },
-            new Bird { ID = Guid.NewGuid(), Name = "Jay" },
-            new Bird { ID = Guid.NewGuid(), Name = "Maverick" }
+                new Bird { AnimalID = Guid.NewGuid(), Name = "Chip", Type = "Bird" },
+            new Bird { AnimalID = Guid.NewGuid(), Name = "Paulie", Type = "Bird" },
+            new Bird { AnimalID = Guid.NewGuid(), Name = "Polly", Type = "Bird" },
+            new Bird { AnimalID = Guid.NewGuid(), Name = "Ace", Type = "Bird" },
+            new Bird { AnimalID = Guid.NewGuid(), Name = "Apollo", Type = "Bird" },
+            new Bird { AnimalID = Guid.NewGuid(), Name = "Daffy", Type = "Bird" },
+            new Bird { AnimalID = Guid.NewGuid(), Name = "Blue", Type = "Bird" },
+            new Bird { AnimalID = Guid.NewGuid(), Name = "Skye", Type = "Bird" },
+            new Bird { AnimalID = Guid.NewGuid(), Name = "Jay", Type = "Bird" },
+            new Bird { AnimalID = Guid.NewGuid(), Name = "Maverick", Type = "Bird" }
             ];
         public static void SeedData(ModelBuilder modelBuilder)
         {
@@ -87,19 +87,19 @@ namespace Infrastructure.Database.DatabaseHelpers
             foreach (var x in dogs)
             {
                 modelBuilder.Entity<Animal>().HasData(
-                    new Animal { AnimalID = x.ID, Name = x.Name, Type = "Dog" }
+                    new Animal { AnimalID = x.AnimalID, Name = x.Name, Type = "Dog" }
                 );
             }
             foreach (var x in cats)
             {
                 modelBuilder.Entity<Animal>().HasData(
-                    new Animal { AnimalID = x.ID, Name = x.Name, Type = "Cat" }
+                    new Animal { AnimalID = x.AnimalID, Name = x.Name, Type = "Cat" }
                 );
             }
             foreach (var x in birds)
             {
                 modelBuilder.Entity<Animal>().HasData(
-                    new Animal { AnimalID = x.ID, Name = x.Name, Type = "Bird" }
+                    new Animal { AnimalID = x.AnimalID, Name = x.Name, Type = "Bird" }
                 );
             }
         }
