@@ -1,20 +1,22 @@
 ﻿using Domain.Models.Animals.Dogs;
-using Infrastructure.Database;
+using Infrastructure.Repositories.Animals.Dogs;
 using MediatR;
 
 namespace Application.Queries.Animals.Dogs.GetDogByID
 {
     public class GetDogByIDQueryHandler : IRequestHandler<GetDogByIDQuery, Dog>
     {
-        private readonly MockDatabase _mockDatabase;
-        public GetDogByIDQueryHandler(MockDatabase mockDatabase)
+        private readonly IDogRepository _dogRepository;
+
+        public GetDogByIDQueryHandler(IDogRepository dogRepository)
         {
-            _mockDatabase = mockDatabase;
+            _dogRepository = dogRepository;
         }
-        public Task<Dog> Handle(GetDogByIDQuery request, CancellationToken cancellationToken)
+
+        public async Task<Dog> Handle(GetDogByIDQuery request, CancellationToken cancellationToken)
         {
-            Dog wantedDog = _mockDatabase.AllDogs.Where(dog => dog.ID == request.ID).FirstOrDefault()!;
-            return Task.FromResult(wantedDog);
+            Dog wantedDog = await _dogRepository.GetDogByID(request.ID);
+            return wantedDog;
         }
     }
 }

@@ -246,7 +246,7 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Models.Animals.Birds.Bird", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("AnimalID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -260,7 +260,7 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("AnimalID");
 
                     b.HasIndex("AnimalID");
 
@@ -331,7 +331,7 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Models.Animals.Cats.Cat", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("AnimalID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -345,7 +345,7 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("AnimalID");
 
                     b.HasIndex("AnimalID");
 
@@ -416,7 +416,7 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Models.Animals.Dogs.Dog", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("AnimalID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -427,7 +427,7 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("AnimalID");
 
                     b.HasIndex("AnimalID");
 
@@ -488,7 +488,7 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Models.Users.User", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("AnimalID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -509,7 +509,7 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("AnimalID");
 
                     b.ToTable("Users");
 
