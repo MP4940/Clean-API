@@ -14,7 +14,7 @@ namespace Application.Commands.Animals.Cats.DeleteCat
     //    }
     //    public Task<Cat> Handle(DeleteCatByIDCommand request, CancellationToken cancellationToken)
     //    {
-    //        Cat catToDelete = _mockDatabase.AllCats.FirstOrDefault(cat => cat.AnimalID == request.ID)!;
+    //        Cat catToDelete = _mockDatabase.AllCats.FirstOrDefault(cat => cat.DogID == request.ID)!;
     //        _mockDatabase.AllCats.Remove(catToDelete);
 
     //        // Lite orelevant information som returneras

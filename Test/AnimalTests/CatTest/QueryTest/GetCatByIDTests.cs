@@ -30,7 +30,7 @@ namespace Test.AnimalTests.CatTest.QueryTest
 
     //        // Assert
     //        Assert.NotNull(result);
-    //        Assert.That(result.AnimalID, Is.EqualTo(catID));
+    //        Assert.That(result.DogID, Is.EqualTo(catID));
     //    }
 
     //    [Test]

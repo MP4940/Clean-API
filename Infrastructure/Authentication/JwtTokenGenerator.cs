@@ -19,7 +19,7 @@ namespace Infrastructure.Authentication
                 new("Username", user.Username),
                 new("Role", user.Role!),
                 new("Authorized", user.Authorized.ToString()),
-                new("AnimalID", user.ID.ToString()),
+                new("DogID", user.ID.ToString()),
                 new("Issuer", "Clean-API"),
                 new("Audience", "API")
             };
