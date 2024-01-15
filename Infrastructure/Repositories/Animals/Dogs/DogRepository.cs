@@ -18,7 +18,7 @@ namespace Infrastructure.Repositories.Animals.Dogs
         {
             try
             {
-                var wantedDog = _realDatabase.Dogs.Where(Dog => Dog.AnimalID == id).FirstOrDefault()!;
+                var wantedDog = _realDatabase.Dogs.Where(Dog => Dog.DogID == id).FirstOrDefault()!;
                 return await Task.FromResult(wantedDog);
             }
             catch (ArgumentException e)

@@ -1,7 +1,9 @@
 ﻿namespace Domain.Models.Animals.Dogs
 {
-    public class Dog : Animal
+    public class Dog
     {
+        public Guid DogID { get; set; }
+        public string Name { get; set; } = string.Empty;
         public string Bark()
         {
             return "Bark";

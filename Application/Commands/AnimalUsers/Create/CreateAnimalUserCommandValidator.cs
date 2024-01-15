@@ -11,7 +11,7 @@ namespace Application.Commands.AnimalUsers.Create
             _animalUserRepository = animalUserRepository;
 
             RuleFor(command => command.AnimalUserDto.AnimalID)
-            .NotEmpty().WithMessage("AnimalID is required.");
+            .NotEmpty().WithMessage("DogID is required.");
             RuleFor(command => command.AnimalUserDto.UserID)
             .NotEmpty().WithMessage("UserID is required.");
         }

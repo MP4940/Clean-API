@@ -14,7 +14,7 @@ namespace Application.Commands.Animals.Cats.UpdateCat
     //    }
     //    public Task<Cat> Handle(UpdateCatByIDCommand request, CancellationToken cancellationToken)
     //    {
-    //        Cat catToUpdate = _mockDatabase.AllCats.FirstOrDefault(cat => cat.AnimalID == request.ID)!;
+    //        Cat catToUpdate = _mockDatabase.AllCats.FirstOrDefault(cat => cat.DogID == request.ID)!;
 
     //        catToUpdate.Name = request.UpdatedCat.Name;
     //        catToUpdate.LikesToPlay = request.UpdatedCat.LikesToPlay;
