@@ -12,7 +12,18 @@ namespace Infrastructure.Repositories.Animals.Dogs
             _realDatabase = realDatabase;
         }
 
-
+        public async Task<List<Dog>> GetAllDogs()
+        {
+            try
+            {
+                List<Dog> allDogsFromDatabase = _realDatabase.Dogs.ToList();
+                return await Task.FromResult(allDogsFromDatabase);
+            }
+            catch (ArgumentException e)
+            {
+                throw new ArgumentException(e.Message);
+            }
+        }
 
         public async Task<Dog> GetDogByID(Guid id)
         {
@@ -25,6 +36,22 @@ namespace Infrastructure.Repositories.Animals.Dogs
             {
                 //// Log the error and return an error response
                 //_logger.LogError(e, "Error registering Dog");
+                throw new ArgumentException(e.Message);
+            }
+        }
+
+        public async Task<Dog> AddDog(Dog dogToAdd)
+        {
+            try
+            {
+                _realDatabase.Dogs.Add(dogToAdd);
+                _realDatabase.SaveChanges();
+                return await Task.FromResult(dogToAdd);
+            }
+            catch (ArgumentException e)
+            {
+                //// Log the error and return an error response
+                //_logger.LogError(e, "Error registering user");
                 throw new ArgumentException(e.Message);
             }
         }

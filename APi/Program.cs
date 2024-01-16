@@ -1,5 +1,6 @@
 using Application;
 using Infrastructure;
+using Infrastructure.Repositories.Animals.Dogs;
 using Infrastructure.Repositories.AnimalUsers;
 using Infrastructure.Repositories.Users;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -64,7 +65,7 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-builder.Services.AddApplication().AddInfrastructure().AddTransient<IUserRepository, UserRepository>().AddTransient<IAnimalUserRepository, AnimalUserRepository>();
+builder.Services.AddApplication().AddInfrastructure().AddTransient<IUserRepository, UserRepository>().AddTransient<IAnimalUserRepository, AnimalUserRepository>().AddTransient<IDogRepository, DogRepository>();
 
 
 var app = builder.Build();
