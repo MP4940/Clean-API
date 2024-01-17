@@ -1,24 +1,38 @@
 ﻿using Domain.Models.Animals.Dogs;
-using Infrastructure.Database;
+using Infrastructure.Repositories.Animals.Dogs;
 using MediatR;
 
 namespace Application.Commands.Animals.Dogs.UpdateDog
 {
-    //public class UpdateDogByIdCommandHandler : IRequestHandler<UpdateDogByIDCommand, Dog>
-    //{
-    //    private readonly MockDatabase _mockDatabase;
+    public class UpdateDogByIDCommandHandler : IRequestHandler<UpdateDogByIDCommand, Dog>
+    {
+        private readonly IDogRepository _dogRepository;
+        private readonly UpdateDogByIDCommandValidator _validator;
+        public UpdateDogByIDCommandHandler(IDogRepository DogRepository, UpdateDogByIDCommandValidator validator)
+        {
+            _dogRepository = DogRepository;
+            _validator = validator;
+        }
+        public async Task<Dog> Handle(UpdateDogByIDCommand request, CancellationToken cancellationToken)
+        {
+            var updateDogByIDCommandValidation = _validator.Validate(request);
 
-    //    public UpdateDogByIdCommandHandler(MockDatabase mockDatabase)
-    //    {
-    //        _mockDatabase = mockDatabase;
-    //    }
-    //    public Task<Dog> Handle(UpdateDogByIDCommand request, CancellationToken cancellationToken)
-    //    {
-    //        Dog dogToUpdate = _mockDatabase.AllDogs.FirstOrDefault(dog => dog.DogID == request.ID)!;
+            if (!updateDogByIDCommandValidation.IsValid)
+            {
+                var allErrors = updateDogByIDCommandValidation.Errors.ConvertAll(errors => errors.ErrorMessage);
 
-    //        dogToUpdate.Name = request.UpdatedDog.Name;
+                throw new ArgumentException("Update error: " + string.Join("; ", allErrors));
+            }
 
-    //        return Task.FromResult(dogToUpdate);
-    //    }
-    //}
+            Dog dogToUpdate = _dogRepository.GetDogByID(request.ID).Result;
+
+            dogToUpdate.Name = request.UpdatedDog.Name;
+            dogToUpdate.Weight = request.UpdatedDog.Weight;
+            dogToUpdate.Breed = request.UpdatedDog.Breed;
+
+            var updatedDog = await _dogRepository.UpdateDog(dogToUpdate);
+
+            return updatedDog;
+        }
+    }
 }

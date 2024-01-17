@@ -26,6 +26,8 @@ namespace Application.Commands.Animals.Dogs.AddDog
                 throw new ArgumentException("Registration error: " + string.Join("; ", allErrors));
             }
 
+            //var dogID = Guid.NewGuid();
+
             // Here can we use something called AutoMapper, helps us convert Dtos to Domain Models...
             var dogToCreate = new Dog
             {
@@ -34,6 +36,13 @@ namespace Application.Commands.Animals.Dogs.AddDog
                 Breed = request.NewDog.Breed,
                 Weight = request.NewDog.Weight
             };
+
+            //var animalToCreate = new Animal 
+            //{ 
+            //    AnimalID = dogID,
+            //    Name = request.NewDog.Name,
+            //    Type = "Dog"
+            //};
 
             var createdDog = await _dogRepository.AddDog(dogToCreate);
 

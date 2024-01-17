@@ -1,4 +1,5 @@
 ﻿using Domain.Models.Animals.Dogs;
+using Domain.Models.Users;
 using Infrastructure.Database;
 
 namespace Infrastructure.Repositories.Animals.Dogs
@@ -47,6 +48,38 @@ namespace Infrastructure.Repositories.Animals.Dogs
                 _realDatabase.Dogs.Add(dogToAdd);
                 _realDatabase.SaveChanges();
                 return await Task.FromResult(dogToAdd);
+            }
+            catch (ArgumentException e)
+            {
+                //// Log the error and return an error response
+                //_logger.LogError(e, "Error registering user");
+                throw new ArgumentException(e.Message);
+            }
+        }
+
+        public async Task<Dog> UpdateDog(Dog dogToUpdate)
+        {
+            try
+            {
+                _realDatabase.Dogs.Update(dogToUpdate);
+                _realDatabase.SaveChanges();
+                return await Task.FromResult(dogToUpdate);
+            }
+            catch (ArgumentException e)
+            {
+                //// Log the error and return an error response
+                //_logger.LogError(e, "Error registering user");
+                throw new ArgumentException(e.Message);
+            }
+        }
+
+        public async Task<Dog> DeleteDog(Dog dogToDelete)
+        {
+            try
+            {
+                _realDatabase.Dogs.Remove(dogToDelete);
+                _realDatabase.SaveChanges();
+                return await Task.FromResult(dogToDelete);
             }
             catch (ArgumentException e)
             {
