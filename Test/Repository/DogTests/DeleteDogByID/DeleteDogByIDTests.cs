@@ -3,7 +3,7 @@ using Infrastructure.Database;
 using Infrastructure.Repositories.Animals.Dogs;
 using Moq;
 
-namespace Test.Repository.DogTests.DeleteDogByIID
+namespace Test.Repository.DogTests.DeleteDogByID
 {
     [TestFixture]
     internal class DeleteDogByIDTests

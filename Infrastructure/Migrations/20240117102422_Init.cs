@@ -133,36 +133,36 @@ namespace Infrastructure.Migrations
                 columns: new[] { "AnimalID", "Name", "Type" },
                 values: new object[,]
                 {
-                    { new Guid("045d4182-cd28-401d-be8b-007abb2d9105"), "Tiger", "Cat" },
-                    { new Guid("09898173-fd9d-48ab-84ca-a8050a543a95"), "Maverick", "Bird" },
-                    { new Guid("139121c5-e18a-4e66-a613-820ab065c915"), "Rose", "Cat" },
-                    { new Guid("18951cee-1f2c-4a7e-be9e-1c04f4184902"), "Polly", "Bird" },
-                    { new Guid("27a1fd69-423f-42b3-9573-6914b33f717c"), "NewG", "Dog" },
-                    { new Guid("2f0fb393-fc1e-481c-8e41-fc90b258711e"), "Molly", "Cat" },
-                    { new Guid("48635346-a311-4a4c-9410-c4f55e304dd9"), "Apollo", "Bird" },
-                    { new Guid("553f3872-dc38-4d24-b63f-7dc747cbd85c"), "Skye", "Bird" },
-                    { new Guid("65eb3f00-a585-4d73-bbd7-589c2f61e3de"), "Stanley", "Dog" },
-                    { new Guid("6951237d-24e9-46ad-a5fa-525d3f005e66"), "Charlie", "Cat" },
-                    { new Guid("69b059b7-c4c8-4ba4-b6ec-4bd9b79a7535"), "Daffy", "Bird" },
-                    { new Guid("6cf2f038-545a-4106-aaeb-ef87708e2285"), "Jack", "Cat" },
-                    { new Guid("7d3e352a-3560-4df0-a03a-8131d7c53286"), "Ludde", "Dog" },
-                    { new Guid("7e1909ca-a291-4524-8d79-cbdc3519a805"), "Signe", "Cat" },
-                    { new Guid("999b246c-71c7-4008-b823-5dbcf7dc74c1"), "Peppe", "Dog" },
-                    { new Guid("9e9b684d-b5a1-4388-81f7-d079bdffadaa"), "Blue", "Bird" },
-                    { new Guid("a9554639-2d39-4054-97c1-5f444b3a3c8d"), "Simba", "Cat" },
-                    { new Guid("a9a96751-a9bb-4124-ba32-152d57534ded"), "Oscar", "Cat" },
-                    { new Guid("b0f9c05d-f617-4297-8a18-5f5670802f8a"), "Jay", "Bird" },
-                    { new Guid("b5657528-7eb6-4068-b55a-f54ac1a61fb6"), "Fred", "Cat" },
-                    { new Guid("c0497ba8-b715-406e-a8fe-bdc88b6d9096"), "Björn", "Dog" },
-                    { new Guid("c2ce0766-fe81-42dc-a957-5c5eeeec6b33"), "Rufus", "Dog" },
-                    { new Guid("cb6cc4fe-52a6-47d3-a8df-6c1946b4090c"), "Felix", "Dog" },
-                    { new Guid("e00cff79-927b-451a-ba9c-406c42635be2"), "Ace", "Bird" },
-                    { new Guid("ef4c76ca-ae86-4276-a764-c0d33da81c6c"), "Chip", "Bird" },
-                    { new Guid("f3ce2d2b-aae3-4aa3-a280-dae229e21aa4"), "Alfred", "Dog" },
-                    { new Guid("f56b6393-4fab-4f94-bee5-4783d28b70de"), "Paulie", "Bird" },
-                    { new Guid("f6b83270-68e9-45ec-82b7-4e8b700eb70b"), "Mittens", "Cat" },
-                    { new Guid("f9562e70-45d3-4e4b-b4e5-4974fb47ba36"), "OldG", "Dog" },
-                    { new Guid("fba79c58-c875-4e4b-80b9-5e250bbebd52"), "Patrik", "Dog" }
+                    { new Guid("01df08f7-f0e8-433b-aed0-c426ae257fcc"), "Jack", "Cat" },
+                    { new Guid("0303504c-ec24-401a-860c-1ac0ae9f12ff"), "Chip", "Bird" },
+                    { new Guid("1e34fb48-58b3-4685-a38b-1b381fa07e22"), "Rose", "Cat" },
+                    { new Guid("2112ef42-3c65-400b-aa15-2891b4fbb6f0"), "Molly", "Cat" },
+                    { new Guid("221d53e4-1e0f-44a7-93a0-dd14dc8104b3"), "Skye", "Bird" },
+                    { new Guid("24dc68c6-6980-46f6-b23f-e3abccc0a0f1"), "Blue", "Bird" },
+                    { new Guid("25925cfb-a43a-490d-852d-69f8a085d0fb"), "Patrik", "Dog" },
+                    { new Guid("2dbbd568-78e0-42ff-a675-bf268adf598e"), "Jay", "Bird" },
+                    { new Guid("33d22b2d-db29-482a-9c87-225ab75592ed"), "Oscar", "Cat" },
+                    { new Guid("37a7f1e7-7c39-4a9f-a72b-d5022d61c021"), "Signe", "Cat" },
+                    { new Guid("3d5fa03c-a75c-4eff-81c4-d0e1c7f82ff3"), "Ludde", "Dog" },
+                    { new Guid("3deb994b-b559-40cf-8003-40d644fcfc8a"), "Paulie", "Bird" },
+                    { new Guid("57bb1c98-5da1-4552-aa00-921bdb53e542"), "Stanley", "Dog" },
+                    { new Guid("5c65250c-21ae-4e92-b6b7-2a42f311edc3"), "Felix", "Dog" },
+                    { new Guid("5cb27aea-7288-46a2-80dc-1715a6d35c29"), "Tiger", "Cat" },
+                    { new Guid("6ccc4bd2-ff46-45ed-8a71-03a4318714e8"), "Polly", "Bird" },
+                    { new Guid("753b16a5-479e-4528-a75d-5e98033cd0c1"), "Rufus", "Dog" },
+                    { new Guid("7a50bfdc-e200-41e8-9769-e70f77147cda"), "Maverick", "Bird" },
+                    { new Guid("7da9bbfa-0ff4-4758-941b-55dedda0aca7"), "Mittens", "Cat" },
+                    { new Guid("a4ba4856-b64b-4697-adde-516c9f856fa5"), "Simba", "Cat" },
+                    { new Guid("aa9cd7c2-a702-4658-a09a-5f4f622873e2"), "NewG", "Dog" },
+                    { new Guid("b18205d4-17ca-4233-93dd-8923154eeba4"), "Ace", "Bird" },
+                    { new Guid("d0278d8a-e841-4639-841a-4d9b5a5935de"), "Alfred", "Dog" },
+                    { new Guid("d0ddb4a7-9369-4b3f-9c2a-5b3e282235ef"), "Charlie", "Cat" },
+                    { new Guid("dc1f1b5a-50ae-4b21-ba80-7919403d2634"), "Fred", "Cat" },
+                    { new Guid("dd622008-e534-46d2-8df8-6fa330f16ebb"), "Björn", "Dog" },
+                    { new Guid("e7775aaf-f27c-469e-b17d-0c88590e1fc4"), "OldG", "Dog" },
+                    { new Guid("f1233b7a-ba0e-464f-8633-6ddcd45962b9"), "Apollo", "Bird" },
+                    { new Guid("f56a5dc5-35df-4f8a-b255-294fbd812891"), "Daffy", "Bird" },
+                    { new Guid("f7b4f4ae-19d2-4fd6-bfcc-536921b3a867"), "Peppe", "Dog" }
                 });
 
             migrationBuilder.InsertData(
@@ -170,16 +170,16 @@ namespace Infrastructure.Migrations
                 columns: new[] { "BirdID", "AnimalID", "CanFly", "Color", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("09898173-fd9d-48ab-84ca-a8050a543a95"), null, false, "", "Maverick" },
-                    { new Guid("18951cee-1f2c-4a7e-be9e-1c04f4184902"), null, false, "", "Polly" },
-                    { new Guid("48635346-a311-4a4c-9410-c4f55e304dd9"), null, false, "", "Apollo" },
-                    { new Guid("553f3872-dc38-4d24-b63f-7dc747cbd85c"), null, false, "", "Skye" },
-                    { new Guid("69b059b7-c4c8-4ba4-b6ec-4bd9b79a7535"), null, false, "", "Daffy" },
-                    { new Guid("9e9b684d-b5a1-4388-81f7-d079bdffadaa"), null, false, "", "Blue" },
-                    { new Guid("b0f9c05d-f617-4297-8a18-5f5670802f8a"), null, false, "", "Jay" },
-                    { new Guid("e00cff79-927b-451a-ba9c-406c42635be2"), null, false, "", "Ace" },
-                    { new Guid("ef4c76ca-ae86-4276-a764-c0d33da81c6c"), null, false, "", "Chip" },
-                    { new Guid("f56b6393-4fab-4f94-bee5-4783d28b70de"), null, false, "", "Paulie" }
+                    { new Guid("0303504c-ec24-401a-860c-1ac0ae9f12ff"), null, false, "Red", "Chip" },
+                    { new Guid("221d53e4-1e0f-44a7-93a0-dd14dc8104b3"), null, false, "Yellow", "Skye" },
+                    { new Guid("24dc68c6-6980-46f6-b23f-e3abccc0a0f1"), null, true, "Purple", "Blue" },
+                    { new Guid("2dbbd568-78e0-42ff-a675-bf268adf598e"), null, true, "Purple", "Jay" },
+                    { new Guid("3deb994b-b559-40cf-8003-40d644fcfc8a"), null, true, "Blue", "Paulie" },
+                    { new Guid("6ccc4bd2-ff46-45ed-8a71-03a4318714e8"), null, true, "Orange", "Polly" },
+                    { new Guid("7a50bfdc-e200-41e8-9769-e70f77147cda"), null, true, "Yellow", "Maverick" },
+                    { new Guid("b18205d4-17ca-4233-93dd-8923154eeba4"), null, false, "Red", "Ace" },
+                    { new Guid("f1233b7a-ba0e-464f-8633-6ddcd45962b9"), null, false, "Green", "Apollo" },
+                    { new Guid("f56a5dc5-35df-4f8a-b255-294fbd812891"), null, true, "Green", "Daffy" }
                 });
 
             migrationBuilder.InsertData(
@@ -187,16 +187,16 @@ namespace Infrastructure.Migrations
                 columns: new[] { "CatID", "AnimalID", "Breed", "LikesToPlay", "Name", "Weight" },
                 values: new object[,]
                 {
-                    { new Guid("045d4182-cd28-401d-be8b-007abb2d9105"), null, "", false, "Tiger", 0 },
-                    { new Guid("139121c5-e18a-4e66-a613-820ab065c915"), null, "", false, "Rose", 0 },
-                    { new Guid("2f0fb393-fc1e-481c-8e41-fc90b258711e"), null, "", false, "Molly", 0 },
-                    { new Guid("6951237d-24e9-46ad-a5fa-525d3f005e66"), null, "", false, "Charlie", 0 },
-                    { new Guid("6cf2f038-545a-4106-aaeb-ef87708e2285"), null, "", false, "Jack", 0 },
-                    { new Guid("7e1909ca-a291-4524-8d79-cbdc3519a805"), null, "", false, "Signe", 0 },
-                    { new Guid("a9554639-2d39-4054-97c1-5f444b3a3c8d"), null, "", false, "Simba", 0 },
-                    { new Guid("a9a96751-a9bb-4124-ba32-152d57534ded"), null, "", false, "Oscar", 0 },
-                    { new Guid("b5657528-7eb6-4068-b55a-f54ac1a61fb6"), null, "", false, "Fred", 0 },
-                    { new Guid("f6b83270-68e9-45ec-82b7-4e8b700eb70b"), null, "", false, "Mittens", 0 }
+                    { new Guid("01df08f7-f0e8-433b-aed0-c426ae257fcc"), null, "Siames", true, "Jack", 3 },
+                    { new Guid("1e34fb48-58b3-4685-a38b-1b381fa07e22"), null, "Bengal", false, "Rose", 6 },
+                    { new Guid("2112ef42-3c65-400b-aa15-2891b4fbb6f0"), null, "Ragdoll", false, "Molly", 6 },
+                    { new Guid("33d22b2d-db29-482a-9c87-225ab75592ed"), null, "Burma", true, "Oscar", 4 },
+                    { new Guid("37a7f1e7-7c39-4a9f-a72b-d5022d61c021"), null, "Ragdoll", false, "Signe", 4 },
+                    { new Guid("5cb27aea-7288-46a2-80dc-1715a6d35c29"), null, "Perser", false, "Tiger", 5 },
+                    { new Guid("7da9bbfa-0ff4-4758-941b-55dedda0aca7"), null, "Burma", true, "Mittens", 5 },
+                    { new Guid("a4ba4856-b64b-4697-adde-516c9f856fa5"), null, "Bengal", true, "Simba", 6 },
+                    { new Guid("d0ddb4a7-9369-4b3f-9c2a-5b3e282235ef"), null, "Perser", true, "Charlie", 3 },
+                    { new Guid("dc1f1b5a-50ae-4b21-ba80-7919403d2634"), null, "Brittiskt korthår", true, "Fred", 4 }
                 });
 
             migrationBuilder.InsertData(
@@ -204,16 +204,16 @@ namespace Infrastructure.Migrations
                 columns: new[] { "DogID", "AnimalID", "Breed", "Name", "Weight" },
                 values: new object[,]
                 {
-                    { new Guid("27a1fd69-423f-42b3-9573-6914b33f717c"), null, "", "NewG", 0 },
-                    { new Guid("65eb3f00-a585-4d73-bbd7-589c2f61e3de"), null, "", "Stanley", 0 },
-                    { new Guid("7d3e352a-3560-4df0-a03a-8131d7c53286"), null, "", "Ludde", 0 },
-                    { new Guid("999b246c-71c7-4008-b823-5dbcf7dc74c1"), null, "", "Peppe", 0 },
-                    { new Guid("c0497ba8-b715-406e-a8fe-bdc88b6d9096"), null, "", "Björn", 0 },
-                    { new Guid("c2ce0766-fe81-42dc-a957-5c5eeeec6b33"), null, "", "Rufus", 0 },
-                    { new Guid("cb6cc4fe-52a6-47d3-a8df-6c1946b4090c"), null, "", "Felix", 0 },
-                    { new Guid("f3ce2d2b-aae3-4aa3-a280-dae229e21aa4"), null, "", "Alfred", 0 },
-                    { new Guid("f9562e70-45d3-4e4b-b4e5-4974fb47ba36"), null, "", "OldG", 0 },
-                    { new Guid("fba79c58-c875-4e4b-80b9-5e250bbebd52"), null, "", "Patrik", 0 }
+                    { new Guid("25925cfb-a43a-490d-852d-69f8a085d0fb"), null, "Golden retriever", "Patrik", 13 },
+                    { new Guid("3d5fa03c-a75c-4eff-81c4-d0e1c7f82ff3"), null, "Boxer", "Ludde", 9 },
+                    { new Guid("57bb1c98-5da1-4552-aa00-921bdb53e542"), null, "Labrador", "Stanley", 6 },
+                    { new Guid("5c65250c-21ae-4e92-b6b7-2a42f311edc3"), null, "Labrador", "Felix", 12 },
+                    { new Guid("753b16a5-479e-4528-a75d-5e98033cd0c1"), null, "Rottweiler", "Rufus", 8 },
+                    { new Guid("aa9cd7c2-a702-4658-a09a-5f4f622873e2"), null, "Bulldog", "NewG", 4 },
+                    { new Guid("d0278d8a-e841-4639-841a-4d9b5a5935de"), null, "Pudel", "Alfred", 6 },
+                    { new Guid("dd622008-e534-46d2-8df8-6fa330f16ebb"), null, "Schäfer", "Björn", 12 },
+                    { new Guid("e7775aaf-f27c-469e-b17d-0c88590e1fc4"), null, "Labrador", "OldG", 10 },
+                    { new Guid("f7b4f4ae-19d2-4fd6-bfcc-536921b3a867"), null, "Boxer", "Peppe", 8 }
                 });
 
             migrationBuilder.InsertData(
@@ -221,8 +221,8 @@ namespace Infrastructure.Migrations
                 columns: new[] { "ID", "Authorized", "Password", "Role", "Token", "Username" },
                 values: new object[,]
                 {
-                    { new Guid("12345678-1234-5678-1234-567812345674"), true, "password", "admin", null, "testUser2" },
-                    { new Guid("9cf8a602-0159-440a-94a0-3849a3f90424"), true, "admin", "admin", null, "admin" }
+                    { new Guid("10ba5986-c597-44a9-b87f-093d6c102ca2"), true, "admin", "admin", null, "admin" },
+                    { new Guid("12345678-1234-5678-1234-567812345674"), true, "password", "admin", null, "testUser2" }
                 });
 
             migrationBuilder.CreateIndex(

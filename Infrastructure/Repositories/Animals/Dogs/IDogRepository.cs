@@ -1,5 +1,4 @@
 ﻿using Domain.Models.Animals.Dogs;
-using Domain.Models.Users;
 
 namespace Infrastructure.Repositories.Animals.Dogs
 {
