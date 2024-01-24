@@ -24,8 +24,8 @@ namespace Test.Repository.DogTests.GetAllDogs
             // Arrange
             List<Dog> dogs =
             [
-                new Dog() { DogID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "TestDog1" },
-                new Dog() { DogID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Name = "TestDog2" },
+                new Dog() { AnimalID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "TestDog1" },
+                new Dog() { AnimalID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Name = "TestDog2" },
             ];
 
 

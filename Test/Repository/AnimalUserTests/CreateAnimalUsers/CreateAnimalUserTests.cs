@@ -27,12 +27,12 @@ namespace Test.Repository.AnimalUserTests.CreateAnimalUsers
             List<User> users =
             [
                 new User() { ID = new Guid("12345678-1234-5678-1234-567812345675"), Username = "testUser2", Password = "password", Authorized = true, Role = "admin" },
-                new User() { ID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Username = "admin1", Password = "Password123!", Authorized = true, Role = "admin" },
+                new User() { ID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Username = "admin1", Password = "Password123!", Authorized = true, Role = "admin" }
             ];
             List<Animal> animals =
             [
-                new Animal() { AnimalID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "testAnimal1", Type = "Dog" },
-                new Animal() { AnimalID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Name = "testAnimal2", Type = "Cat" },
+                new Animal() { AnimalID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "testAnimal1" },
+                new Animal() { AnimalID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Name = "testAnimal2" }
             ];
 
             var animalUserToCreate = new AnimalUser() { AnimalID = new Guid("12345678-1234-5678-1234-567812345674"), UserID = new Guid("12345678-1234-5678-1234-567812345675") };

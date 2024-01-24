@@ -26,20 +26,21 @@ namespace Application.Commands.Animals.Cats.AddCat
                 throw new ArgumentException("Registration error: " + string.Join("; ", allErrors));
             }
 
-            //var CatID = Guid.NewGuid();
+            //var AnimalID = Guid.NewGuid();
 
             // Here can we use something called AutoMapper, helps us convert Dtos to Domain Models...
             var catToCreate = new Cat
             {
-                CatID = Guid.NewGuid(),
+                AnimalID = Guid.NewGuid(),
                 Name = request.NewCat.Name,
+                LikesToPlay = request.NewCat.LikesToPlay,
                 Breed = request.NewCat.Breed,
                 Weight = request.NewCat.Weight
             };
 
             //var animalToCreate = new Animal 
             //{ 
-            //    AnimalID = CatID,
+            //    AnimalID = AnimalID,
             //    Name = request.NewCat.Name,
             //    Type = "Cat"
             //};

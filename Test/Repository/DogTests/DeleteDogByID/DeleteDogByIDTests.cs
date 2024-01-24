@@ -25,13 +25,13 @@ namespace Test.Repository.DogTests.DeleteDogByID
             // Arrange
             List<Dog> dogs =
             [
-                new Dog() { DogID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "TestDog1" },
-                new Dog() { DogID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Name = "TestDog2" },
+                new Dog() { AnimalID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "TestDog1" },
+                new Dog() { AnimalID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Name = "TestDog2" },
             ];
 
             var ID = new Guid("12345678-1234-5678-1234-567812345674");
 
-            var dogToDelete = dogs.Where(dog => dog.DogID == ID).FirstOrDefault();
+            var dogToDelete = dogs.Where(dog => dog.AnimalID == ID).FirstOrDefault();
 
             var result = await _dogRepository.DeleteDog(dogToDelete!);
 
@@ -46,12 +46,12 @@ namespace Test.Repository.DogTests.DeleteDogByID
             // Arrange
             List<Dog> dogs =
             [
-                new Dog() { DogID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "TestDog1" },
-                new Dog() { DogID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Name = "TestDog2" },
+                new Dog() { AnimalID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "TestDog1" },
+                new Dog() { AnimalID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Name = "TestDog2" },
             ];
             var invalidID = Guid.NewGuid();
 
-            var dogToDelete = dogs.Where(dog => dog.DogID == invalidID).FirstOrDefault();
+            var dogToDelete = dogs.Where(dog => dog.AnimalID == invalidID).FirstOrDefault();
 
             var result = await _dogRepository.DeleteDog(dogToDelete!);
 
