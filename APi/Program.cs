@@ -1,5 +1,7 @@
 using Application;
 using Infrastructure;
+using Infrastructure.Repositories.Animals.Birds;
+using Infrastructure.Repositories.Animals.Cats;
 using Infrastructure.Repositories.Animals.Dogs;
 using Infrastructure.Repositories.AnimalUsers;
 using Infrastructure.Repositories.Users;
@@ -65,7 +67,14 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-builder.Services.AddApplication().AddInfrastructure().AddTransient<IUserRepository, UserRepository>().AddTransient<IAnimalUserRepository, AnimalUserRepository>().AddTransient<IDogRepository, DogRepository>();
+builder.Services
+    .AddApplication()
+    .AddInfrastructure()
+    .AddTransient<IUserRepository, UserRepository>()
+    .AddTransient<IAnimalUserRepository, AnimalUserRepository>()
+    .AddTransient<IDogRepository, DogRepository>()
+    .AddTransient<ICatRepository, CatRepository>()
+    .AddTransient<IBirdRepository, BirdRepository>();
 
 
 var app = builder.Build();
