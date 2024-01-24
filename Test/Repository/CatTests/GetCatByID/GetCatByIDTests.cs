@@ -25,13 +25,13 @@ namespace Test.Repository.CatTests.GetCatByID
 
             List<Cat> Cats =
             [
-                new Cat() { CatID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "TestCat1" },
-                new Cat() { CatID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Name = "TestCat2" },
+                new Cat() { AnimalID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "TestCat1" },
+                new Cat() { AnimalID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Name = "TestCat2" },
             ];
 
             var ID = new Guid("12345678-1234-5678-1234-567812345674");
 
-            var wantedCat = Cats.Where(Cat => Cat.CatID == ID).FirstOrDefault()!;
+            var wantedCat = Cats.Where(Cat => Cat.AnimalID == ID).FirstOrDefault()!;
 
             _catRepositoryMock.Setup(x => x.GetCatByID(ID)).ReturnsAsync(wantedCat);
 
@@ -42,7 +42,7 @@ namespace Test.Repository.CatTests.GetCatByID
 
             // Assert
             Assert.That(result, Is.Not.Null);
-            Assert.That(result.CatID, Is.EqualTo(ID));
+            Assert.That(result.AnimalID, Is.EqualTo(ID));
         }
         [Test]
         public async Task Returns_Null()

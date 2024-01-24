@@ -22,14 +22,14 @@ namespace Test.Repository.CatTests.AddCat
         public async Task AddCat_Success()
         {
             // Arrange
-            var catToAdd = new Cat() { CatID = Guid.NewGuid(), Name = "TestCat3" };
+            var catToAdd = new Cat() { AnimalID = Guid.NewGuid(), Name = "TestCat3" };
 
             // Act
             var addedCat = await _catRepository.AddCat(catToAdd);
 
             // Assert
             Assert.NotNull(addedCat);
-            Assert.That(addedCat.CatID, Is.EqualTo(catToAdd.CatID));
+            Assert.That(addedCat.AnimalID, Is.EqualTo(catToAdd.AnimalID));
             Assert.That(addedCat.Name, Is.EqualTo(catToAdd.Name));
             _mockRealDatabase.Verify(db => db.Cats.Add(It.IsAny<Cat>()), Times.Once);
             _mockRealDatabase.Verify(db => db.SaveChanges(), Times.Once);

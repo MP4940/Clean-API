@@ -24,7 +24,6 @@ namespace Infrastructure.Repositories.AnimalUsers
                     {
                         Username = au.User.Username,
                         AnimalName = au.Animal.Name,
-                        AnimalType = au.Animal.Type
                     })
                     .ToListAsync();
                 return animalUsers;

@@ -26,12 +26,12 @@ namespace Infrastructure.Database
 
     //    private static List<Dog> AllDogsFromMockedDatabase = new()
     //    {
-    //        new Dog { DogID = Guid.NewGuid(), Name = "Stanley" },
-    //        new Dog { DogID = Guid.NewGuid(), Name = "Rufus" },
-    //        new Dog { DogID = Guid.NewGuid(), Name = "Updog" },
-    //        new Dog { DogID = Guid.NewGuid(), Name = "Fido" },
-    //        new Dog { DogID = new Guid("12345678-1234-5678-1234-567812345678"), Name = "TestDogForUnitTests" },
-    //        new Dog { DogID = new Guid("02345678-1234-5678-1234-567812345678"), Name = "TestDogForUnitTests2" }
+    //        new Dog { AnimalID = Guid.NewGuid(), Name = "Stanley" },
+    //        new Dog { AnimalID = Guid.NewGuid(), Name = "Rufus" },
+    //        new Dog { AnimalID = Guid.NewGuid(), Name = "Updog" },
+    //        new Dog { AnimalID = Guid.NewGuid(), Name = "Fido" },
+    //        new Dog { AnimalID = new Guid("12345678-1234-5678-1234-567812345678"), Name = "TestDogForUnitTests" },
+    //        new Dog { AnimalID = new Guid("02345678-1234-5678-1234-567812345678"), Name = "TestDogForUnitTests2" }
     //    };
 
 
@@ -44,12 +44,12 @@ namespace Infrastructure.Database
     //    private static List<Cat> AllCatsFromMockedDatabase = new()
     //    {
     //        new Cat
-    //        { DogID = Guid.NewGuid(), Name = "Pella", LikesToPlay = true },
-    //        new Cat { DogID = Guid.NewGuid(), Name = "Jack", LikesToPlay = true },
-    //        new Cat { DogID = Guid.NewGuid(), Name = "Nisse", LikesToPlay = true },
-    //        new Cat { DogID = Guid.NewGuid(), Name = "Kattja", LikesToPlay = false },
-    //        new Cat { DogID = new Guid("12345678-1234-5678-1234-567812345678"), Name = "TestCatForUnitTests", LikesToPlay = false },
-    //        new Cat { DogID = new Guid("02345678-1234-5678-1234-567812345678"), Name = "TestCatForUnitTests2", LikesToPlay = false }
+    //        { AnimalID = Guid.NewGuid(), Name = "Pella", LikesToPlay = true },
+    //        new Cat { AnimalID = Guid.NewGuid(), Name = "Jack", LikesToPlay = true },
+    //        new Cat { AnimalID = Guid.NewGuid(), Name = "Nisse", LikesToPlay = true },
+    //        new Cat { AnimalID = Guid.NewGuid(), Name = "Kattja", LikesToPlay = false },
+    //        new Cat { AnimalID = new Guid("12345678-1234-5678-1234-567812345678"), Name = "TestCatForUnitTests", LikesToPlay = false },
+    //        new Cat { AnimalID = new Guid("02345678-1234-5678-1234-567812345678"), Name = "TestCatForUnitTests2", LikesToPlay = false }
     //    };
 
 
@@ -61,12 +61,12 @@ namespace Infrastructure.Database
 
     //    private static List<Bird> AllBirdsFromMockedDatabase = new()
     //    {
-    //        new Bird { DogID = Guid.NewGuid(), Name = "Polly", CanFly = true },
-    //        new Bird { DogID = Guid.NewGuid(), Name = "Peppe", CanFly = true },
-    //        new Bird { DogID = Guid.NewGuid(), Name = "Lars-Åke", CanFly = true },
-    //        new Bird { DogID = Guid.NewGuid(), Name = "Harry", CanFly = false },
-    //        new Bird { DogID = new Guid("12345678-1234-5678-1234-567812345678"), Name = "TestBirdForUnitTests", CanFly = false },
-    //        new Bird { DogID = new Guid("02345678-1234-5678-1234-567812345678"), Name = "TestBirdForUnitTests2", CanFly = false }
+    //        new Bird { AnimalID = Guid.NewGuid(), Name = "Polly", CanFly = true },
+    //        new Bird { AnimalID = Guid.NewGuid(), Name = "Peppe", CanFly = true },
+    //        new Bird { AnimalID = Guid.NewGuid(), Name = "Lars-Åke", CanFly = true },
+    //        new Bird { AnimalID = Guid.NewGuid(), Name = "Harry", CanFly = false },
+    //        new Bird { AnimalID = new Guid("12345678-1234-5678-1234-567812345678"), Name = "TestBirdForUnitTests", CanFly = false },
+    //        new Bird { AnimalID = new Guid("02345678-1234-5678-1234-567812345678"), Name = "TestBirdForUnitTests2", CanFly = false }
     //    };
     //}
 }

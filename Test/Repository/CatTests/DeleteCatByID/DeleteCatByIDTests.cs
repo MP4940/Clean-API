@@ -25,13 +25,13 @@ namespace Test.Repository.CatTests.DeleteCatByID
             // Arrange
             List<Cat> cats =
             [
-                new Cat() { CatID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "TestCat1" },
-                new Cat() { CatID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Name = "TestCat2" },
+                new Cat() { AnimalID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "TestCat1" },
+                new Cat() { AnimalID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Name = "TestCat2" },
             ];
 
             var ID = new Guid("12345678-1234-5678-1234-567812345674");
 
-            var catToDelete = cats.Where(cat => cat.CatID == ID).FirstOrDefault();
+            var catToDelete = cats.Where(cat => cat.AnimalID == ID).FirstOrDefault();
 
             var result = await _catRepository.DeleteCat(catToDelete!);
 
@@ -46,12 +46,12 @@ namespace Test.Repository.CatTests.DeleteCatByID
             // Arrange
             List<Cat> cats =
             [
-                new Cat() { CatID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "TestCat1" },
-                new Cat() { CatID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Name = "TestCat2" },
+                new Cat() { AnimalID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "TestCat1" },
+                new Cat() { AnimalID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Name = "TestCat2" },
             ];
             var invalidID = Guid.NewGuid();
 
-            var catToDelete = cats.Where(Cat => Cat.CatID == invalidID).FirstOrDefault();
+            var catToDelete = cats.Where(Cat => Cat.AnimalID == invalidID).FirstOrDefault();
 
             var result = await _catRepository.DeleteCat(catToDelete!);
 

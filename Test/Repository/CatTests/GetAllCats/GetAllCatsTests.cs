@@ -24,8 +24,8 @@ namespace Test.Repository.CatTests.GetAllCats
             // Arrange
             List<Cat> Cats =
             [
-                new Cat() { CatID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "TestCat1" },
-                new Cat() { CatID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Name = "TestCat2" },
+                new Cat() { AnimalID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "TestCat1" },
+                new Cat() { AnimalID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Name = "TestCat2" },
             ];
 
 

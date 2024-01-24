@@ -22,14 +22,14 @@ namespace Test.Repository.DogTests.AddDog
         public async Task AddDog_Success()
         {
             // Arrange
-            var dogToAdd = new Dog() { DogID = Guid.NewGuid(), Name = "TestDog3" };
+            var dogToAdd = new Dog() { AnimalID = Guid.NewGuid(), Name = "TestDog3" };
 
             // Act
             var addedDog = await _dogRepository.AddDog(dogToAdd);
 
             // Assert
             Assert.NotNull(addedDog);
-            Assert.That(addedDog.DogID, Is.EqualTo(dogToAdd.DogID));
+            Assert.That(addedDog.AnimalID, Is.EqualTo(dogToAdd.AnimalID));
             Assert.That(addedDog.Name, Is.EqualTo(dogToAdd.Name));
             _mockRealDatabase.Verify(db => db.Dogs.Add(It.IsAny<Dog>()), Times.Once);
             _mockRealDatabase.Verify(db => db.SaveChanges(), Times.Once);

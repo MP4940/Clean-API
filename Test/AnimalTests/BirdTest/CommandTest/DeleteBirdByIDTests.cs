@@ -37,7 +37,7 @@ namespace Test.AnimalTests.BirdTest.CommandTest
     //        // Assert
     //        Assert.NotNull(resultGetBirdByIDBefore);
     //        Assert.IsNull(resultGetBirdByIDAfter);
-    //        Assert.That(result.DogID, Is.EqualTo(birdID));
+    //        Assert.That(result.AnimalID, Is.EqualTo(birdID));
     //    }
     //}
 }

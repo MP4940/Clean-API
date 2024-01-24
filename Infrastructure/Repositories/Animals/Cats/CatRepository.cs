@@ -29,7 +29,7 @@ namespace Infrastructure.Repositories.Animals.Cats
         {
             try
             {
-                var wantedCat = _realDatabase.Cats.Where(Cat => Cat.CatID == id).FirstOrDefault()!;
+                var wantedCat = _realDatabase.Cats.Where(Cat => Cat.AnimalID == id).FirstOrDefault()!;
                 return await Task.FromResult(wantedCat);
             }
             catch (ArgumentException e)

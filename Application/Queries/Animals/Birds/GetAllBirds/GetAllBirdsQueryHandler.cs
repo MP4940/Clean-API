@@ -1,21 +1,22 @@
 ﻿using Domain.Models.Animals.Birds;
-using Infrastructure.Database;
+using Infrastructure.Repositories.Animals.Birds;
 using MediatR;
 
 namespace Application.Queries.Animals.Birds.GetAllBirds
 {
-    //public class GetAllBirdsQueryHandler : IRequestHandler<GetAllBirdsQuery, List<Bird>>
-    //{
-    //    private readonly MockDatabase _mockDatabase;
+    public class GetAllBirdsQueryHandler : IRequestHandler<GetAllBirdsQuery, List<Bird>>
+    {
+        private readonly IBirdRepository _birdRepository;
 
-    //    public GetAllBirdsQueryHandler(MockDatabase mockDatabase)
-    //    {
-    //        _mockDatabase = mockDatabase;
-    //    }
-    //    public Task<List<Bird>> Handle(GetAllBirdsQuery request, CancellationToken cancellationToken)
-    //    {
-    //        List<Bird> allBirdsFromMockDatabase = _mockDatabase.AllBirds;
-    //        return Task.FromResult(allBirdsFromMockDatabase);
-    //    }
-    //}
+        public GetAllBirdsQueryHandler(IBirdRepository birdRepository)
+        {
+            _birdRepository = birdRepository;
+        }
+
+        public async Task<List<Bird>> Handle(GetAllBirdsQuery request, CancellationToken cancellationToken)
+        {
+            List<Bird> allBirds = await _birdRepository.GetAllBirds();
+            return allBirds;
+        }
+    }
 }

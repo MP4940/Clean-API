@@ -31,7 +31,7 @@ namespace Application.Commands.Animals.Dogs.AddDog
             // Here can we use something called AutoMapper, helps us convert Dtos to Domain Models...
             var dogToCreate = new Dog
             {
-                DogID = Guid.NewGuid(),
+                AnimalID = Guid.NewGuid(),
                 Name = request.NewDog.Name,
                 Breed = request.NewDog.Breed,
                 Weight = request.NewDog.Weight

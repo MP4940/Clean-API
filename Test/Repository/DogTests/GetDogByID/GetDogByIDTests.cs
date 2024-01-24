@@ -25,13 +25,13 @@ namespace Test.Repository.DogTests.GetDogByID
 
             List<Dog> dogs =
             [
-                new Dog() { DogID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "TestDog1" },
-                new Dog() { DogID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Name = "TestDog2" },
+                new Dog() { AnimalID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "TestDog1" },
+                new Dog() { AnimalID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Name = "TestDog2" },
             ];
 
             var ID = new Guid("12345678-1234-5678-1234-567812345674");
 
-            var wantedDog = dogs.Where(dog => dog.DogID == ID).FirstOrDefault()!;
+            var wantedDog = dogs.Where(dog => dog.AnimalID == ID).FirstOrDefault()!;
 
             _dogRepositoryMock.Setup(x => x.GetDogByID(ID)).ReturnsAsync(wantedDog);
 
@@ -42,7 +42,7 @@ namespace Test.Repository.DogTests.GetDogByID
 
             // Assert
             Assert.That(result, Is.Not.Null);
-            Assert.That(result.DogID, Is.EqualTo(ID));
+            Assert.That(result.AnimalID, Is.EqualTo(ID));
         }
         [Test]
         public async Task Returns_Null()
