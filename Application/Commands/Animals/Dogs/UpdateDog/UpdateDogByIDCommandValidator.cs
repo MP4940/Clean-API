@@ -5,10 +5,10 @@ namespace Application.Commands.Animals.Dogs.UpdateDog
 {
     public class UpdateDogByIDCommandValidator : AbstractValidator<UpdateDogByIDCommand>
     {
-        private readonly IDogRepository _DogRepository;
-        public UpdateDogByIDCommandValidator(IDogRepository DogRepository)
+        private readonly IDogRepository _dogRepository;
+        public UpdateDogByIDCommandValidator(IDogRepository dogRepository)
         {
-            _DogRepository = DogRepository;
+            _dogRepository = dogRepository;
 
             RuleFor(command => command.UpdatedDog.Name)
             .NotEmpty().WithMessage("Name is required.");
