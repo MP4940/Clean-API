@@ -1,21 +1,22 @@
 ﻿using Domain.Models.Animals.Cats;
-using Infrastructure.Database;
+using Infrastructure.Repositories.Animals.Cats;
 using MediatR;
 
 namespace Application.Queries.Animals.Cats.GetAllCats
 {
-    //public class GetAllCatsQueryHandler : IRequestHandler<GetAllCatsQuery, List<Cat>>
-    //{
-    //    private readonly MockDatabase _mockDatabase;
+    public class GetAllCatsQueryHandler : IRequestHandler<GetAllCatsQuery, List<Cat>>
+    {
+        private readonly ICatRepository _CatRepository;
 
-    //    public GetAllCatsQueryHandler(MockDatabase mockDatabase)
-    //    {
-    //        _mockDatabase = mockDatabase;
-    //    }
-    //    public Task<List<Cat>> Handle(GetAllCatsQuery request, CancellationToken cancellationToken)
-    //    {
-    //        List<Cat> allCatsFromMockDatabase = _mockDatabase.AllCats;
-    //        return Task.FromResult(allCatsFromMockDatabase);
-    //    }
-    //}
+        public GetAllCatsQueryHandler(ICatRepository CatRepository)
+        {
+            _CatRepository = CatRepository;
+        }
+
+        public async Task<List<Cat>> Handle(GetAllCatsQuery request, CancellationToken cancellationToken)
+        {
+            List<Cat> allCats = await _CatRepository.GetAllCats();
+            return allCats;
+        }
+    }
 }

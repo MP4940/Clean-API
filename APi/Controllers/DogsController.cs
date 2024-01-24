@@ -65,7 +65,7 @@ namespace APi.Controllers
 
         // Create a new dog 
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         [Route("addNewDog")]
         public async Task<IActionResult> AddDog([FromBody] DogDto newDog)
         {
@@ -91,7 +91,7 @@ namespace APi.Controllers
 
         // Update a specific dog
         [HttpPut]
-        [Authorize]
+        //[Authorize]
         [Route("updateDog/{updatedDogID}")]
         public async Task<IActionResult> UpdateDog([FromBody] DogDto updatedDog, Guid updatedDogID)
         {
@@ -117,7 +117,7 @@ namespace APi.Controllers
 
         // Delete a specific dog
         [HttpDelete]
-        [Authorize]
+        //[Authorize]
         [Route("deleteDog/{deletedDogID}")]
         public async Task<IActionResult> DeleteDog(Guid deletedDogID)
         {

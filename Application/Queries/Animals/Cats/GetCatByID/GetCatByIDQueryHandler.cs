@@ -1,21 +1,22 @@
 ﻿using Domain.Models.Animals.Cats;
-using Infrastructure.Database;
+using Infrastructure.Repositories.Animals.Cats;
 using MediatR;
-
 
 namespace Application.Queries.Animals.Cats.GetCatByID
 {
-    //public class GetCatByIDQueryHandler : IRequestHandler<GetCatByIDQuery, Cat>
-    //{
-    //    private readonly MockDatabase _mockDatabase;
-    //    public GetCatByIDQueryHandler(MockDatabase mockDatabase)
-    //    {
-    //        _mockDatabase = mockDatabase;
-    //    }
-    //    public Task<Cat> Handle(GetCatByIDQuery request, CancellationToken cancellationToken)
-    //    {
-    //        Cat wantedCat = _mockDatabase.AllCats.Where(cat => cat.DogID == request.ID).FirstOrDefault()!;
-    //        return Task.FromResult(wantedCat);
-    //    }
-    //}
+    public class GetCatByIDQueryHandler : IRequestHandler<GetCatByIDQuery, Cat>
+    {
+        private readonly ICatRepository _catRepository;
+
+        public GetCatByIDQueryHandler(ICatRepository catRepository)
+        {
+            _catRepository = catRepository;
+        }
+
+        public async Task<Cat> Handle(GetCatByIDQuery request, CancellationToken cancellationToken)
+        {
+            Cat wantedCat = await _catRepository.GetCatByID(request.ID);
+            return wantedCat;
+        }
+    }
 }

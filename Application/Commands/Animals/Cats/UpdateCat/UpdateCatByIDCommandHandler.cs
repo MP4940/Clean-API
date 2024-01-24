@@ -1,25 +1,38 @@
 ﻿using Domain.Models.Animals.Cats;
-using Infrastructure.Database;
+using Infrastructure.Repositories.Animals.Cats;
 using MediatR;
 
 namespace Application.Commands.Animals.Cats.UpdateCat
 {
-    //public class UpdateCatByIdCommandHandler : IRequestHandler<UpdateCatByIDCommand, Cat>
-    //{
-    //    private readonly MockDatabase _mockDatabase;
+    public class UpdateCatByIDCommandHandler : IRequestHandler<UpdateCatByIDCommand, Cat>
+    {
+        private readonly ICatRepository _CatRepository;
+        private readonly UpdateCatByIDCommandValidator _validator;
+        public UpdateCatByIDCommandHandler(ICatRepository CatRepository, UpdateCatByIDCommandValidator validator)
+        {
+            _CatRepository = CatRepository;
+            _validator = validator;
+        }
+        public async Task<Cat> Handle(UpdateCatByIDCommand request, CancellationToken cancellationToken)
+        {
+            var updateCatByIDCommandValidation = _validator.Validate(request);
 
-    //    public UpdateCatByIdCommandHandler(MockDatabase mockDatabase)
-    //    {
-    //        _mockDatabase = mockDatabase;
-    //    }
-    //    public Task<Cat> Handle(UpdateCatByIDCommand request, CancellationToken cancellationToken)
-    //    {
-    //        Cat catToUpdate = _mockDatabase.AllCats.FirstOrDefault(cat => cat.DogID == request.ID)!;
+            if (!updateCatByIDCommandValidation.IsValid)
+            {
+                var allErrors = updateCatByIDCommandValidation.Errors.ConvertAll(errors => errors.ErrorMessage);
 
-    //        catToUpdate.Name = request.UpdatedCat.Name;
-    //        catToUpdate.LikesToPlay = request.UpdatedCat.LikesToPlay;
+                throw new ArgumentException("Update error: " + string.Join("; ", allErrors));
+            }
 
-    //        return Task.FromResult(catToUpdate);
-    //    }
-    //}
+            Cat catToUpdate = _CatRepository.GetCatByID(request.ID).Result;
+
+            catToUpdate.Name = request.UpdatedCat.Name;
+            catToUpdate.Weight = request.UpdatedCat.Weight;
+            catToUpdate.Breed = request.UpdatedCat.Breed;
+
+            var updatedCat = await _CatRepository.UpdateCat(catToUpdate);
+
+            return updatedCat;
+        }
+    }
 }
