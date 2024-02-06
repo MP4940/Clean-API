@@ -1,5 +1,4 @@
-﻿using Domain.Models.Animals;
-using Domain.Models.Animals.Birds;
+﻿using Domain.Models.Animals.Birds;
 using Domain.Models.Animals.Cats;
 using Domain.Models.Animals.Dogs;
 using Domain.Models.Users;
@@ -51,7 +50,6 @@ namespace Infrastructure.Database.DatabaseHelpers
             SeedUsers(modelBuilder);
             SeedCats(modelBuilder);
             SeedBirds(modelBuilder);
-            //SeedAnimals(modelBuilder);
         }
 
         private static void SeedDogs(ModelBuilder modelBuilder)
@@ -80,28 +78,6 @@ namespace Infrastructure.Database.DatabaseHelpers
                 new User { ID = Guid.NewGuid(), Username = "admin", Password = "admin", Authorized = true, Role = "admin" },
                 new User { ID = new Guid("12345678-1234-5678-1234-567812345674"), Username = "testUser2", Password = "password", Authorized = true, Role = "admin" }
             );
-        }
-
-        private static void SeedAnimals(ModelBuilder modelBuilder)
-        {
-            foreach (var x in dogs)
-            {
-                modelBuilder.Entity<Animal>().HasData(
-                    new Animal { AnimalID = x.AnimalID, Name = x.Name }
-                );
-            }
-            foreach (var x in cats)
-            {
-                modelBuilder.Entity<Animal>().HasData(
-                    new Animal { AnimalID = x.AnimalID, Name = x.Name }
-                );
-            }
-            foreach (var x in birds)
-            {
-                modelBuilder.Entity<Animal>().HasData(
-                    new Animal { AnimalID = x.AnimalID, Name = x.Name }
-                );
-            }
         }
     }
 }
