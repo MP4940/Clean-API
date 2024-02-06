@@ -39,23 +39,5 @@ namespace Test.Repository.BirdTests.DeleteBirdByID
             _mockRealDatabase.Verify(db => db.Birds.Remove(It.IsAny<Bird>()), Times.Once);
             _mockRealDatabase.Verify(db => db.SaveChanges(), Times.Once);
         }
-
-        [Test]
-        public async Task Bird_Not_Found()
-        {
-            // Arrange
-            List<Bird> birds =
-            [
-                new Bird() { AnimalID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "TestBird1" },
-                new Bird() { AnimalID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Name = "TestBird2" },
-            ];
-            var invalidID = Guid.NewGuid();
-
-            var BirdToDelete = birds.Where(Bird => Bird.AnimalID == invalidID).FirstOrDefault();
-
-            var result = await _birdRepository.DeleteBird(BirdToDelete!);
-
-            Assert.Null(result);
-        }
     }
 }

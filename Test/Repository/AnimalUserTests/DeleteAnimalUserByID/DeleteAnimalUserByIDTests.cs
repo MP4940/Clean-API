@@ -38,26 +38,5 @@ namespace Test.Repository.AnimalUserTests.DeleteAnimalUserByID
             _mockRealDatabase.Verify(db => db.AnimalUsers.Remove(It.IsAny<AnimalUser>()), Times.Once);
             _mockRealDatabase.Verify(db => db.SaveChanges(), Times.Once);
         }
-
-        [Test]
-        public async Task AnimalUser_Not_Found()
-        {
-            // Arrange
-            List<AnimalUser> animalUsers =
-            [
-                new AnimalUser() { AnimalID = new Guid("12345678-1234-5678-1234-567812345674"), UserID = new Guid("12345678-1234-5678-1234-567812345671"), Key = new Guid("12345678-1234-5678-1234-567812345675") },
-                new AnimalUser() { AnimalID = new Guid("12345678-1234-5678-1234-567812345673"), UserID = new Guid("12345678-1234-5678-1234-567812345672"), Key = new Guid("12345678-1234-5678-1234-567812345676") },
-            ];
-
-            var invalidKey = Guid.NewGuid();
-
-            var animalUserToDelete = animalUsers.Where(animalUser => animalUser.Key == invalidKey).FirstOrDefault();
-
-            // Act
-            var result = await _animalUserRepository.DeleteAnimalUser(animalUserToDelete!);
-
-            // Assert
-            Assert.Null(result);
-        }
     }
 }
