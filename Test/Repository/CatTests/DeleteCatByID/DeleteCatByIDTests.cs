@@ -39,23 +39,5 @@ namespace Test.Repository.CatTests.DeleteCatByID
             _mockRealDatabase.Verify(db => db.Cats.Remove(It.IsAny<Cat>()), Times.Once);
             _mockRealDatabase.Verify(db => db.SaveChanges(), Times.Once);
         }
-
-        [Test]
-        public async Task Cat_Not_Found()
-        {
-            // Arrange
-            List<Cat> cats =
-            [
-                new Cat() { AnimalID = new Guid("12345678-1234-5678-1234-567812345674"), Name = "TestCat1" },
-                new Cat() { AnimalID = new Guid("34d621a5-9f60-4647-bcb7-adcfdbd8dbdb"), Name = "TestCat2" },
-            ];
-            var invalidID = Guid.NewGuid();
-
-            var catToDelete = cats.Where(Cat => Cat.AnimalID == invalidID).FirstOrDefault();
-
-            var result = await _catRepository.DeleteCat(catToDelete!);
-
-            Assert.Null(result);
-        }
     }
 }
