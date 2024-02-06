@@ -7,11 +7,15 @@ namespace Application.Validators.User
     {
         public UserValidator()
         {
+            Validate();
+        }
+        public void Validate()
+        {
             RuleFor(user => user.Username)
-                .NotEmpty().WithMessage("Username is required.")
-                .MinimumLength(3).WithMessage("Username must be at least 3 characters long.")
-                .MaximumLength(20).WithMessage("Username cannot exceed 20 characters.")
-                .Matches("^[a-zA-Z0-9_-]+$").WithMessage("Username can only contain letters, numbers, underscores, and hyphens.");
+               .NotEmpty().WithMessage("Username is required.")
+               .MinimumLength(3).WithMessage("Username must be at least 3 characters long.")
+               .MaximumLength(20).WithMessage("Username cannot exceed 20 characters.")
+               .Matches("^[a-zA-Z0-9_-]+$").WithMessage("Username can only contain letters, numbers, underscores, and hyphens.");
 
             RuleFor(user => user.Password)
                 .NotEmpty().WithMessage("Password is required.")
