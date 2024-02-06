@@ -16,7 +16,7 @@ namespace API.Controllers.UsersController
     public class UsersController : ControllerBase
     {
         internal readonly IMediator _mediatR;
-        
+
 
         public UsersController(IMediator mediator)
         {
