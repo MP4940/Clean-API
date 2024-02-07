@@ -1,6 +1,6 @@
-﻿using Domain.Models.Users;
+﻿using Application.Queries.Users.GetAllUsers;
+using Domain.Models.Users;
 using Infrastructure.Repositories.Users;
-using Application.Queries.Users.GetAllUsers;
 using Moq;
 
 namespace Test.Repository.UserTests.GetAllUsers

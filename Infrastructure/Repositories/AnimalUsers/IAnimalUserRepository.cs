@@ -1,6 +1,5 @@
 ﻿using Application.Dtos.AnimalUserDto;
 using Domain.Models.AnimalUsers;
-using Domain.Models.Users;
 
 namespace Infrastructure.Repositories.AnimalUsers
 {

@@ -3,7 +3,6 @@ using Domain.Models.AnimalUsers;
 using Infrastructure.Database;
 using Infrastructure.Repositories.Animals.Cats;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Serilog;
 
 namespace Infrastructure.Repositories.AnimalUsers
