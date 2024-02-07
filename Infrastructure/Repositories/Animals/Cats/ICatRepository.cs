@@ -9,5 +9,6 @@ namespace Infrastructure.Repositories.Animals.Cats
         Task<Cat> AddCat(Cat catToAdd);
         Task<Cat> UpdateCat(Cat catToUpdate);
         Task<Cat> DeleteCat(Cat catToDelete);
+        Task<List<Cat>> GetCatsByWeightBreed(string? breed, int? weight);
     }
 }

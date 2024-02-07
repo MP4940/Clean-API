@@ -1,5 +1,6 @@
 ﻿using Domain.Models.Animals.Cats;
 using Infrastructure.Database;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 namespace Infrastructure.Repositories.Animals.Cats
@@ -96,6 +97,33 @@ namespace Infrastructure.Repositories.Animals.Cats
             {
                 _logger.Error(e, $"An error occurred while deleting cat with ID {catToDelete.AnimalID}.");
                 throw new ArgumentException(e.Message);
+            }
+        }
+
+        public async Task<List<Cat>> GetCatsByWeightBreed(string? breed, int? weight)
+        {
+            try
+            {
+                _logger.Information($"Getting cats by weight and breed...");
+                var query = _realDatabase.Cats.OfType<Cat>();
+
+                if (!string.IsNullOrEmpty(breed))
+                {
+                    query = query.Where(cat => cat.Breed == breed);
+                }
+                if (weight.HasValue)
+                {
+                    query = query.Where(cat => cat.Weight >= weight.Value);
+                }
+
+                var cats = await query.OrderByDescending(cat => cat.Weight).ToListAsync();
+                _logger.Information($"Found {cats.Count} cats by weight and breed.");
+                return cats;
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, "An error occurred while getting cats by weight and breed.");
+                throw;
             }
         }
     }
