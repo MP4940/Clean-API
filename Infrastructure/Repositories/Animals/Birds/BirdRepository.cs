@@ -1,5 +1,6 @@
 ﻿using Domain.Models.Animals.Birds;
 using Infrastructure.Database;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 namespace Infrastructure.Repositories.Animals.Birds
@@ -45,6 +46,27 @@ namespace Infrastructure.Repositories.Animals.Birds
             {
                 _logger.Error(e, $"An error occurred while getting bird by ID {id}.");
                 throw new ArgumentException(e.Message);
+            }
+        }
+
+        public async Task<List<Bird>> GetBirdsByColor(string color)
+        {
+            try
+            {
+                _logger.Information($"Getting birds by color: {color}...");
+                var birds = await _realDatabase.Birds
+                    .Where(bird => bird.Color.ToUpper() == color.ToUpper())
+                    .OrderByDescending(bird => bird.Name)
+                    .ThenByDescending(bird => bird.AnimalID)
+                    .ToListAsync();
+
+                _logger.Information($"Found {birds.Count} birds with color {color}.");
+                return birds;
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, $"An error occurred while getting birds by color {color}.");
+                throw;
             }
         }
 
