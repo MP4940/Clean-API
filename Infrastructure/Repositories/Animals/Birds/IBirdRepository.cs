@@ -9,5 +9,6 @@ namespace Infrastructure.Repositories.Animals.Birds
         Task<Bird> AddBird(Bird birdToAdd);
         Task<Bird> UpdateBird(Bird birdToUpdate);
         Task<Bird> DeleteBird(Bird birdToDelete);
+        Task<List<Bird>> GetBirdsByColor(string color);
     }
 }
