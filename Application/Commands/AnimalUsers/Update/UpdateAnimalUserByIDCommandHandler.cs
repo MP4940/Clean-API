@@ -1,8 +1,5 @@
-﻿using Application.Commands.Users.Update;
-using Domain.Models.AnimalUsers;
-using Domain.Models.Users;
+﻿using Domain.Models.AnimalUsers;
 using Infrastructure.Repositories.AnimalUsers;
-using Infrastructure.Repositories.Users;
 using MediatR;
 
 namespace Application.Commands.AnimalUsers.Update

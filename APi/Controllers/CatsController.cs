@@ -10,7 +10,6 @@ using Application.Validators.Cat;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Runtime.InteropServices;
 
 namespace APi.Controllers
 {

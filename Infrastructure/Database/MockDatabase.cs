@@ -1,9 +1,4 @@
-﻿using Domain.Models.Animals.Birds;
-using Domain.Models.Animals.Cats;
-using Domain.Models.Animals.Dogs;
-using Domain.Models.Users;
-
-namespace Infrastructure.Database
+﻿namespace Infrastructure.Database
 {
     //public class MockDatabase
     //{

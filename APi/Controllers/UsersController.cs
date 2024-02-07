@@ -1,12 +1,11 @@
-﻿using Application.Commands.Users.Register;
+﻿using Application.Commands.Users.Delete;
+using Application.Commands.Users.Register;
 using Application.Commands.Users.Update;
-using Application.Commands.Users.Delete;
 using Application.Dtos.UserDtos;
 using Application.Queries.Users.GetAllUsers;
 using Application.Queries.Users.GetToken;
 using Application.Queries.Users.GetUserByID;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers.UsersController

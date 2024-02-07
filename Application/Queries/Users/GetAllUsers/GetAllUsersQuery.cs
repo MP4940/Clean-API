@@ -1,5 +1,4 @@
-﻿using Domain.Models;
-using Domain.Models.Users;
+﻿using Domain.Models.Users;
 using MediatR;
 
 namespace Application.Queries.Users.GetAllUsers

@@ -7,9 +7,7 @@ using Application.Queries.Animals.Dogs.GetDogByID;
 using Application.Queries.Animals.Dogs.GetDogsByWeightBreed;
 using Application.Validators;
 using Application.Validators.Dog;
-using Domain.Models.Animals.Cats;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APi.Controllers

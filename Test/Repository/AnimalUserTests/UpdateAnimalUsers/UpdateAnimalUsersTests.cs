@@ -1,6 +1,4 @@
-﻿using Domain.Models.Animals;
-using Domain.Models.AnimalUsers;
-using Domain.Models.Users;
+﻿using Domain.Models.AnimalUsers;
 using Infrastructure.Database;
 using Infrastructure.Repositories.AnimalUsers;
 using Moq;

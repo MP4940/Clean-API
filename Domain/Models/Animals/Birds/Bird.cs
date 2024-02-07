@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Domain.Models.Animals.Birds
+﻿namespace Domain.Models.Animals.Birds
 {
     public class Bird : Animal
     {

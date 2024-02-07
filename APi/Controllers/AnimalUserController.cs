@@ -1,7 +1,6 @@
 ﻿using Application.Commands.AnimalUsers.Create;
 using Application.Commands.AnimalUsers.Delete;
 using Application.Commands.AnimalUsers.Update;
-using Application.Commands.Users.Delete;
 using Application.Dtos.AnimalUserDto;
 using Application.Queries.AnimalUsers.GetAllAnimalUsers;
 using Application.Queries.Users.GetAnimalUserByID;
