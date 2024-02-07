@@ -9,5 +9,6 @@ namespace Infrastructure.Repositories.Animals.Dogs
         Task<Dog> AddDog(Dog dogToAdd);
         Task<Dog> UpdateDog(Dog dogToUpdate);
         Task<Dog> DeleteDog(Dog dogToDelete);
+        Task<List<Dog>> GetDogsByWeightBreed(string? breed, int? weight);
     }
 }

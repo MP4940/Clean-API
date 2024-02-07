@@ -4,8 +4,10 @@ using Application.Commands.Animals.Dogs.UpdateDog;
 using Application.Dtos.AnimalsDtos.DogDto;
 using Application.Queries.Animals.Dogs.GetAllDogs;
 using Application.Queries.Animals.Dogs.GetDogByID;
+using Application.Queries.Animals.Dogs.GetDogsByWeightBreed;
 using Application.Validators;
 using Application.Validators.Dog;
+using Domain.Models.Animals.Cats;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -56,6 +58,21 @@ namespace APi.Controllers
             try
             {
                 return Ok(await _mediatR.Send(new GetDogByIDQuery(dogID)));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("getDogByWeightBreed")]
+        public async Task<IActionResult> GetDogsByWeightBreed(int? weight, string? breed)
+        {
+            try
+            {
+                var dogs = await _mediatR.Send(new GetDogsByWeightBreedQuery { Weight = weight, Breed = breed });
+                return Ok(dogs);
             }
             catch (Exception ex)
             {

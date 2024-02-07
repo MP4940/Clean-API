@@ -1,5 +1,6 @@
 ﻿using Domain.Models.Animals.Dogs;
 using Infrastructure.Database;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 namespace Infrastructure.Repositories.Animals.Dogs
@@ -45,6 +46,34 @@ namespace Infrastructure.Repositories.Animals.Dogs
             {
                 _logger.Error(e, $"An error occurred while getting dog by ID {id}.");
                 throw new ArgumentException(e.Message);
+            }
+        }
+
+        public async Task<List<Dog>> GetDogsByWeightBreed(string? breed, int? weight)
+        {
+            try
+            {
+                _logger.Information($"Getting dogs by weight and breed...");
+                var query = _realDatabase.Dogs.OfType<Dog>();
+
+                if (!string.IsNullOrEmpty(breed))
+                {
+                    query = query.Where(dog => dog.Breed == breed);
+                }
+
+                if (weight.HasValue)
+                {
+                    query = query.Where(dog => dog.Weight >= weight.Value);
+                }
+
+                var dogs = await query.OrderByDescending(dog => dog.Weight).ToListAsync();
+                _logger.Information($"Found {dogs.Count} dogs by weight and breed.");
+                return dogs;
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, "An error occurred while getting dogs by weight and breed.");
+                throw;
             }
         }
 
