@@ -1,8 +1,8 @@
 ﻿using Domain.Models.Users;
-using System.Security.Claims;
-using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace Infrastructure.Authentication
 {
@@ -17,9 +17,9 @@ namespace Infrastructure.Authentication
             var claims = new List<Claim>
             {
                 new("Username", user.Username),
-                new("Role", user.Role),
+                new("Role", user.Role!),
                 new("Authorized", user.Authorized.ToString()),
-                new("Id", user.Id.ToString()),
+                new("AnimalID", user.ID.ToString()),
                 new("Issuer", "Clean-API"),
                 new("Audience", "API")
             };

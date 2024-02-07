@@ -6,5 +6,7 @@
         {
             return "Bark";
         }
+        public string Breed { get; set; } = string.Empty;
+        public int Weight { get; set; }
     }
 }

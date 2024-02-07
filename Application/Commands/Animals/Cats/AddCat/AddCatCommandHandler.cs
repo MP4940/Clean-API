@@ -1,30 +1,53 @@
 ﻿using Domain.Models.Animals.Cats;
-using Infrastructure.Database;
+using Infrastructure.Repositories.Animals.Cats;
 using MediatR;
 
 namespace Application.Commands.Animals.Cats.AddCat
 {
     public class AddCatCommandHandler : IRequestHandler<AddCatCommand, Cat>
     {
-        private readonly MockDatabase _mockDatabase;
+        private readonly ICatRepository _catRepository;
+        private readonly AddCatCommandValidator _validator;
 
-        public AddCatCommandHandler(MockDatabase mockDatabase)
+        public AddCatCommandHandler(ICatRepository catRepository, AddCatCommandValidator validator)
         {
-            _mockDatabase = mockDatabase;
+            _catRepository = catRepository;
+            _validator = validator;
         }
 
-        public Task<Cat> Handle(AddCatCommand request, CancellationToken cancellationToken)
+        public async Task<Cat> Handle(AddCatCommand request, CancellationToken cancellationToken)
         {
-            Cat catToCreate = new()
+            var addCommandValidation = _validator.Validate(request);
+
+            if (!addCommandValidation.IsValid)
+            {
+                var allErrors = addCommandValidation.Errors.ConvertAll(errors => errors.ErrorMessage);
+
+                throw new ArgumentException("Registration error: " + string.Join("; ", allErrors));
+            }
+
+            //var AnimalID = Guid.NewGuid();
+
+            // Here can we use something called AutoMapper, helps us convert Dtos to Domain Models...
+            var catToCreate = new Cat
             {
                 AnimalID = Guid.NewGuid(),
                 Name = request.NewCat.Name,
-                LikesToPlay = request.NewCat.LikesToPlay
+                LikesToPlay = request.NewCat.LikesToPlay,
+                Breed = request.NewCat.Breed,
+                Weight = request.NewCat.Weight
             };
 
-            _mockDatabase.AllCats.Add(catToCreate);
+            //var animalToCreate = new Animal 
+            //{ 
+            //    AnimalID = AnimalID,
+            //    Name = request.NewCat.Name,
+            //    Type = "Cat"
+            //};
 
-            return Task.FromResult(catToCreate);
+            var createdCat = await _catRepository.AddCat(catToCreate);
+
+            return createdCat;
         }
     }
 }

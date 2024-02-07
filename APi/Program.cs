@@ -1,11 +1,21 @@
 using Application;
 using Infrastructure;
+using Infrastructure.Repositories.Animals.Birds;
+using Infrastructure.Repositories.Animals.Cats;
+using Infrastructure.Repositories.Animals.Dogs;
+using Infrastructure.Repositories.AnimalUsers;
+using Infrastructure.Repositories.Users;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Serilog;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .CreateLogger();
 
 builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
@@ -39,7 +49,7 @@ builder.Services.AddSwaggerGen(options =>
     options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
     {
         In = Microsoft.OpenApi.Models.ParameterLocation.Header,
-        Description = "Please provide a valid token",
+        Description = "Please provide a valid Token",
         Name = "Authorization",
         Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
         BearerFormat = "JWT",
@@ -62,7 +72,15 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-builder.Services.AddApplication().AddInfrastructure();
+builder.Services
+    .AddApplication()
+    .AddInfrastructure()
+    .AddTransient<IUserRepository, UserRepository>()
+    .AddTransient<IAnimalUserRepository, AnimalUserRepository>()
+    .AddTransient<IDogRepository, DogRepository>()
+    .AddTransient<ICatRepository, CatRepository>()
+    .AddTransient<IBirdRepository, BirdRepository>();
+
 
 var app = builder.Build();
 

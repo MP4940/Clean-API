@@ -1,25 +1,38 @@
 ﻿using Domain.Models.Animals.Birds;
-using Infrastructure.Database;
+using Infrastructure.Repositories.Animals.Birds;
 using MediatR;
 
 namespace Application.Commands.Animals.Birds.UpdateBird
 {
-    public class UpdateBirdByIdCommandHandler : IRequestHandler<UpdateBirdByIDCommand, Bird>
+    public class UpdateBirdByIDCommandHandler : IRequestHandler<UpdateBirdByIDCommand, Bird>
     {
-        private readonly MockDatabase _mockDatabase;
-
-        public UpdateBirdByIdCommandHandler(MockDatabase mockDatabase)
+        private readonly IBirdRepository _birdRepository;
+        private readonly UpdateBirdByIDCommandValidator _validator;
+        public UpdateBirdByIDCommandHandler(IBirdRepository birdRepository, UpdateBirdByIDCommandValidator validator)
         {
-            _mockDatabase = mockDatabase;
+            _birdRepository = birdRepository;
+            _validator = validator;
         }
-        public Task<Bird> Handle(UpdateBirdByIDCommand request, CancellationToken cancellationToken)
+        public async Task<Bird> Handle(UpdateBirdByIDCommand request, CancellationToken cancellationToken)
         {
-            Bird birdToUpdate = _mockDatabase.AllBirds.FirstOrDefault(bird => bird.AnimalID == request.ID)!;
+            var updateBirdByIDCommandValidation = _validator.Validate(request);
+
+            if (!updateBirdByIDCommandValidation.IsValid)
+            {
+                var allErrors = updateBirdByIDCommandValidation.Errors.ConvertAll(errors => errors.ErrorMessage);
+
+                throw new ArgumentException("Update error: " + string.Join("; ", allErrors));
+            }
+
+            Bird birdToUpdate = _birdRepository.GetBirdByID(request.ID).Result;
 
             birdToUpdate.Name = request.UpdatedBird.Name;
             birdToUpdate.CanFly = request.UpdatedBird.CanFly;
+            birdToUpdate.Color = request.UpdatedBird.Color;
 
-            return Task.FromResult(birdToUpdate);
+            var updatedBird = await _birdRepository.UpdateBird(birdToUpdate);
+
+            return updatedBird;
         }
     }
 }

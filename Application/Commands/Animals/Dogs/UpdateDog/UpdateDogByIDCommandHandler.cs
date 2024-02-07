@@ -1,24 +1,38 @@
 ﻿using Domain.Models.Animals.Dogs;
-using Infrastructure.Database;
+using Infrastructure.Repositories.Animals.Dogs;
 using MediatR;
 
 namespace Application.Commands.Animals.Dogs.UpdateDog
 {
-    public class UpdateDogByIdCommandHandler : IRequestHandler<UpdateDogByIDCommand, Dog>
+    public class UpdateDogByIDCommandHandler : IRequestHandler<UpdateDogByIDCommand, Dog>
     {
-        private readonly MockDatabase _mockDatabase;
-
-        public UpdateDogByIdCommandHandler(MockDatabase mockDatabase)
+        private readonly IDogRepository _dogRepository;
+        private readonly UpdateDogByIDCommandValidator _validator;
+        public UpdateDogByIDCommandHandler(IDogRepository DogRepository, UpdateDogByIDCommandValidator validator)
         {
-            _mockDatabase = mockDatabase;
+            _dogRepository = DogRepository;
+            _validator = validator;
         }
-        public Task<Dog> Handle(UpdateDogByIDCommand request, CancellationToken cancellationToken)
+        public async Task<Dog> Handle(UpdateDogByIDCommand request, CancellationToken cancellationToken)
         {
-            Dog dogToUpdate = _mockDatabase.AllDogs.FirstOrDefault(dog => dog.AnimalID == request.ID)!;
+            var updateDogByIDCommandValidation = _validator.Validate(request);
+
+            if (!updateDogByIDCommandValidation.IsValid)
+            {
+                var allErrors = updateDogByIDCommandValidation.Errors.ConvertAll(errors => errors.ErrorMessage);
+
+                throw new ArgumentException("Update error: " + string.Join("; ", allErrors));
+            }
+
+            Dog dogToUpdate = _dogRepository.GetDogByID(request.ID).Result;
 
             dogToUpdate.Name = request.UpdatedDog.Name;
+            dogToUpdate.Weight = request.UpdatedDog.Weight;
+            dogToUpdate.Breed = request.UpdatedDog.Breed;
 
-            return Task.FromResult(dogToUpdate);
+            var updatedDog = await _dogRepository.UpdateDog(dogToUpdate);
+
+            return updatedDog;
         }
     }
 }

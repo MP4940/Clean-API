@@ -1,25 +1,38 @@
 ﻿using Domain.Models.Animals.Cats;
-using Infrastructure.Database;
+using Infrastructure.Repositories.Animals.Cats;
 using MediatR;
 
 namespace Application.Commands.Animals.Cats.UpdateCat
 {
-    public class UpdateCatByIdCommandHandler : IRequestHandler<UpdateCatByIDCommand, Cat>
+    public class UpdateCatByIDCommandHandler : IRequestHandler<UpdateCatByIDCommand, Cat>
     {
-        private readonly MockDatabase _mockDatabase;
-
-        public UpdateCatByIdCommandHandler(MockDatabase mockDatabase)
+        private readonly ICatRepository _CatRepository;
+        private readonly UpdateCatByIDCommandValidator _validator;
+        public UpdateCatByIDCommandHandler(ICatRepository CatRepository, UpdateCatByIDCommandValidator validator)
         {
-            _mockDatabase = mockDatabase;
+            _CatRepository = CatRepository;
+            _validator = validator;
         }
-        public Task<Cat> Handle(UpdateCatByIDCommand request, CancellationToken cancellationToken)
+        public async Task<Cat> Handle(UpdateCatByIDCommand request, CancellationToken cancellationToken)
         {
-            Cat catToUpdate = _mockDatabase.AllCats.FirstOrDefault(cat => cat.AnimalID == request.ID)!;
+            var updateCatByIDCommandValidation = _validator.Validate(request);
+
+            if (!updateCatByIDCommandValidation.IsValid)
+            {
+                var allErrors = updateCatByIDCommandValidation.Errors.ConvertAll(errors => errors.ErrorMessage);
+
+                throw new ArgumentException("Update error: " + string.Join("; ", allErrors));
+            }
+
+            Cat catToUpdate = _CatRepository.GetCatByID(request.ID).Result;
 
             catToUpdate.Name = request.UpdatedCat.Name;
-            catToUpdate.LikesToPlay = request.UpdatedCat.LikesToPlay;
+            catToUpdate.Weight = request.UpdatedCat.Weight;
+            catToUpdate.Breed = request.UpdatedCat.Breed;
 
-            return Task.FromResult(catToUpdate);
+            var updatedCat = await _CatRepository.UpdateCat(catToUpdate);
+
+            return updatedCat;
         }
     }
 }
